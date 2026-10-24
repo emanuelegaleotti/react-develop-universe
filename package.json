@@ -26,8 +26,6 @@
     "build": "tsc -b ./tsconfig.lib.json && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
     "release": "standard-version"
   },
   "peerDependencies": {
@@ -39,8 +37,6 @@
   "devDependencies": {
     "@azure/msal-browser": "^4.26.0",
     "@azure/msal-react": "^3.0.21",
-    "@storybook/addon-docs": "^9.1.10",
-    "@storybook/react-vite": "^9.1.10",
     "@types/node": "^24.7.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.1",
@@ -52,11 +48,9 @@
     "eslint": "^9.37.0",
     "eslint-plugin-react-hooks": "^6.1.1",
     "eslint-plugin-react-refresh": "^0.4.23",
-    "eslint-plugin-storybook": "^9.1.10",
     "glob": "^11.0.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "storybook": "^9.1.10",
     "typescript": "^5.9.3",
     "vite": "^7.3.2",
     "vite-plugin-dts": "^4.5.4",
@@ -64,7 +58,6 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
-    "@storybook/addon-onboarding": "^9.1.10",
     "clsx": "^2.1.1",
     "dompurify": "^3.2.7",
     "echarts": "^6.1.0",

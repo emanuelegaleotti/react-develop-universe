@@ -24,5 +24,3 @@ dist-ssr
 *.sw?
 workspace.code-workspace
 
-*storybook.log
-storybook-static

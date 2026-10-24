@@ -4,8 +4,6 @@
 ## How to use
 The library is on the `/lib` folder.
 
-You can develop the library with storybook. To do it: `npm run storybook`.
-
 To test the library in the project:
 1) `npm run build`, build the library
 2) `npm run dev` for local web server. 
