@@ -1,0 +1,25 @@
+@use "../abstract/variables" as variables;
+@use "./spaces" as spaces;
+@mixin padding-utility {
+  @each $size, $space in spaces.$spaces {
+    &-p-#{$size} {
+      padding: $space;
+    }
+    &-pt-#{$size} {
+      padding-top: $space;
+    }
+    &-pb-#{$size} {
+      padding-bottom: $space;
+    }
+    &-pl-#{$size} {
+      padding-bottom: $space;
+    }
+    &-pr-#{$size} {
+      padding-bottom: $space;
+    }
+  }
+}
+
+.#{variables.$project-acronym} {
+  @include padding-utility;
+}

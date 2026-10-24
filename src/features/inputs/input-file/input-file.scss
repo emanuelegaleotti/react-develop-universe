@@ -1,0 +1,9 @@
+#ks-input-file {
+  grid-template-rows: min-content min-content min-content;
+  h2 {
+    grid-column: 1/-1;
+  }
+  form {
+    grid-column: span 4;
+  }
+}

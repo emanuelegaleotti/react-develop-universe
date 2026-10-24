@@ -1,0 +1,153 @@
+.rdu-button {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--rdu-button-padding);
+  border-radius: var(--rdu-button-border-radius);
+  font-size: var(--rdu-button-font-size, 1rem);
+  border: var(--rdu-button-border);
+  line-height: var(--rdu-button-line-height, 1);
+  font-weight: var(--rdu-button-font-weight, normal);
+  letter-spacing: var(--rdu-button-letter-spacing);
+  font-style: var(--rdu-button-font-style, normal);
+  @media (prefers-reduced-motion: no-preference) {
+    transition: all 0.3s;
+  }
+
+  &.rdu-primary {
+    background-color: var(--rdu-button-primary-background);
+    color: var(--rdu-button-primary-color);
+    border-color: var(--rdu-button-primary-border-color);
+
+    &:hover {
+      background-color: var(--rdu-button-primary-hover-background);
+      color: var(--rdu-button-primary-hover-color);
+      border-color: var(--rdu-button-primary-border-hover-color);
+    }
+  }
+
+  &.rdu-secondary {
+    background-color: var(--rdu-button-secondary-background);
+    color: var(--rdu-button-secondary-color);
+    border-color: var(--rdu-button-secondary-border-color);
+
+    &:hover {
+      background-color: var(--rdu-button-secondary-hover-background);
+      color: var(--rdu-button-secondary-hover-color);
+      border-color: var(--rdu-button-secondary-border-hover-color);
+    }
+  }
+
+  &.rdu-success {
+    background-color: var(--rdu-button-success-background);
+    color: var(--rdu-button-success-color);
+    border-color: var(--rdu-button-success-border-color);
+
+    &:hover {
+      background-color: var(--rdu-button-success-hover-background);
+      color: var(--rdu-button-success-hover-color);
+      border-color: var(--rdu-button-success-border-hover-color);
+    }
+  }
+
+  &.rdu-error {
+    background-color: var(--rdu-button-danger-background);
+    color: var(--rdu-button-danger-color);
+    border-color: var(--rdu-button-danger-border-color);
+
+    &:hover {
+      background-color: var(--rdu-button-danger-hover-background);
+      color: var(--rdu-button-danger-hover-color);
+      border-color: var(--rdu-button-danger-border-hover-color);
+    }
+  }
+
+  &.rdu-warning {
+    background-color: var(--rdu-button-warning-background);
+    color: var(--rdu-button-warning-color);
+    border-color: var(--rdu-button-warning-border-color);
+
+    &:hover {
+      background-color: var(--rdu-button-warning-hover-background);
+      color: var(--rdu-button-warning-hover-color);
+      border-color: var(--rdu-button-warning-border-hover-color);
+    }
+  }
+
+  &.rdu-info {
+    background-color: var(--rdu-button-info-background);
+    color: var(--rdu-button-info-color);
+    border-color: var(--rdu-button-info-border-color);
+
+    &:hover {
+      background-color: var(--rdu-button-info-hover-background);
+      color: var(--rdu-button-info-hover-color);
+      border-color: var(--rdu-button-info-border-hover-color);
+    }
+  }
+
+  &.rdu-tertiary {
+    background-color: var(--rdu-button-tertiary-background);
+    color: var(--rdu-button-tertiary-color);
+    border-color: var(--rdu-button-tertiary-border-color);
+
+    &:hover {
+      background-color: var(--rdu-button-tertiary-hover-background);
+      color: var(--rdu-button-tertiary-hover-color);
+      border-color: var(--rdu-button-tertiary-border-hover-color);
+    }
+  }
+
+  &.rdu-light {
+    background-color: var(--rdu-button-light-background);
+    color: var(--rdu-button-light-color);
+    border-color: var(--rdu-button-light-border-color);
+
+    &:hover {
+      background-color: var(--rdu-button-light-hover-background);
+      color: var(--rdu-button-light-hover-color);
+      border-color: var(--rdu-button-light-border-hover-color);
+    }
+  }
+
+  &.rdu-dark {
+    background-color: var(--rdu-button-dark-background);
+    color: var(--rdu-button-dark-color);
+    border-color: var(--rdu-button-dark-border-color);
+
+    &:hover {
+      background-color: var(--rdu-button-dark-hover-background);
+      color: var(--rdu-button-dark-hover-color);
+      border-color: var(--rdu-button-dark-border-hover-color);
+    }
+  }
+
+  &:has(.rdu-button-icon) {
+    gap: var(--rdu-button-icon-gap);
+  }
+
+  .rdu-button-text {
+    display: var(--rdu-button-text-display, inline-block);
+
+    &.rdu-left {
+      order: 2;
+    }
+
+    &.rdu-right {
+      order: 1;
+    }
+  }
+
+  .rdu-button-icon {
+    display: var(--rdu-button-icon-display, inline-block);
+
+    &.rdu-left {
+      order: 1;
+    }
+
+    &.rdu-right {
+      order: 2;
+    }
+  }
+}

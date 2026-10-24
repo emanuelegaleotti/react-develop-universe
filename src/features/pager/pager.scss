@@ -1,0 +1,13 @@
+#ks-pager {
+  .rdu-table {
+    grid-column: -1/1;
+    td {
+      text-align: center;
+    }
+  }
+
+  nav {
+    grid-column: 4/7;
+  }
+}
+

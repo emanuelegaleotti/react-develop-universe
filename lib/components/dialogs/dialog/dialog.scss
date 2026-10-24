@@ -1,0 +1,76 @@
+.rdu-dialog {
+  padding: var(--rdu-dialog-padding);
+  font-family: var(--rdu-dialog-font-family);
+  border: var(--rdu-dialog-border);
+  border-color: var(--rdu-dialog-border-color);
+  border-radius: var(--rdu-dialog-border-radius);
+  box-shadow: var(--rdu-dialog-box-shadow);
+
+  &::backdrop {
+    background: var(--rdu-dialog-backdrop-background);
+  }
+
+  .rdu-dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--rdu-dialog-header-padding);
+    background: var(--rdu-dialog-header-background);
+
+    h4 {
+      font-size: var(--rdu-dialog-header-font-size);
+      line-height: var(--rdu-dialog-header-line-height);
+      font-weight: var(--rdu-dialog-header-font-weight);
+      letter-spacing: var(--rdu-dialog-header-letter-spacing);
+      color: var(--rdu-dialog-header-color);
+      font-family: var(--rdu-dialog-header-font-family);
+    }
+
+    .rdu-dialog-button-close {
+      background: var(--rdu-dialog-close-button-background);
+      border: var(--rdu-dialog-close-button-border);
+      border-color: var(--rdu-dialog-close-button-border-color);
+      border-radius: var(--rdu-dialog-close-button-border-radius);
+      padding: var(--rdu-dialog-close-button-padding);
+      font-size: var(--rdu-dialog-close-button-font-size);
+      line-height: var(--rdu-dialog-close-button-line-height);
+      font-weight: var(--rdu-dialog-close-button-font-weight);
+      color: var(--rdu-dialog-close-button-color);
+      @media (prefers-reduced-motion: no-preference) {
+        transition: all .3s;
+      }
+
+      svg {
+        fill: var(--rdu-dialog-close-button-color);
+        height: var(--rdu-dialog-close-button-svg-height);
+        width: var(--rdu-dialog-close-button-svg-width);
+        line-height: var(--rdu-dialog-close-button-svg-line-height);
+      }
+
+      &:hover {
+        background: var(--rdu-dialog-close-button-hover-background);
+        border-color: var(--rdu-dialog-close-button-hover-border-color);
+        color: var(--rdu-dialog-close-button-hover-color);
+
+        svg {
+          fill: var(--rdu-dialog-close-button-hover-color);
+        }
+      }
+    }
+  }
+
+
+  .rdu-dialog-body {
+    padding: var(--rdu-dialog-body-padding);
+    background: var(--rdu-dialog-body-background);
+  }
+
+  .rdu-dialog-footer {
+    padding: var(--rdu-dialog-footer-padding);
+    background: var(--rdu-dialog-footer-background);
+    display: flex;
+    align-items: center;
+    justify-content: var(--rdu-dialog-footer-justify-content, flex-end);
+  }
+
+}

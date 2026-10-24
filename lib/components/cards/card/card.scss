@@ -1,0 +1,10 @@
+.rdu-card {
+  width: 40rem;
+  border: 1px solid var(--rdu-card-border-color);
+  border-radius: var(--rdu-card-border-radius);
+  padding: var(--rdu-card-padding);
+  background: var(--rdu-card-background);
+  font-family: var(--rdu-card-font-family);
+  font-size: var(--rdu-card-font-size);
+  font-weight: var(--rdu-card-font-weight);
+}

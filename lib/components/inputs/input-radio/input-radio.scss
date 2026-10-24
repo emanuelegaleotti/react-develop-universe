@@ -1,0 +1,138 @@
+.rdu-input-radio {
+  display: grid;
+  grid-template-columns: min-content auto;
+  grid-template-rows: min-content min-content;
+  align-items: center;
+  column-gap: var(--rdu-input-radio-column-gap, 0.5rem);
+  row-gap: var(--rdu-input-radio-row-gap, 0.5rem);
+  
+  input {
+    display: none;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+
+    &:checked + .rdu-visible-radio {
+      border-color: var(--rdu-input-radio-checked-border-color);
+
+      &::after {
+        background: var(--rdu-input-radio-after-checked-background);
+      }
+    }
+
+    &.rdu-show-help {
+      & ~ .rdu-help-feedback {
+        display: block;
+      }
+    }
+
+    &.rdu-is-valid {
+      & ~ .rdu-valid-feedback {
+        display: block;
+      }
+
+      & ~ .rdu-invalid-feedback {
+        display: none;
+      }
+
+      & ~ .rdu-help-feedback {
+        display: none;
+      }
+    }
+
+    &.rdu-is-invalid {
+      & ~ .rdu-valid-feedback {
+        display: none;
+      }
+
+      & ~ .rdu-invalid-feedback {
+        display: block;
+      }
+
+      & ~ .rdu-help-feedback {
+        display: none;
+      }
+    }
+  }
+
+  .rdu-visible-radio {
+    position: relative;
+    border: var(--rdu-input-radio-border);
+    border-color: var(--rdu-input-radio-border-color);
+    background: var(--rdu-input-radio-background);
+    width: var(--rdu-input-radio-width, 1rem);
+    height: var(--rdu-input-radio-height, 1rem);
+    border-radius: var(--rdu-input-radio-border-radius);
+    @media (prefers-reduced-motion: no-preference) {
+      transition: all 0.3s;
+    }
+
+    &:after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-position: center;
+      border-radius: var(--rdu-input-radio-border-radius);
+      background: var(--rdu-input-radio-background);
+      @media (prefers-reduced-motion: no-preference) {
+        transition: all .3s;
+      }
+    }
+
+    & + label {
+      margin-bottom: var(--rdu-input-radio-margin-bottom);
+    }
+  }
+
+  .rdu-radio-label {
+    font-size: var(--rdu-input-radio-label-font-size, 1rem);
+    line-height: var(--rdu-input-radio-label-line-height, 1.5rem);
+    font-weight: var(--rdu-input-radio-label-font-weight, normal);
+    font-style: var(--rdu-input-radio-label-font-style, normal);
+    letter-spacing: var(--rdu-input-radio-label-letter-spacing);
+    color: var(--rdu-input-radio-label-color);
+    font-family: var(--rdu-input-radio-label-font-family);
+  }
+
+  .rdu-valid-feedback {
+    grid-column: 1/-1;
+    grid-row: 2/3;
+    display: none;
+    font-size: var(--rdu-input-valid-feedback-font-size, 1rem);
+    line-height: var(--rdu-input-valid-feedback-line-height, 1.5);
+    font-weight: var(--rdu-input-valid-feedback-font-weight, normal);
+    font-style: var(--rdu-input-valid-feedback-font-style, normal);
+    letter-spacing: var(--rdu-input-valid-feedback-letter-spacing);
+    font-family: var(--rdu-input-valid-feedback-font-family);
+    color: var(--rdu-input-valid-feedback-color);
+  }
+
+  .rdu-invalid-feedback {
+    grid-column: 1/-1;
+    grid-row: 2/3;
+    display: none;
+    font-size: var(--rdu-input-invalid-feedback-font-size, 1rem);
+    line-height: var(--rdu-input-invalid-feedback-line-height, 1.5);
+    font-weight: var(--rdu-input-invalid-feedback-font-weight, normal);
+    font-style: var(--rdu-input-invalid-feedback-font-style, normal);
+    letter-spacing: var(--rdu-input-invalid-feedback-letter-spacing);
+    font-family: var(--rdu-input-invalid-feedback-font-family);
+    color: var(--rdu-input-invalid-feedback-color);
+  }
+
+  .rdu-help-feedback {
+    grid-column: 1/-1;
+    grid-row: 2/3;
+    display: none;
+    font-size: var(--rdu-input-help-feedback-font-size, 1rem);
+    line-height: var(--rdu-input-help-feedback-line-height, 1.5);
+    font-weight: var(--rdu-input-help-feedback-font-weight, normal);
+    font-style: var(--rdu-input-help-feedback-font-style, normal);
+    letter-spacing: var(--rdu-input-help-feedback-letter-spacing);
+    font-family: var(--rdu-input-help-feedback-font-family);
+    color: var(--rdu-input-help-feedback-color);
+  }
+}

@@ -1,0 +1,95 @@
+@use '../../sass/abstract/functions' as function;
+@use '../../sass/abstract/mixins' as mixins;
+@use '../../sass/abstract/breakpoints' as breakpoints;
+
+.ks-navigation {
+  position: relative;
+  padding: var(--ks-space-xs);
+  border-radius: var(--ks-border-radius-sm);
+  @include mixins.reduce-motion {
+    transition: all .3s;
+  }
+  @include breakpoints.media-breakpoint-up(sm){
+    padding: var(--ks-space-sm) 0;
+    margin-top: auto;
+  }
+
+
+  summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--ks-space-2xs);
+    width: 100%;
+
+    .ks-icon-wrapper {
+      border-radius: 50%;
+      background-color: var(--ks-color-primary);
+      border: 1px solid;
+      border-color: var(--ks-color-primary);
+      line-height: 3.2;
+      height: function.toRem(48);
+      width: function.toRem(48);
+      display: inline-block;
+      text-align: center;
+
+      svg {
+        height: function.toRem(24);
+        width: auto;
+        fill: var(--ks-gray-100);
+
+      }
+    }
+
+    .ks-route {
+      display: none;
+      @include breakpoints.media-breakpoint-up(md){
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    svg {
+      height: function.toRem(24);
+      width: auto;
+      fill: var(--ks-gray-800);
+      @include mixins.reduce-motion {
+        transition: all .3s;
+      }
+    }
+  }
+
+  &[open] {
+    background-color: var(--ks-gray-200);
+
+    summary {
+      svg {
+        &:not(span svg) {
+          transform: rotate(-180deg);
+        }
+      }
+    }
+  }
+
+  nav {
+    max-height: 70vh;
+    position: absolute;
+    left: 105%;
+    bottom: 0;
+    border-radius: var(--ks-border-radius-sm);
+    background: var(--ks-gray-100);
+    border: 1px solid;
+    border-color: var(--ks-gray-200);
+    z-index: 33;
+    overflow-y: scroll;
+
+    li {
+      list-style: none;
+      padding: var(--ks-space-sm) var(--ks-space-md);
+      white-space: nowrap;
+    }
+  }
+}

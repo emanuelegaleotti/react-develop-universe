@@ -1,0 +1,45 @@
+.rdu-pager {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto auto 2fr auto auto;
+  align-items: center;
+  justify-content: center;
+  gap: var(--rdu-pager-gap, 1rem);
+
+  h4 {
+    grid-column: 1/6;
+  }
+
+  .pagination {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding-inline: 40px;
+    justify-content: space-between;
+    gap: var(--rdu-page-pagination-gap, 1rem);
+
+    li {
+      display: inline-block;
+      font-size: var(--rdu-pager-li-font-size, 1rem);
+      font-family: var(--rdu-pager-font-family);
+      padding: var(--rdu-pager-li-padding, 0.5rem);
+      border: 1px solid var(--rdu-pager-li-border-color);
+      &.active {
+        background-color: var(--rdu-pager-li-active-background);
+      }
+    }
+  }
+
+
+
+  button {
+    &:disabled {
+      opacity: var(--rdu-pager-disabled-button);
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+.pokemon-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 2rem;
+  }
+
+  &__description {
+    margin: 0.5rem 0 0;
+    color: #5e687e;
+  }
+
+  &__form {
+    display: grid;
+    gap: 1rem;
+    max-width: 42rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid #ebecf0;
+    background: #f6f7f9;
+  }
+
+  &__field {
+    display: grid;
+    gap: 0.5rem;
+    font-weight: 600;
+  }
+
+  &__input {
+    min-height: 2.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid #d0d3dc;
+    background: #ffffff;
+    color: inherit;
+  }
+
+  &__error {
+    color: #c1554d;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+}

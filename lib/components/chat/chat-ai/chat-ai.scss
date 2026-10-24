@@ -1,0 +1,39 @@
+.rdu-chat-ai {
+  display: flex;
+  flex-direction: column;
+  height: var(--rdu-chat-ai-height);
+  .rdu-chat-ai-header {
+    padding: var(--rdu-chat-ai-header-padding, 1rem);
+
+    h4 {
+      font-size: var(--rdu-chat-ai-header-font-size, 1rem);
+      font-family: var(--rdu-chat-ai-header-font-family);
+      font-weight: var(--rdu-chat-ai-header-font-weight, normal);
+      line-height: var(--rdu-chat-ai-header-line-height, 1.5);
+      text-align: var(--rdu-chat-ai-header-text-align);
+      color: var(--rdu-chat-ai-header-color);
+    }
+  }
+
+  .rdu-chat-ai-body {
+    height: 100%;
+    overflow-y: scroll;
+    padding: var(--rdu-chat-ai-body-padding, 1rem);
+    margin-bottom: var(--rdu-chat-ai-body-margin-bottom, 1rem);
+  }
+
+  .rdu-chat-ai-footer {
+    padding: var(--rdu-chat-ai-footer-padding);
+
+    p {
+      font-size: var(--rdu-chat-ai-footer-font-size, 1rem);
+      font-family: var(--rdu-chat-ai-footer-font-family);
+      font-weight: var(--rdu-chat-ai-footer-font-weight, normal);
+      line-height: var(--rdu-chat-ai-footer-line-height, 1.5);
+      text-align: var(--rdu-chat-ai-footer-text-align);
+      color: var(--rdu-chat-ai-footer-color);
+
+    }
+  }
+}
+

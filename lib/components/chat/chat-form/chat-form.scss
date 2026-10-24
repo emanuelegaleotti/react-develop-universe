@@ -1,0 +1,108 @@
+.rdu-chat-form {
+  display: flex;
+  align-items: flex-start;
+  background: var(--rdu-chat-form-background);
+  padding: var(--rdu-chat-form-padding, 1rem);
+  border: var(--rdu-chat-form-border);
+  border-color: var(--rdu-chat-form-border-color);
+  border-radius: var(--rdu-chat-form-border-radius);
+  box-shadow: var(--rdu-chat-form-box-shadow);
+  margin-bottom: var(--rdu-chat-form-margin-bottom, 1rem);
+  gap: var(--rdu-chat-form-gap, 1rem);
+
+  div {
+    flex-basis: 100%;
+
+    #rdu-chat-form-textarea {
+      width: 100%;
+      resize: vertical;
+      background: var(--rdu-chat-form-textarea-background);
+      color: var(--rdu-chat-form-textarea-color);
+      padding: var(--rdu-chat-form-textarea-padding);
+      border: var(--rdu-chat-form-textarea-border);
+      border-color: var(--rdu-chat-form-textarea-border-color);
+      border-radius: var(--rdu-chat-form-textarea-border-radius, 0);
+      font-size: var(--rdu-chat-form-textarea-font-size, 1rem);
+      line-height: var(--rdu-chat-form-textarea-line-height, 1.5);
+      font-weight: var(--rdu-chat-form-textarea-font-weight, normal);
+      font-family: var(--rdu-chat-form-textarea-font-family);
+      min-height: var(--rdu-chat-form-textarea-min-height);
+      @supports (field-sizing: content) {
+        field-sizing: content;
+      }
+    }
+
+    .invalid-feedback {
+    }
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: var(--rdu-chat-form--button-gap, .5rem);
+    background: var(--rdu-chat-form-button-background);
+    color: var(--rdu-chat-form-button-color);
+    padding: var(--rdu-chat-form-button-padding);
+    border: var(--rdu-chat-form-button-border);
+    border-color: var(--rdu-chat-form-button-border-color);
+    border-radius: var(--rdu-chat-form-button-border-radius);
+    font-size: var(--rdu-chat-form-button-font-size, 1rem);
+    line-height: var(--rdu-chat-form-button-line-height, 1.5);
+    font-weight: var(--rdu-chat-form-button-font-weight, normal);
+    @media (prefers-reduced-motion: no-preference) {
+      transition: all .3s;
+    }
+
+    #rdu-chat-form-spinner {
+      display: inline-block;
+      line-height: 0;
+      animation: var(--rdu-chat-form-spinner-animation);
+      transform-origin: var(--rdu-chat-form-spinner-transform-origin, center center);
+    }
+
+    svg {
+      fill: var(--rdu-chat-form-button-color);
+      height: var(--rdu-chat-form-button-icon-height, 1rem);
+      width: var(--rdu-chat-form-button-icon-width, 1rem);
+      @media (prefers-reduced-motion: no-preference) {
+        transition: all .3s;
+      }
+    }
+
+    span {
+      display: var(--rdu-chat-form-button-text-display, inline-block);
+    }
+
+    &:hover {
+      background: var(--rdu-chat-form-button-hover-background);
+      color: var(--rdu-chat-form-button-hover-color);
+      border-color: var(--rdu-chat-form-button-hover-border-color);
+
+      svg {
+        fill: var(--rdu-chat-form-button-hover-color);
+      }
+    }
+
+    &:disabled {
+      background: var(--rdu-chat-form-button-disabled-background);
+      color: var(--rdu-chat-form-button-disabled-color);
+      border-color: var(--rdu-chat-form-button-disabled-border-color);
+
+      svg {
+        fill: var(--rdu-chat-form-button-disabled-color);
+      }
+    }
+
+    &:focus {
+      background: var(--rdu-chat-form-button-focus-background);
+      color: var(--rdu-chat-form-button-focus-color);
+      border-color: var(--rdu-chat-form-button-focus-border-color);
+
+      svg {
+        fill: var(--rdu-chat-form-button-focus-color);
+      }
+    }
+  }
+}
+
+

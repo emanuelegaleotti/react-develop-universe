@@ -1,0 +1,25 @@
+@use '../abstract/variables' as variables;
+@use './spaces' as spaces;
+@mixin margin-utility {
+  @each $size, $space in spaces.$spaces {
+    &-m-#{$size} {
+      margin: $space;
+    }
+    &-mt-#{$size} {
+      margin-top: $space;
+    }
+    &-mb-#{$size} {
+      margin-bottom: $space;
+    }
+    &-ml-#{$size} {
+      margin-left: $space;
+    }
+    &-mr-#{$size} {
+      margin-right: $space;
+    }
+  }
+}
+
+.#{variables.$project-acronym} {
+  @include margin-utility;
+}

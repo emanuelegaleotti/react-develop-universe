@@ -1,0 +1,24 @@
+@use '../abstract/variables' as variables;
+@use '../base/spaces' as spaces;
+@use '../base/palette' as palette;
+
+:root,::backdrop, ::selection {
+  --rdu-font-family: -apple-system, ui-sans-serif, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --rdu-font-family-mono: 'Source Code Pro', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  @each $size, $space in spaces.$spaces {
+    --#{variables.$project-acronym}-space-#{$size}: #{$space};
+  }
+  @each $name, $color in palette.$palette {
+    --#{variables.$project-acronym}-color-#{$name}: #{$color};
+  }
+  @each $name, $color in palette.$grays {
+    --#{variables.$project-acronym}-gray-#{$name}: #{$color};
+  }
+  @each $size, $height in variables.$header-height {
+    --#{variables.$project-acronym}-header-height-#{$size}: #{$height};
+  }
+  @each $size, $radius in variables.$border-radius {
+    --#{variables.$project-acronym}-border-radius-#{$size}: #{$radius};
+  }
+
+}

@@ -1,0 +1,91 @@
+@use "sass:map";
+@use '../base/palette' as palette;
+@use '../base/spaces' as spaces;
+@use '../abstract/functions' as functions;
+
+fieldset[class^='rdu-input-'], fieldset[class^='rdu-select'], fieldset[class^='rdu-textarea'] {
+  --rdu-input-label-font-family: var(--rdu-font-family);
+  --rdu-input-font-family: var(--rdu-font-family);
+  --rdu-input-background: #{map.get(palette.$grays,100)};
+  --rdu-input-label-color: #{map.get(palette.$grays,800)};
+  --rdu-input-label-font-size: 1rem;
+  --rdu-input-label-font-weight: 500;
+  --rdu-input-label-margin-bottom: #{map.get(spaces.$spaces, '4xs')};
+  --rdu-input-color: #{map.get(palette.$grays,800)};
+  --rdu-input-padding: #{map.get(spaces.$spaces,xs)} #{map.get(spaces.$spaces, lg)};
+  --rdu-input-border: 1px solid;
+  --rdu-input-border-color: #{palette.$gray-20};
+  --rdu-input-border-radius: 0.5rem;
+  --rdu-input-font-size: 1rem;
+  --rdu-input-line-height: 1.5;
+  --rdu-input-font-weight: 500;
+  --rdu-input-checkbox-border: 1px solid;
+  --rdu-input-checkbox-border-color: #{palette.$gray-20};
+  --rdu-input-checkbox-background: #{map.get(palette.$grays,100)};
+  --rdu-input-checkbox-width: 1.5rem;
+  --rdu-input-checkbox-height: 1.5rem;
+  --rdu-input-checkbox-after-checked-background:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIyNHB4IiA+CiAgICA8cGF0aCBkPSJNMzgyLTI0MCAxNTQtNDY4bDU3LTU3IDE3MSAxNzEgMzY3LTM2NyA1NyA1Ny00MjQgNDI0WiIvPgo8L3N2Zz4=") ,#ffffff;
+  --rdu-input-checkbox-border-radius: 0.25rem;
+  --rdu-input-radio-border: 1px solid;
+  --rdu-input-radio-border-color: #{palette.$gray-20};
+  --rdu-input-radio-background: #{map.get(palette.$grays,100)};
+  --rdu-input-radio-width: 1.5rem;
+  --rdu-input-radio-height: 1.5rem;
+  --rdu-input-radio-after-checked-background:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIyNHB4IiA+CiAgICA8cGF0aCBkPSJNMzgyLTI0MCAxNTQtNDY4bDU3LTU3IDE3MSAxNzEgMzY3LTM2NyA1NyA1Ny00MjQgNDI0WiIvPgo8L3N2Zz4=") ,#ffffff;
+  --rdu-input-radio-border-radius: 50%;
+  --rdu-input-radio-after-border-radius: 50%;
+  --rdu-input-invalid-feedback-font-family: var(--rdu-font-family);
+  --rdu-input-valid-feedback-font-family: var(--rdu-font-family);
+  --rdu-input-help-feedback-font-family: var(--rdu-font-family);
+
+
+  --rdu-input-file-dropzone-font-size: 1rem;
+  --rdu-input-file-dropzone-font-weight: 500;
+  //--rdu-input-file-dropzone-letter-spacing: ;
+  //background: var(--rdu-input-file-dropzone-background);
+  --rdu-input-file-dropzone-border: 1px solid;
+  //--rdu-input-file-dropzone-border-style: ;
+  --rdu-input-file-dropzone-border-radius: 0.5rem;
+  --rdu-input-file-dropzone-font-family: var(--rdu-font-family);
+  --rdu-input-file-dropzone-padding: 1rem;
+
+  --rdu-input-file-add-button-padding: 0.5rem;
+  --rdu-input-file-add-button-border-radius: 9999px;
+  --rdu-input-file-add-button-border: 1px solid;
+  --rdu-input-file-add-button-background: #{map.get(palette.$palette, 'primary')};
+  --rdu-input-file-add-button-color: #{palette.$white};
+  --rdu-input-file-add-button-border-color: #{map.get(palette.$palette, 'primary')};
+
+  --rdu-input-file-remove-button-padding: 0.5rem;
+  --rdu-input-file-remove-button-border-radius: 9999px;
+  --rdu-input-file-remove-button-border: 1px solid;
+  --rdu-input-file-remove-button-background: #{palette.$white};
+  //--rdu-input-file-remove-button-color: #{palette.$black};
+  --rdu-input-file-remove-button-border-color: #{palette.$gray-20};
+
+  --rdu-input-file-remove-icon-color: #{palette.$black};
+  --rdu-input-file-remove-icon-svg-height: 1rem;
+  --rdu-input-file-remove-icon-svg-width: 1rem;
+
+
+  --rdu-input-valid-feedback-color: #{palette.$green-50};
+  --rdu-input-invalid-feedback-color: #c1554d;
+  --rdu-input-help-feedback-color: #{palette.$gray-50};
+}
+
+input:not(fieldset input):not([type='checkbox']):not([type='radio']):not([type='file']):not([type='hidden']),
+select:not(fieldset select) {
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  font-family: var(--rdu-font-family);
+  font-size: 1rem;
+  color: #{palette.$gray-90};
+  background: #{palette.$white};
+  border: 1px solid #{palette.$gray-20};
+  border-radius: 0.5rem;
+
+  &:focus {
+    outline: 2px solid #{palette.$blue-50};
+    outline-offset: 1px;
+  }
+}

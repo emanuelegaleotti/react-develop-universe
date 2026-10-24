@@ -1,0 +1,25 @@
+@use '../abstract/functions' as functions;
+@use '../base/palette' as palette;
+@use '../base/spaces' as spaces;
+@use "sass:map";
+
+.rdu-offcanvas {
+  --rdu-offcanvas-width: 20vw;
+  --rdu-offcanvas-backdrop-background: rgba(0,0,0,0.1);
+  --rdu-offcanvas-header-padding: #{map.get(spaces.$spaces, md)};
+  --rdu-offcanvas-button-close-background: transparent;
+  --rdu-offcanvas-button-close-border: 1px solid;
+  --rdu-offcanvas-button-close-padding: #{map.get(spaces.$spaces, '4xs')};;
+  --rdu-offcanvas-button-close-border-color: #{map.get(palette.$palette, 900)};
+  --rdu-offcanvas-button-close-color: #{map.get(palette.$palette, 900)};
+  --rdu-offcanvas-button-close-svg-width: #{functions.toRem(24)};
+  --rdu-offcanvas-button-close-svg-height: #{functions.toRem(24)};
+  --rdu-offcanvas-button-close-line-height: 0;
+  --rdu-offcanvas-body-padding: #{map.get(spaces.$spaces, md)};
+  --rdu-offcanvas-header-title-font-size : #{functions.toRem(16)};
+  --rdu-offcanvas-header-title-line-height: normal;
+  --rdu-offcanvas-header-title-font-weight: 600;
+  --rdu-offcanvas-header-title-letter-spacing: normal;
+  --rdu-offcanvas-header-title-color: #{map.get(palette.$grays, 800)};
+  --rdu-offcanvas-header-title-font-family: var(--rdu-font-family);
+}

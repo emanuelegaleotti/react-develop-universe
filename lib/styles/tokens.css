@@ -1,0 +1,487 @@
+:root {
+    /* Typography (react.dev system font stack, Source Code Pro for code) */
+    --rdu-font-family: -apple-system, ui-sans-serif, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+    --rdu-font-family-mono: 'Source Code Pro', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+    /* =========================
+       Button
+    ========================== */
+    --rdu-button-padding: 0.5rem 4rem;
+    --rdu-button-border-radius: 2rem;
+    --rdu-button-font-size: 1rem;
+    --rdu-button-border: 1px solid transparent;
+    --rdu-button-line-height: 1.5;
+    --rdu-button-font-weight: 500;
+    --rdu-button-letter-spacing: normal;
+    --rdu-button-font-style: normal;
+    --rdu-button-icon-gap: 0.5rem;
+
+    /* Varianti button */
+    --rdu-button-primary-background: #087ea4;
+    --rdu-button-primary-color: #ffffff;
+    --rdu-button-primary-border-color: #087ea4;
+
+    --rdu-button-primary-hover-background: #045975;
+    --rdu-button-primary-hover-color: #ffffff;
+    --rdu-button-primary-border-hover-color: #045975;
+
+    /* Palette generica (per le varianti secondarie) */
+    --rdu-color-primary: #087ea4;
+    --rdu-color-secondary: #5e687e;
+    --rdu-color-tertiary-border: #d0d3dc;
+    --rdu-color-tertiary-text: #23272f;
+    --rdu-color-error: #c1554d;
+    --rdu-color-warning: #db7d27;
+    --rdu-color-success: #388f7f;
+    --rdu-color-info: #149eca;
+
+    /* =========================
+       Input
+    ========================== */
+    --rdu-input-label-margin-bottom: 0.25rem;
+    --rdu-input-label-font-size: 1rem;
+    --rdu-input-label-line-height: 1.5;
+    --rdu-input-label-font-weight: 500;
+    --rdu-input-label-font-style: normal;
+    --rdu-input-label-letter-spacing: normal;
+    --rdu-input-label-color: #23272f;
+    --rdu-input-label-font-family: var(--rdu-font-family);
+
+    --rdu-input-messages-font-family: var(--rdu-font-family);
+    --rdu-input-messages-margin-top: 1rem;
+    --rdu-input-messages-margin-bottom: 1rem;
+
+    --rdu-input-font-size: 1rem;
+    --rdu-input-line-height: 1.5;
+    --rdu-input-font-weight: 400;
+    --rdu-input-font-style: normal;
+    --rdu-input-letter-spacing: normal;
+    --rdu-input-background: #ffffff;
+    --rdu-input-border: 1px solid #087ea4;
+    --rdu-input-border-radius: 0.5rem; /* 6px */
+    --rdu-input-font-family: var(--rdu-font-family);
+
+    /* =========================
+       Input Time
+    ========================== */
+    --rdu-input-time-label-margin-bottom: 0.25rem;
+    --rdu-input-time-label-font-size: 1rem;
+    --rdu-input-time-label-line-height: 1.5;
+    --rdu-input-time-label-font-weight: 500;
+    --rdu-input-time-label-font-style: normal;
+    --rdu-input-time-label-letter-spacing: normal;
+    --rdu-input-time-label-color: #23272f;
+    --rdu-input-time-label-font-family: var(--rdu-font-family);
+
+    --rdu-input-time-messages-font-family: var(--rdu-font-family);
+    --rdu-input-time-messages-margin-top: 1rem;
+    --rdu-input-time-messages-margin-bottom: 1rem;
+
+    --rdu-input-time-font-size: 1rem;
+    --rdu-input-time-line-height: 1.5;
+    --rdu-input-time-font-weight: 400;
+    --rdu-input-time-font-style: normal;
+    --rdu-input-time-letter-spacing: normal;
+    --rdu-input-time-background: #ffffff;
+    --rdu-input-time-border: 1px solid #087ea4;
+    --rdu-input-time-border-radius: 0.5rem; /* 6px */
+    --rdu-input-time-font-family: var(--rdu-font-family);
+
+    /* =========================
+       Input Date
+    ========================== */
+    --rdu-input-date-label-margin-bottom: 0.25rem;
+    --rdu-input-date-label-font-size: 1rem;
+    --rdu-input-date-label-line-height: 1.5;
+    --rdu-input-date-label-font-weight: normal;
+    --rdu-input-date-label-font-style: normal;
+    --rdu-input-date-label-letter-spacing: normal;
+    --rdu-input-date-label-color: #23272f;
+    --rdu-input-date-label-font-family: var(--rdu-font-family);
+
+    --rdu-input-date-messages-font-family: var(--rdu-font-family);
+    --rdu-input-date-messages-margin-top: 1rem;
+    --rdu-input-date-messages-margin-bottom: 1rem;
+
+    --rdu-input-date-font-size: 1rem;
+    --rdu-input-date-line-height: 1.5;
+    --rdu-input-date-font-weight: normal;
+    --rdu-input-date-font-style: normal;
+    --rdu-input-date-letter-spacing: normal;
+    --rdu-input-date-background: #ffffff;
+    --rdu-input-date-border: 1px solid #087ea4;
+    --rdu-input-date-border-radius: 0.5rem;
+
+    /* =========================
+       Input DateTime Local
+    ========================== */
+    --rdu-input-datetime-local-label-margin-bottom: 0.25rem;
+    --rdu-input-datetime-local-label-font-size: 1rem;
+    --rdu-input-datetime-local-label-line-height: 1.5;
+    --rdu-input-datetime-local-label-font-weight: normal;
+    --rdu-input-datetime-local-label-font-style: normal;
+    --rdu-input-datetime-local-label-letter-spacing: normal;
+    --rdu-input-datetime-local-label-color: #23272f;
+    --rdu-input-datetime-local-label-font-family: var(--rdu-font-family);
+
+    --rdu-input-datetime-local-messages-font-family: var(--rdu-font-family);
+    --rdu-input-datetime-local-messages-margin-top: 1rem;
+    --rdu-input-datetime-local-messages-margin-bottom: 1rem;
+
+    --rdu-input-datetime-local-font-size: 1rem;
+    --rdu-input-datetime-local-line-height: 1.5;
+    --rdu-input-datetime-local-font-weight: normal;
+    --rdu-input-datetime-local-font-style: normal;
+    --rdu-input-datetime-local-letter-spacing: normal;
+    --rdu-input-datetime-local-background: #ffffff;
+    --rdu-input-datetime-local-border: 1px solid #087ea4;
+    --rdu-input-datetime-local-border-radius: 0.5rem;
+
+    /* =========================
+       Input Email
+    ========================== */
+    --rdu-input-email-label-margin-bottom: 0.25rem;
+    --rdu-input-email-label-font-size: 1rem;
+    --rdu-input-email-label-line-height: 1.5;
+    --rdu-input-email-label-font-weight: 500;
+    --rdu-input-email-label-font-style: normal;
+    --rdu-input-email-label-letter-spacing: normal;
+    --rdu-input-email-label-color: #23272f;
+    --rdu-input-email-label-font-family: var(--rdu-font-family);
+
+    --rdu-input-email-messages-font-family: var(--rdu-font-family);
+    --rdu-input-email-messages-margin-top: 1rem;
+    --rdu-input-email-messages-margin-bottom: 1rem;
+
+    --rdu-input-email-font-size: 1rem;
+    --rdu-input-email-line-height: 1.5;
+    --rdu-input-email-font-weight: 400;
+    --rdu-input-email-font-style: normal;
+    --rdu-input-email-letter-spacing: normal;
+    --rdu-input-email-background: #ffffff;
+    --rdu-input-email-border: 1px solid #087ea4;
+    --rdu-input-email-border-radius: 0.5rem; /* 6px */
+    --rdu-input-email-font-family: var(--rdu-font-family);
+
+    /* =========================
+       Input Datalist
+    ========================== */
+    --rdu-input-datalist-label-margin-bottom: 0.25rem;
+    --rdu-input-datalist-label-font-size: 1rem;
+    --rdu-input-datalist-label-line-height: 1.5;
+    --rdu-input-datalist-label-font-weight: 500;
+    --rdu-input-datalist-label-font-style: normal;
+    --rdu-input-datalist-label-letter-spacing: normal;
+    --rdu-input-datalist-label-color: #23272f;
+    --rdu-input-datalist-label-font-family: var(--rdu-font-family);
+
+    --rdu-input-datalist-font-size: 1rem;
+    --rdu-input-datalist-line-height: 1.5;
+    --rdu-input-datalist-font-weight: 400;
+    --rdu-input-datalist-font-style: normal;
+    --rdu-input-datalist-letter-spacing: normal;
+    --rdu-input-datalist-background: #ffffff;
+    --rdu-input-datalist-border: 1px solid #087ea4;
+    --rdu-input-datalist-border-radius: 0.5rem; /* 6px */
+    --rdu-input-datalist-font-family: var(--rdu-font-family);
+
+    --rdu-input-datalist-messages-font-family: var(--rdu-font-family);
+    --rdu-input-datalist-messages-margin-top: 1rem;
+    --rdu-input-datalist-messages-margin-bottom: 1rem;
+
+    /* =========================
+       Input Checkbox
+    ========================== */
+    --rdu-input-checkbox-label-margin-bottom: 0.25rem;
+    --rdu-input-checkbox-label-font-size: 1rem;
+    --rdu-input-checkbox-label-line-height: 1.5;
+    --rdu-input-checkbox-label-font-weight: normal;
+    --rdu-input-checkbox-label-font-style: normal;
+    --rdu-input-checkbox-label-letter-spacing: normal;
+    --rdu-input-checkbox-label-color: #23272f;
+    --rdu-input-checkbox-label-font-family: var(--rdu-font-family);
+
+    --rdu-input-visible-checkbox-margin-right: 1rem;
+    --rdu-input-visible-checkbox-margin-bottom: 1rem;
+    --rdu-input-visible-checkbox-border: 1px solid black;
+    --rdu-input-visible-checkbox-width: 1rem;
+    --rdu-input-visible-checkbox-height: 1rem;
+    --rdu-input-visible-checkbox-border-radius: 0.2rem;
+    --rdu-input-visible-checkbox-background-color: #087ea4;
+    --rdu-input-visible-checkbox-border-color: #087ea4;
+
+    --rdu-input-checkbox-messages-font-family: var(--rdu-font-family);
+    --rdu-input-checkbox-messages-margin-top: 1rem;
+    --rdu-input-checkbox-messages-margin-bottom: 1rem;
+
+    /* =========================
+       Input Color
+    ========================== */
+    --rdu-input-color-border-radius: 0.2rem;
+    --rdu-input-color-background-color: #ffffff;
+
+    --rdu-input-color-label-margin-bottom: 0.25rem;
+    --rdu-input-color-label-font-size: 1rem;
+    --rdu-input-color-label-line-height: 1.5;
+    --rdu-input-color-label-font-weight: normal;
+    --rdu-input-color-label-font-style: normal;
+    --rdu-input-color-label-letter-spacing: normal;
+    --rdu-input-color-label-color: #23272f;
+    --rdu-input-color-label-font-family: var(--rdu-font-family);
+
+    --rdu-input-color-messages-font-family: var(--rdu-font-family);
+    --rdu-input-color-messages-margin-top: 1rem;
+    --rdu-input-color-messages-margin-bottom: 1rem;
+
+    /* =========================
+       Input Radio
+    ========================== */
+    --rdu-input-radio-label-font-size: 1rem;
+    --rdu-input-radio-label-line-height: 1.5;
+    --rdu-input-radio-label-font-weight: 500;
+    --rdu-input-radio-label-margin-bottom: 0.25rem;
+    --rdu-input-radio-label-font-style: normal;
+    --rdu-input-radio-label-letter-spacing: normal;
+    --rdu-input-radio-label-color: #23272f;
+    --rdu-input-radio-label-font-family: var(--rdu-font-family);
+
+    --rdu-input-radio-margin-right: 1rem;
+    --rdu-input-radio-margin-bottom: 1rem;
+    --rdu-input-radio-border: 1px solid #087ea4;
+
+    --rdu-input-radio-messages-font-family: var(--rdu-font-family);
+    --rdu-input-radio-messages-margin-top: 1rem;
+    --rdu-input-radio-messages-margin-bottom: 1rem;
+
+    /* =========================
+      Input Range
+   ========================== */
+    --rdu-input-range-label-margin-bottom: 0.25rem;
+    --rdu-input-range-label-font-size: 1rem;
+    --rdu-input-range-label-line-height: 1.5;
+    --rdu-input-range-label-font-weight: 500;
+    --rdu-input-range-label-font-style: normal;
+    --rdu-input-range-label-letter-spacing: normal;
+    --rdu-input-range-label-color: #23272f;
+    --rdu-input-range-label-font-family: var(--rdu-font-family);
+
+    --rdu-input-range-messages-font-family: var(--rdu-font-family);
+    --rdu-input-range-messages-margin-top: 1rem;
+    --rdu-input-range-messages-margin-bottom: 1rem;
+
+    --rdu-input-range-accent-color: #087ea4;
+
+    /* =========================
+       Input Tel
+    ========================== */
+    --rdu-input-tel-label-margin-bottom: 0.25rem;
+    --rdu-input-tel-label-font-size: 1rem;
+    --rdu-input-tel-label-line-height: 1.5;
+    --rdu-input-tel-label-font-weight: 500;
+    --rdu-input-tel-label-font-style: normal;
+    --rdu-input-tel-label-letter-spacing: normal;
+    --rdu-input-tel-label-color: #23272f;
+    --rdu-input-tel-label-font-family: var(--rdu-font-family);
+
+    --rdu-input-tel-messages-font-family: var(--rdu-font-family);
+    --rdu-input-tel-messages-margin-top: 1rem;
+    --rdu-input-tel-messages-margin-bottom: 1rem;
+
+    --rdu-input-tel-font-size: 1rem;
+    --rdu-input-tel-line-height: 1.5;
+    --rdu-input-tel-font-weight: 400;
+    --rdu-input-tel-font-style: normal;
+    --rdu-input-tel-letter-spacing: normal;
+    --rdu-input-tel-background: #ffffff;
+    --rdu-input-tel-border: 1px solid #087ea4;
+    --rdu-input-tel-border-radius: 0.5rem; /* 6px */
+    --rdu-input-tel-font-family: var(--rdu-font-family);
+
+    /* =========================
+      Input Url
+   ========================== */
+    --rdu-input-url-label-margin-bottom: 0.25rem;
+    --rdu-input-url-label-font-size: 1rem;
+    --rdu-input-url-label-line-height: 1.5;
+    --rdu-input-url-label-font-weight: 500;
+    --rdu-input-url-label-font-style: normal;
+    --rdu-input-url-label-letter-spacing: normal;
+    --rdu-input-url-label-color: #23272f;
+    --rdu-input-url-label-font-family: var(--rdu-font-family);
+
+    --rdu-input-url-messages-font-family: var(--rdu-font-family);
+    --rdu-input-url-messages-margin-top: 1rem;
+    --rdu-input-url-messages-margin-bottom: 1rem;
+
+    --rdu-input-url-font-size: 1rem;
+    --rdu-input-url-line-height: 1.5;
+    --rdu-input-url-font-weight: 400;
+    --rdu-input-url-font-style: normal;
+    --rdu-input-url-letter-spacing: normal;
+    --rdu-input-url-background: #ffffff;
+    --rdu-input-url-border: 1px solid #087ea4;
+    --rdu-input-url-border-radius: 0.5rem; /* 6px */
+    --rdu-input-url-font-family: var(--rdu-font-family);
+
+
+    /* =========================
+       Input TextArea
+    ========================== */
+    --rdu-textarea-label-margin-bottom: 0.25rem;
+    --rdu-textarea-label-font-size: 1rem;
+    --rdu-textarea-label-line-height: 1.5;
+    --rdu-textarea-label-font-weight: 500;
+    --rdu-textarea-label-font-style: normal;
+    --rdu-textarea-label-letter-spacing: normal;
+    --rdu-textarea-label-color: #23272f;
+    --rdu-textarea-label-font-family: var(--rdu-font-family);
+
+    --rdu-textarea-messages-font-family: var(--rdu-font-family);
+    --rdu-textarea-messages-margin-top: 1rem;
+    --rdu-textarea-messages-margin-bottom: 1rem;
+
+    --rdu-textarea-font-size: 1rem;
+    --rdu-textarea-line-height: 1.5;
+    --rdu-textarea-font-weight: 400;
+    --rdu-textarea-font-style: normal;
+    --rdu-textarea-letter-spacing: normal;
+    --rdu-textarea-background: #ffffff;
+    --rdu-textarea-border: 1px solid #087ea4;
+    --rdu-textarea-border-radius: 0.5rem; /* 6px */
+    --rdu-textarea-font-family: var(--rdu-font-family);
+
+    /* =========================
+       Input File
+    ========================== */
+    --rdu-input-file-label-margin-bottom: 0.25rem;
+    --rdu-input-file-label-font-size: 1rem;
+    --rdu-input-file-label-line-height: 1.5;
+    --rdu-input-file-label-font-weight: normal;
+    --rdu-input-file-label-font-style: normal;
+    --rdu-input-file-label-letter-spacing: normal;
+    --rdu-input-file-label-color: #23272f;
+    --rdu-input-file-label-font-family: var(--rdu-font-family);
+
+    --rdu-input-file-list-margin-bottom: 0.25rem;
+    --rdu-input-file-list-font-size: 1rem;
+    --rdu-input-file-list-line-height: 1.5;
+    --rdu-input-file-list-font-weight: normal;
+    --rdu-input-file-list-font-style: normal;
+    --rdu-input-file-list-letter-spacing: normal;
+    --rdu-input-file-list-color: #23272f;
+    --rdu-input-file-list-font-family: var(--rdu-font-family);
+
+    --rdu-input-file-dropzone-font-size: 1rem;
+    --rdu-input-file-dropzone-line-height: 1.5;
+    --rdu-input-file-dropzone-color: #5e687e;
+    --rdu-input-file-dropzone-font-weight: normal;
+    --rdu-input-file-dropzone-font-style: normal;
+    --rdu-input-file-dropzone-letter-spacing: normal;
+    --rdu-input-file-dropzone-background: #ffffff;
+    --rdu-input-file-dropzone-border: 2px #087ea4;
+    --rdu-input-file-dropzone-border-style: dotted;
+    --rdu-input-file-dropzone-border-radius: 0.5rem;
+    --rdu-input-file-dropzone-font-family: var(--rdu-font-family);
+    --rdu-input-file-dropzone-padding: 0.5rem;
+
+    --rdu-input-file-messages-font-family: var(--rdu-font-family);
+    --rdu-input-file-messages-margin-top: 1rem;
+    --rdu-input-file-messages-margin-bottom: 1rem;
+
+    --rdu-input-file-remove-button-margin-top: 1rem;
+    --rdu-input-file-remove-button-padding: 0.5rem;
+    --rdu-input-file-remove-button-border-radius: 0.5rem;
+    --rdu-input-file-remove-button-font-size: 1rem;
+    --rdu-input-file-remove-button-border: 1px solid transparent;
+    --rdu-input-file-remove-button-line-height: 1.5;
+    --rdu-input-file-remove-button-font-weight: normal;
+    --rdu-input-file-remove-button-letter-spacing: ;
+    --rdu-input-file-remove-button-font-style: normal;
+    --rdu-input-file-remove-button-primary-background: #ffffff;
+    --rdu-input-file-remove-button-primary-color: #5e687e;
+    --rdu-input-file-remove-button-primary-border-color: #5e687e;
+    --rdu-input-file-remove-button-hover-background: #ffffff;
+    --rdu-input-file-remove-button-primary-hover-color: #5e687e;
+    --rdu-input-file-remove-button-primary-border-hover-color: #5e687e;
+
+    --rdu-input-file-add-button-margin-top: 1rem;
+    --rdu-input-file-add-button-padding: 0.5rem;
+    --rdu-input-file-add-button-border-radius: 0.5rem;
+    --rdu-input-file-add-button-font-size: 1rem;
+    --rdu-input-file-add-button-border: 1px solid transparent;
+    --rdu-input-file-add-button-line-height: 1.5;
+    --rdu-input-file-add-button-font-weight: normal;
+    --rdu-input-file-add-button-letter-spacing: ;
+    --rdu-input-file-add-button-font-style: normal;
+    --rdu-input-file-add-button-primary-background: #ffffff;
+    --rdu-input-file-add-button-primary-color: #5e687e;
+    --rdu-input-file-add-button-primary-border-color: #5e687e;
+    --rdu-input-file-add-button-hover-background: #ffffff;
+    --rdu-input-file-add-button-primary-hover-color: #5e687e;
+    --rdu-input-file-add-button-primary-border-hover-color: #5e687e;
+
+
+    /* =========================
+       Dialog
+    ========================== */
+    --rdu-dialog-padding: 4rem;
+    --rdu-dialog-border-radius: 1.25rem;
+    --rdu-dialog-box-shadow: 2px 2px 2px grey;
+    --rdu-dialog-font-family: var(--rdu-font-family);
+
+    --rdu-dialog-close-button-top: 1rem;
+    --rdu-dialog-close-button-right: 0.5rem;
+    --rdu-dialog-close-button-font-size: normal;
+    --rdu-dialog-close-button-padding: 1rem;
+
+    /* =========================
+       Card
+    ========================== */
+    --rdu-card-border-color: gray;
+    --rdu-card-border-radius: 0.5rem;
+    --rdu-card-padding: 1rem;
+    --rdu-card-background: #ffffff;
+    --rdu-card-font-family: var(--rdu-font-family);
+    --rdu-card-font-size: normal;
+    --rdu-card-font-weight: normal;
+
+    --rdu-card-header-padding: 1rem;
+    --rdu-card-header-background: #ffffff;
+    --rdu-card-header-font-size: 2.25rem;
+    --rdu-card-header-font-weight: bold;
+
+    --rdu-card-body-padding: 1.5rem;
+    --rdu-card-body-background: #ffffff;
+    --rdu-card-body-font-size: 1rem;
+    --rdu-card-body-font-weight: normal;
+
+    --rdu-card-footer-padding: 1.5rem;
+    --rdu-card-footer-background: #ffffff;
+    --rdu-card-footer-font-size: 1.25rem;
+    --rdu-card-footer-font-weight: normal;
+
+    /* Bubble general */
+    --rdu-chat-primary-background: #ebecf0;
+    --rdu-chat-secondary-background: #e6f7ff;
+
+    --rdu-chat-primary-text-color: #23272f;
+    --rdu-chat-secondary-text-color: #16181d;
+
+    --rdu-chat-border-radius: 12px;
+    --rdu-chat-padding: 10px 14px;
+    --rdu-chat-max-width: 70%;
+    --rdu-chat-margin: 8px 0;
+
+    /* =========================
+       Paginator
+    ========================== */
+    --rdu-paginator-gap: 0.25rem;
+    --rdu-paginator-button-min-size: 1.5rem;
+    --rdu-paginator-button-border: 0;
+    --rdu-paginator-button-background: transparent;
+    --rdu-paginator-button-color: currentColor;
+    --rdu-paginator-disabled-opacity: 0.5;
+    --rdu-paginator-current-page-font-weight: 700;
+    --rdu-paginator-current-page-text-decoration: underline;
+    --rdu-paginator-current-page-text-underline-offset: 0.2em;
+}

@@ -1,0 +1,120 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "PokéAPI - Pokémon Species",
+    "version": "2.0.0",
+    "description": "PokéAPI endpoints for Pokémon Species resource"
+  },
+  "servers": [
+    { "url": "https://pokeapi.co/api/v2" }
+  ],
+  "paths": {
+    "/pokemon-species": {
+      "get": {
+        "summary": "List Pokémon Species",
+        "operationId": "listPokemonSpecies",
+        "parameters": [
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 20 } },
+          { "name": "offset", "in": "query", "schema": { "type": "integer", "default": 0 } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of Pokémon Species",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/PokemonSpeciesPage" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pokemon-species/{name}": {
+      "get": {
+        "summary": "Get Pokémon Species by name or id",
+        "operationId": "getPokemonSpecies",
+        "parameters": [
+          { "name": "name", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pokémon Species details",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/PokemonSpecies" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "NamedApiResource": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "url": { "type": "string" }
+        }
+      },
+      "PokemonSpeciesPage": {
+        "type": "object",
+        "properties": {
+          "count": { "type": "integer" },
+          "next": { "type": "string", "nullable": true },
+          "previous": { "type": "string", "nullable": true },
+          "results": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/NamedApiResource" }
+          }
+        }
+      },
+      "FlavorTextEntry": {
+        "type": "object",
+        "properties": {
+          "flavor_text": { "type": "string" },
+          "language": { "$ref": "#/components/schemas/NamedApiResource" },
+          "version": { "$ref": "#/components/schemas/NamedApiResource" }
+        }
+      },
+      "PokemonSpecies": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "base_happiness": { "type": "integer", "nullable": true },
+          "capture_rate": { "type": "integer" },
+          "color": { "$ref": "#/components/schemas/NamedApiResource" },
+          "habitat": { "$ref": "#/components/schemas/NamedApiResource", "nullable": true },
+          "is_legendary": { "type": "boolean" },
+          "is_mythical": { "type": "boolean" },
+          "gender_rate": { "type": "integer" },
+          "flavor_text_entries": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/FlavorTextEntry" }
+          },
+          "evolution_chain": {
+            "type": "object",
+            "properties": { "url": { "type": "string" } }
+          },
+          "evolves_from_species": { "$ref": "#/components/schemas/NamedApiResource", "nullable": true },
+          "egg_groups": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/NamedApiResource" }
+          }
+        }
+      },
+      "PokemonSpeciesCreate": {
+        "type": "object",
+        "required": ["name", "capture_rate", "gender_rate"],
+        "properties": {
+          "name": { "type": "string" },
+          "capture_rate": { "type": "integer", "minimum": 0 },
+          "base_happiness": { "type": "integer", "nullable": true },
+          "gender_rate": { "type": "integer" }
+        }
+      }
+    }
+  }
+}

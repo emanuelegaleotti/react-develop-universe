@@ -1,0 +1,338 @@
+@use '../../../sass/abstract/functions' as functions;
+@use '../../../sass/abstract/breakpoints' as breakpoints;
+
+#ks-chat-ai {
+  grid-template-rows: min-content 75vh;
+  h2 {
+    grid-column: 1/-1;
+  }
+  .rdu-chat-ai {
+    grid-column: 1/-1;
+
+    /* chat */
+    --rdu-chat-primary-background: #ebecf0;
+    --rdu-chat-secondary-background: #e6f7ff;
+    --rdu-chat-primary-text-color: #23272f;
+    --rdu-chat-secondary-text-color: #16181d;
+    --rdu-chat-border-radius: 12px;
+    --rdu-chat-padding: 10px 24px;
+    --rdu-chat-max-width: 70%;
+    --rdu-chat-margin: 8px 0;
+
+    // react-develop-universe chat component
+
+    --rdu-chat-empty-msg-font-size: #{functions.toRem(40)};
+    --rdu-chat-empty-msg-font-family: var(--rdu-font-family);
+    --rdu-chat-empty-msg-font-weight: normal;
+    --rdu-chat-empty-msg-font-style: normal;
+    --rdu-chat-empty-msg-line-height: normal;
+    --rdu-chat-empty-msg-letter-spacing: normal;
+    --rdu-chat-empty-msg-text-align: center;
+    --rdu-chat-empty-msg-color: #5e687e;
+
+    --rdu-chat-ai-body-padding: 0 #{functions.toRem(4)} 0 0;
+    --rdu-chat-ai-footer-font-size: #{functions.toRem(14)};
+    --rdu-chat-ai-footer-font-family: var(--rdu-font-family);
+    --rdu-chat-ai-footer-font-weight: normal;
+    --rdu-chat-ai-footer-line-height: normal;
+    --rdu-chat-ai-footer-text-align: center;
+    --rdu-chat-ai-footer-color: var(--ks-gray-800);
+
+    // react-develop-universe chat message ai component
+    --rdu-chat-message-ai-button-padding: #{functions.toRem(4)};
+    --rdu-chat-message-ai-button-line-height: 1.5;
+    --rdu-chat-message-ai-button-background: transparent;
+    --rdu-chat-message-ai-button-border: 1px solid;
+    --rdu-chat-message-ai-button-border-color: transparent;
+    --rdu-chat-message-ai-background: transparent;
+    --rdu-chat-message-ai-border: 1px solid;
+    --rdu-chat-message-ai-border-color: transparent;
+    --rdu-chat-message-ai-padding: #{functions.toRem(14)} #{functions.toRem(24)};
+    --rdu-chat-message-ai-border-radius: 20px;
+    --rdu-chat-message-ai-button-color: var(--ks-gray-900);
+    --rdu-chat-message-ai-button-hover-color: #5e687e;
+    --rdu-chat-message-ai-menu-gap: #{functions.toRem(16)};
+    --rdu-chat-message-ai-menu-margin-top: #{functions.toRem(12)};
+    --rdu-chat-message-ai-menu-padding: 0  #{functions.toRem(24)};
+    --rdu-chat-message-ai-user-background: var(--ks-gray-100);
+    --rdu-chat-message-ai-user-border: 1px solid;
+    --rdu-chat-message-ai-user-border-color: var(--ks-gray-100);
+    --rdu-chat-message-ai-button-icon-height: #{functions.toRem(18)};
+    --rdu-chat-message-ai-button-icon-width: #{functions.toRem(18)};
+    --rdu-chat-message-ai-text-p-color: var(--ks-gray-900);
+    --rdu-chat-message-ai-p-font-family: var(--rdu-font-family);
+    --rdu-chat-message-ai-p-font-size: #{functions.toRem(16)};
+    --rdu-chat-message-ai-p-line-height: normal;
+    --rdu-chat-message-ai-p-font-weight: normal;
+    --rdu-chat-message-ai-p-letter-spacing: normal;
+    --rdu-chat-message-ai-p-margin-bottom: #{functions.toRem(24)};
+    --rdu-chat-message-ai-margin-bottom: #{functions.toRem(12)};
+    --rdu-chat-message-ai-h1-color: var(--ks-gray-900);
+    --rdu-chat-message-ai-h1-font-family: var(--rdu-font-family);
+    --rdu-chat-message-ai-h1-font-size: #{functions.toRem(40)};
+    --rdu-chat-message-ai-h1-line-height: normal;
+    --rdu-chat-message-ai-h1-font-weight: normal;
+    --rdu-chat-message-ai-h1-letter-spacing: normal;
+    --rdu-chat-message-ai-h2-color: var(--ks-gray-900);
+    --rdu-chat-message-ai-h2-font-family: var(--rdu-font-family);
+    --rdu-chat-message-ai-h2-font-size: #{functions.toRem(28)};
+    --rdu-chat-message-ai-h2-line-height: normal;
+    --rdu-chat-message-ai-h2-font-weight: normal;
+    --rdu-chat-message-ai-h2-letter-spacing: normal;
+    --rdu-chat-message-ai-h2-margin-bottom: #{functions.toRem(24)};
+    --rdu-chat-message-ai-h3-color: var(--ks-gray-900);
+    --rdu-chat-message-ai-h3-font-family: var(--rdu-font-family);
+    --rdu-chat-message-ai-h3-font-size: #{functions.toRem(18)};
+    --rdu-chat-message-ai-h3-line-height: normal;
+    --rdu-chat-message-ai-h3-font-weight: 600;
+    --rdu-chat-message-ai-h3-letter-spacing: normal;
+    --rdu-chat-message-ai-h3-margin-bottom: #{functions.toRem(24)};
+    --rdu-chat-message-ai-table-border-radius: 10px;
+    --rdu-chat-message-ai-table-margin-bottom: #{functions.toRem(8)};
+    --rdu-chat-message-ai-th-background: var(--ks-gray-100);
+    --rdu-chat-message-ai-th-color: var(--ks-gray-800);
+    --rdu-chat-message-ai-th-font-family: var(--rdu-font-family);
+    --rdu-chat-message-ai-th-font-weight: 600;
+    --rdu-chat-message-ai-th-font-size: #{functions.toRem(16)};
+    --rdu-chat-message-ai-th-line-height: normal;
+    --rdu-chat-message-ai-th-letter-spacing: normal;
+    --rdu-chat-message-ai-th-padding: #{functions.toRem(14)} #{functions.toRem(16)};
+    --rdu-chat-message-ai-th-border: 1px solid;
+    --rdu-chat-message-ai-th-border-color: #d0d3dc;
+    --rdu-chat-message-ai-td-background: transparent;
+    --rdu-chat-message-ai-td-color: var(--ks-gray-800);
+    --rdu-chat-message-ai-td-font-family: var(--rdu-font-family);
+    --rdu-chat-message-ai-td-font-weight: normal;
+    --rdu-chat-message-ai-td-font-size: #{functions.toRem(16)};
+    --rdu-chat-message-ai-td-line-height: normal;
+    --rdu-chat-message-ai-td-letter-spacing: normal;
+    --rdu-chat-message-ai-td-padding: #{functions.toRem(14)} #{functions.toRem(16)};
+    --rdu-chat-message-ai-td-border: 1px solid;
+    --rdu-chat-message-ai-td-border-color: #d0d3dc;
+    --rdu-chat-message-ai-pre-background: var(--ks-gray-100);
+    --rdu-chat-message-ai-pre-color: var(--ks-gray-900);
+    --rdu-chat-message-ai-pre-font-family:var(--rdu-font-family-mono);
+    --rdu-chat-message-ai-pre-font-size: 1rem;
+    --rdu-chat-message-ai-pre-line-height: normal;
+    --rdu-chat-message-ai-pre-font-weight: normal;
+    --rdu-chat-message-ai-pre-letter-spacing: normal;
+    --rdu-chat-message-ai-pre-padding: #{functions.toRem(12)} #{functions.toRem(16)};
+    --rdu-chat-message-ai-pre-border-radius: 0.5rem;
+
+    // react-develop-universe chat knowledge base component
+    --rdu-chat-knowledge-base-border: 1px solid;
+    --rdu-chat-knowledge-base-border-radius: 20px;
+    --rdu-chat-knowledge-base-label-color: var(--ks-gray-800);
+    --rdu-chat-knowledge-base-label-font-size: 1rem;
+    --rdu-chat-knowledge-base-label-font-weight: 500;
+    --rdu-chat-knowledge-base-label-font-family: var(--rdu-font-family);
+    --rdu-chat-knowledge-base-label-margin-bottom: #{functions.toRem(4)};
+    --rdu-chat-knowledge-base-select-background: var(--ks-gray-100);
+    --rdu-chat-knowledge-base-select-color: var(--ks-gray-800);
+    --rdu-chat-knowledge-base-select-padding: #{functions.toRem(12)} #{functions.toRem(24)};
+    --rdu-chat-knowledge-base-select-border: 1px solid;
+    --rdu-chat-knowledge-base-select-border-color: var(--ks-gray-800);
+    --rdu-chat-knowledge-base-select-border-radius: 0.5rem;
+    --rdu-chat-knowledge-base-select-font-size: 1rem;
+    --rdu-chat-knowledge-base-select-line-height: 1.5;
+    --rdu-chat-knowledge-base-select-font-weight: 500;
+    --rdu-chat-knowledge-base-select-font-family: var(--rdu-font-family);
+    --rdu-chat-knowledge-base-select-width: 50%;
+    --rdu-chat-knowledge-base-background: transparent;
+    --rdu-chat-knowledge-base-padding: 0;
+    --rdu-chat-knowledge-base-border-color: transparent;
+    --rdu-chat-knowledge-base-margin-bottom: .825rem;
+    --rdu-chat-knowledge-base-option-border-radius: 0.5rem;
+    --rdu-chat-knowledge-base-option-checked-background: var(--ks-color-primary);
+    --rdu-chat-knowledge-base-option-checked-color: var(--ks-gray-100);
+    --rdu-chat-knowledge-base-chips-icon-height: 1.5rem;
+    --rdu-chat-knowledge-base-chips-icon-width: 1.5rem;
+    --rdu-chat-knowledge-base-chips-icon-color: var(--ks-gray-100);
+    --rdu-chat-knowledge-base-chips-padding: 0.5rem 1rem;
+    --rdu-chat-knowledge-base-chips-background: var(--ks-color-primary);
+    --rdu-chat-knowledge-base-chips-border: 1px solid;
+    --rdu-chat-knowledge-base-chips-border-radius: 9999px;
+    --rdu-chat-knowledge-base-chips-border-color: var(--ks-color-primary);
+    --rdu-chat-knowledge-base-chips-color: var(--ks-gray-100);
+    --rdu-chat-knowledge-base-chips-font-family: var(--rdu-font-family);
+    --rdu-chat-knowledge-base-chips-font-weight: normal;
+    --rdu-chat-knowledge-base-chips-line-height: 1;
+    --rdu-chat-knowledge-base-chips-gap: 1rem;
+    --rdu-chat-knowledge-base-invalid-feedback-color: red;
+    --rdu-chat-knowledge-base-invalid-feedback-font-size: .825rem;
+    --rdu-chat-knowledge-base-invalid-feedback-line-height: normal;
+    --rdu-chat-knowledge-base-invalid-feedback-font-weight: normal;
+    --rdu-chat-knowledge-base-invalid-feedbackmargin-top: .5rem;
+    --rdu-chat-knowledge-base-invalid-feedback-font-family: var(--rdu-font-family);
+
+    @include breakpoints.media-breakpoint-up(sm) {
+      --rdu-chat-knowledge-base-margin-bottom: 1rem;
+      --rdu-chat-knowledge-base-border-color: var(--ks-gray-100);
+      --rdu-chat-knowledge-base-padding: #{functions.toRem(16)} #{ functions.toRem(24)};
+      --rdu-chat-knowledge-base-background: var(--ks-gray-100);
+      --rdu-chat-knowledge-base-select-width: 100%;
+    }
+    @include breakpoints.media-breakpoint-up(md) {
+      --rdu-chat-knowledge-base-select-width: 50%;
+    }
+    @include breakpoints.media-breakpoint-up(lg) {
+      --rdu-chat-knowledge-base-select-width: 33%;
+    }
+
+    // react-develop-universe chat form component
+    --rdu-chat-form-border-radius: 20px;
+    --rdu-chat-form-background: var(--ks-gray-100);
+    --rdu-chat-form-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05);;
+    --rdu-chat-form-textarea-margin-right: #{functions.toRem(40)};
+    --rdu-chat-form-textarea-background: var(--ks-gray-100);
+    --rdu-chat-form-textarea-color: var(--ks-gray-800);
+    --rdu-chat-form-textarea-padding: #{functions.toRem(12)} #{functions.toRem(24)};
+    --rdu-chat-form-textarea-border: 1px solid;
+    --rdu-chat-form-textarea-border-color: var(--ks-gray-100);
+    --rdu-chat-form-textarea-border-radius: 0.5rem;
+    --rdu-chat-form-textarea-font-size: 1rem;
+    --rdu-chat-form-textarea-font-weight: 500;
+    --rdu-chat-form-textarea-font-family: var(--rdu-font-family);
+    --rdu-chat-form-button-background: var(--ks-color-primary);
+    --rdu-chat-form-button-color: var(--ks-gray-100);
+    --rdu-chat-form-button-border: 1px solid;
+    --rdu-chat-form-button-border-color: var(--ks-color-primary);
+    --rdu-chat-form-button-border-radius: 9999px;
+    --rdu-chat-form-button-font-size: #{functions.toRem(18)};
+    --rdu-chat-form-button-line-height: normal;
+    --rdu-chat-form-button-font-weight: 500;
+    --rdu-chat-form-button-font-family: var(--rdu-font-family);
+    --rdu-chat-form-button-padding: #{functions.toRem(10)} #{ functions.toRem(24)};
+    --rdu-chat-form-button-hover-background: var(--ks-color-primary);
+    --rdu-chat-form-button-hover-color: var(--ks-gray-100);
+    --rdu-chat-form-button-hover-border-color: var(--ks-color-primary);
+    --rdu-chat-form-button-icon-height: #{functions.toRem(24)};
+    --rdu-chat-form-button-icon-width: #{functions.toRem(24)};
+    --rdu-chat-form-button-text-display: none;
+    --rdu-chat-form-padding: #{functions.toRem(24)} #{functions.toRem(24)};
+    --rdu-chat-form-textarea-min-height: #{functions.toRem(90)};
+    @include breakpoints.media-breakpoint-up(md) {
+      --rdu-chat-form-textarea-min-height: #{functions.toRem(120)};
+      --rdu-chat-form-padding: #{functions.toRem(16)} #{functions.toRem(24)};
+      --rdu-chat-form-button-text-display: inline-block
+    }
+    @include breakpoints.media-breakpoint-up(lg) {
+      --rdu-chat-form-textarea-min-height: #{functions.toRem(150)};
+    }
+
+    // react-develop-universe card component
+    --rdu-card-border-color: #ebecf0;
+    --rdu-card-border-radius: 20px;
+    --rdu-card-padding: #{functions.toRem(16)} #{functions.toRem(24)};
+    --rdu-card-background: var(--ks-gray-100);
+
+    // react-develop-universe chat like feedback component
+    --rdu-chat-like-feedback-background: var(--ks-gray-100);
+    --rdu-chat-like-feedback-padding: #{functions.toRem(16)} #{ functions.toRem(24)};
+    --rdu-chat-like-feedback-border: 1px solid;
+    --rdu-chat-like-feedback-border-color: var(--ks-gray-100);
+    --rdu-chat-like-feedback-border-radius: 20px;
+    --rdu-chat-like-feedback-label-color: var(--ks-gray-800);
+    --rdu-chat-like-feedback-label-font-size: 1rem;
+    --rdu-chat-like-feedback-label-font-weight: 500;
+    --rdu-chat-like-feedback-label-font-family: var(--rdu-font-family);
+    --rdu-chat-like-feedback-label-margin-bottom: #{functions.toRem(4)};
+    --rdu-chat-like-feedback-textarea-background: var(--ks-gray-100);
+    --rdu-chat-like-feedback-textarea-color: var(--ks-gray-800);
+    --rdu-chat-like-feedback-textarea-padding: #{functions.toRem(12)} #{functions.toRem(24)};
+    --rdu-chat-like-feedback-textarea-border: 1px solid;
+    --rdu-chat-like-feedback-textarea-border-color: var(--ks-gray-100);
+    --rdu-chat-like-feedback-textarea-border-radius: 0.5rem;
+    --rdu-chat-like-feedback-textarea-font-size: 1rem;
+    --rdu-chat-like-feedback-textarea-font-weight: 500;
+    --rdu-chat-like-feedback-textarea-font-family: var(--rdu-font-family);
+    --rdu-chat-like-feedback-textarea-min-height: #{functions.toRem(150)};
+    --rdu-chat-like-feedback-button-background: var(--ks-color-primary);
+    --rdu-chat-like-feedback-button-color: var(--ks-gray-100);
+    --rdu-chat-like-feedback-button-border: 1px solid;
+    --rdu-chat-like-feedback-button-border-color: var(--ks-color-primary);
+    --rdu-chat-like-feedback-button-border-radius: 9999px;
+    --rdu-chat-like-feedback-button-font-size: #{functions.toRem(18)};
+    --rdu-chat-like-feedback-button-line-height: normal;
+    --rdu-chat-like-feedback-button-font-weight: 500;
+    --rdu-chat-like-feedback-button-font-family: var(--rdu-font-family);
+    --rdu-chat-like-feedback-button-padding: #{functions.toRem(10)} #{ functions.toRem(24)};
+    --rdu-chat-like-feedback-button-hover-background: var(--ks-color-primary);
+    --rdu-chat-like-feedback-button-hover-color: var(--ks-gray-100);
+    --rdu-chat-like-feedback-button-hover-border-color: var(--ks-color-primary);
+    --rdu-chat-like-feedback-button-icon-height: #{functions.toRem(24)};
+    --rdu-chat-like-feedback-button-icon-width: #{functions.toRem(24)};
+    --rdu-chat-like-feedback-alert-padding: 0.5rem 1rem;
+    --rdu-chat-like-feedback-alert-border-radius: 10px;
+    --rdu-chat-like-feedback-alert-border: 1px solid;
+    --rdu-chat-like-feedback-alert-border-color: rgba(71, 177, 163, 0.15);
+    --rdu-chat-like-feedback-alert-font-size: 1rem;
+    --rdu-chat-like-feedback-alert-font-weight: normal;
+    --rdu-chat-like-feedback-alert-font-family: var(--rdu-font-family);
+    --rdu-chat-like-feedback-alert-line-height: normal;
+    --rdu-chat-like-feedback-alert-letter-spacing: normal;
+    --rdu-chat-like-feedback-alert-background: rgba(71, 177, 163, 0.15);
+    --rdu-chat-like-feedback-alert-color: var(--ks-gray-800);
+    --rdu-chat-like-feedback-alert-margin-bottom: 0;
+    --rdu-chat-like-feedback-alert-button-padding: .25rem;
+    --rdu-chat-like-feedback-alert-button-height: 1.5rem;
+    --rdu-chat-like-feedback-alert-button-width: 1.5rem;
+    --rdu-chat-like-feedback-alert-button-color: var(--ks-gray-800);
+    --rdu-chat-like-feedback-alert-button-hover-color: #5e687e;
+
+
+    // react-develop-universe chat dislike feedback component
+    --rdu-chat-dislike-feedback-background: var(--ks-gray-100);
+    --rdu-chat-dislike-feedback-padding: #{functions.toRem(16)} #{ functions.toRem(24)};
+    --rdu-chat-dislike-feedback-border: 1px solid;
+    --rdu-chat-dislike-feedback-border-color: var(--ks-gray-100);
+    --rdu-chat-dislike-feedback-border-radius: 20px;
+    --rdu-chat-dislike-feedback-label-color: var(--ks-gray-800);
+    --rdu-chat-dislike-feedback-label-font-size: 1rem;
+    --rdu-chat-dislike-feedback-label-font-weight: 500;
+    --rdu-chat-dislike-feedback-label-font-family: var(--rdu-font-family);
+    --rdu-chat-dislike-feedback-label-margin-bottom: #{functions.toRem(4)};
+    --rdu-chat-dislike-feedback-textarea-background: var(--ks-gray-100);
+    --rdu-chat-dislike-feedback-textarea-color: var(--ks-gray-800);
+    --rdu-chat-dislike-feedback-textarea-padding: #{functions.toRem(12)} #{functions.toRem(24)};
+    --rdu-chat-dislike-feedback-textarea-border: 1px solid;
+    --rdu-chat-dislike-feedback-textarea-border-color: var(--ks-gray-100);
+    --rdu-chat-dislike-feedback-textarea-border-radius: 0.5rem;
+    --rdu-chat-dislike-feedback-textarea-font-size: 1rem;
+    --rdu-chat-dislike-feedback-textarea-font-weight: 500;
+    --rdu-chat-dislike-feedback-textarea-font-family: var(--rdu-font-family);
+    --rdu-chat-dislike-feedback-textarea-min-height: #{functions.toRem(150)};
+    --rdu-chat-dislike-feedback-button-background: var(--ks-color-primary);
+    --rdu-chat-dislike-feedback-button-color: var(--ks-gray-100);
+    --rdu-chat-dislike-feedback-button-border: 1px solid;
+    --rdu-chat-dislike-feedback-button-border-color: var(--ks-color-primary);
+    --rdu-chat-dislike-feedback-button-border-radius: 9999px;
+    --rdu-chat-dislike-feedback-button-font-size: #{functions.toRem(18)};
+    --rdu-chat-dislike-feedback-button-line-height: normal;
+    --rdu-chat-dislike-feedback-button-font-weight: 500;
+    --rdu-chat-dislike-feedback-button-font-family: var(--rdu-font-family);
+    --rdu-chat-dislike-feedback-button-padding: #{functions.toRem(10)} #{ functions.toRem(24)};
+    --rdu-chat-dislike-feedback-button-hover-background: var(--ks-color-primary);
+    --rdu-chat-dislike-feedback-button-hover-color: var(--ks-gray-100);
+    --rdu-chat-dislike-feedback-button-hover-border-color: var(--ks-color-primary);
+    --rdu-chat-dislike-feedback-button-icon-height: #{functions.toRem(24)};
+    --rdu-chat-dislike-feedback-button-icon-width: #{functions.toRem(24)};
+    --rdu-chat-dislike-feedback-alert-padding: 0.5rem 1rem;
+    --rdu-chat-dislike-feedback-alert-border-radius: 10px;
+    --rdu-chat-dislike-feedback-alert-border: 1px solid;
+    --rdu-chat-dislike-feedback-alert-border-color: rgba(71, 177, 163, 0.15);
+    --rdu-chat-dislike-feedback-alert-font-size: 1rem;
+    --rdu-chat-dislike-feedback-alert-font-weight: normal;
+    --rdu-chat-dislike-feedback-alert-font-family: var(--rdu-font-family);
+    --rdu-chat-dislike-feedback-alert-line-height: normal;
+    --rdu-chat-dislike-feedback-alert-letter-spacing: normal;
+    --rdu-chat-dislike-feedback-alert-background: rgba(71, 177, 163, 0.15);
+    --rdu-chat-dislike-feedback-alert-color: var(--ks-gray-800);
+    --rdu-chat-dislike-feedback-alert-margin-bottom: 0;
+    --rdu-chat-dislike-feedback-alert-button-padding: .25rem;
+    --rdu-chat-dislike-feedback-alert-button-height: 1.5rem;
+    --rdu-chat-dislike-feedback-alert-button-width: 1.5rem;
+    --rdu-chat-dislike-feedback-alert-button-color: var(--ks-gray-800);
+    --rdu-chat-dislike-feedback-alert-button-hover-color: #5e687e;
+  }
+}

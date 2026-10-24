@@ -1,0 +1,108 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "PokeAPI CRUD Stub",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://pokeapi.co/api/v2"
+    }
+  ],
+  "paths": {
+    "/pokemon": {
+      "get": {
+        "summary": "List pokemon",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 20
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pokemon page"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create pokemon stub",
+        "responses": {
+          "200": {
+            "description": "Stub response"
+          }
+        }
+      }
+    },
+    "/pokemon/{name}": {
+      "get": {
+        "summary": "Get pokemon by name",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pokemon detail"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update pokemon stub",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Stub response"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete pokemon stub",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Stub response"
+          }
+        }
+      }
+    }
+  }
+}

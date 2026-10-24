@@ -1,0 +1,16 @@
+$project-acronym: 'ks';
+$header-height: (
+        xs: 68px,
+        sm: 84px,
+        md: 84px,
+        lg: 84px,
+        xl: 84px,
+        '2xl': 84px,
+        '3xl': 84px
+) !default;
+
+$border-radius: (
+        sm:8px,
+        md:16px,
+        lg:24px
+) !default;

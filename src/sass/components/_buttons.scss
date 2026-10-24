@@ -1,0 +1,71 @@
+@use 'sass:map';
+@use "../base/palette" as palette;
+@use "../base/spaces" as spaces;
+@use "../abstract/functions" as functions;
+
+@mixin button-variant($name, $background, $color, $border, $hover-background, $hover-color: $color, $hover-border: $hover-background) {
+  --rdu-button-#{$name}-background: #{$background};
+  --rdu-button-#{$name}-color: #{$color};
+  --rdu-button-#{$name}-border-color: #{$border};
+  --rdu-button-#{$name}-hover-background: #{$hover-background};
+  --rdu-button-#{$name}-hover-color: #{$hover-color};
+  --rdu-button-#{$name}-hover-border-color: #{$hover-border};
+  --rdu-button-#{$name}-border-hover-color: #{$hover-border};
+}
+
+.rdu-button {
+  --rdu-button-padding: #{map.get(spaces.$spaces, '2xs') map.get(spaces.$spaces, lg)};
+  --rdu-button-border-radius: 9999px;
+  --rdu-button-font-family: var(--rdu-font-family);
+  --rdu-button-font-size: #{functions.toRem(17)};
+  --rdu-button-font-weight: 600;
+  --rdu-button-font-stretch: normal;
+  --rdu-button-font-style: normal;
+  --rdu-button-line-height: 1.5;
+  --rdu-button-letter-spacing: normal;
+  --rdu-button-border: 1px solid transparent;
+
+  font-family: var(--rdu-button-font-family);
+
+  @include button-variant(primary, palette.$blue-50, palette.$white, palette.$blue-50, palette.$blue-60);
+  @include button-variant(secondary, palette.$gray-10, palette.$gray-90, palette.$gray-10, palette.$gray-15);
+  @include button-variant(tertiary, palette.$white, palette.$gray-90, palette.$gray-20, palette.$gray-5, palette.$gray-90, palette.$gray-20);
+  @include button-variant(success, palette.$green-50, palette.$white, palette.$green-50, #2b6e62);
+  @include button-variant(error, palette.$red-40, palette.$white, palette.$red-40, #712d28);
+  @include button-variant(danger, palette.$red-40, palette.$white, palette.$red-40, #712d28);
+  @include button-variant(warning, palette.$yellow-40, palette.$white, palette.$yellow-40, #b65700);
+  @include button-variant(info, palette.$blue-40, palette.$white, palette.$blue-40, palette.$blue-50);
+  @include button-variant(light, palette.$gray-5, palette.$gray-90, palette.$gray-10, palette.$gray-10);
+  @include button-variant(dark, palette.$gray-90, palette.$white, palette.$gray-90, palette.$gray-95);
+
+  &:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: currentColor;
+  }
+
+  &:has(.rdu-button-icon.rdu-only) {
+    --rdu-button-padding: #{map.get(spaces.$spaces, '2xs')};
+  }
+
+  &.rdu-link {
+    background: transparent;
+    border-color: transparent;
+    color: palette.$blue-50;
+    padding: #{map.get(spaces.$spaces, '3xs')} #{map.get(spaces.$spaces, xs)};
+
+    &:hover {
+      background: palette.$gray-10;
+    }
+
+    &.active {
+      background: palette.$blue-10;
+      color: palette.$blue-60;
+    }
+  }
+}

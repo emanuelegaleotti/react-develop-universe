@@ -1,0 +1,102 @@
+.rdu-input-url {
+  label {
+    display: inline-block;
+    margin-bottom: var(--rdu-input-label-margin-bottom);
+    font-size: var(--rdu-input-label-font-size, 1rem);
+    line-height: var(--rdu-input-label-line-height, 1.5);
+    font-weight: var(--rdu-input-label-font-weight, normal);
+    font-style: var(--rdu-input-label-font-style, normal);
+    letter-spacing: var(--rdu-input-label-letter-spacing);
+    color: var(--rdu-input-label-color);
+    font-family: var(--rdu-input-label-font-family);
+    @media (prefers-reduced-motion: no-preference) {
+      transition: all 0.3s;
+    }
+  }
+
+  input[type="url"] {
+    width: 100%;
+    font-size: var(--rdu-input-font-size, 1rem);
+    line-height: var(--rdu-input-line-height, 1.5);
+    font-weight: var(--rdu-input-font-weight, normal);
+    font-style: var(--rdu-input-font-style, normal);
+    letter-spacing: var(--rdu-input-letter-spacing);
+    font-family: var(--rdu-input-font-family);
+    background: var(--rdu-input-background);
+    border: var(--rdu-input-border);
+    border-color: var(--rdu-input-border-color);
+    border-radius: var(--rdu-input-border-radius);
+    padding: var(--rdu-input-padding, 0.5rem);
+    color: var(--rdu-input-color, inherit);
+    @media (prefers-reduced-motion: no-preference) {
+      transition: all 0.3s;
+    }
+
+    &.rdu-show-help {
+      & ~ .rdu-help-feedback {
+        display: block;
+      }
+    }
+
+    &.rdu-is-valid {
+      & ~ .rdu-valid-feedback {
+        display: block;
+      }
+
+      & ~ rdu-invalid-feedback {
+        display: none;
+      }
+
+      & ~ .rdu-help-feedback {
+        display: none;
+      }
+    }
+
+    &.rdu-is-invalid {
+      & ~ .rdu-valid-feedback {
+        display: none;
+      }
+
+      & ~ .rdu-invalid-feedback {
+        display: block;
+      }
+
+      & ~ .rdu-help-feedback {
+        display: none;
+      }
+    }
+  }
+
+  .rdu-valid-feedback {
+    display: none;
+    font-size: var(--rdu-input-valid-feedback-font-size, 1rem);
+    line-height: var(--rdu-input-valid-feedback-line-height, 1.5);
+    font-weight: var(--rdu-input-valid-feedback-font-weight, normal);
+    font-style: var(--rdu-input-valid-feedback-font-style, normal);
+    letter-spacing: var(--rdu-input-valid-feedback-letter-spacing);
+    font-family: var(--rdu-input-valid-feedback-font-family);
+    color: var(--rdu-input-valid-feedback-color);
+  }
+
+  .rdu-invalid-feedback {
+    display: none;
+    font-size: var(--rdu-input-invalid-feedback-font-size, 1rem);
+    line-height: var(--rdu-input-invalid-feedback-line-height, 1.5);
+    font-weight: var(--rdu-input-invalid-feedback-font-weight, normal);
+    font-style: var(--rdu-input-invalid-feedback-font-style, normal);
+    letter-spacing: var(--rdu-input-invalid-feedback-letter-spacing);
+    font-family: var(--rdu-input-invalid-feedback-font-family);
+    color: var(--rdu-input-invalid-feedback-color);
+  }
+
+  .rdu-help-feedback {
+    display: none;
+    font-size: var(--rdu-input-help-feedback-font-size, 1rem);
+    line-height: var(--rdu-input-help-feedback-line-height, 1.5);
+    font-weight: var(--rdu-input-help-feedback-font-weight, normal);
+    font-style: var(--rdu-input-help-feedback-font-style, normal);
+    letter-spacing: var(--rdu-input-help-feedback-letter-spacing);
+    font-family: var(--rdu-input-help-feedback-font-family);
+    color: var(--rdu-input-help-feedback-color);
+  }
+}

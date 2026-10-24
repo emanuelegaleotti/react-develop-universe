@@ -1,0 +1,93 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "PokéAPI - Type",
+    "version": "2.0.0",
+    "description": "PokéAPI endpoints for Type resource"
+  },
+  "servers": [{ "url": "https://pokeapi.co/api/v2" }],
+  "paths": {
+    "/type": {
+      "get": {
+        "summary": "List Types",
+        "operationId": "listTypes",
+        "parameters": [
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 20 } },
+          { "name": "offset", "in": "query", "schema": { "type": "integer", "default": 0 } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of Types",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/TypePage" } } }
+          }
+        }
+      }
+    },
+    "/type/{name}": {
+      "get": {
+        "summary": "Get Type by name or id",
+        "operationId": "getType",
+        "parameters": [
+          { "name": "name", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Type details",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/PokeType" } } }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "NamedApiResource": {
+        "type": "object",
+        "properties": { "name": { "type": "string" }, "url": { "type": "string" } }
+      },
+      "TypePage": {
+        "type": "object",
+        "properties": {
+          "count": { "type": "integer" },
+          "next": { "type": "string", "nullable": true },
+          "previous": { "type": "string", "nullable": true },
+          "results": { "type": "array", "items": { "$ref": "#/components/schemas/NamedApiResource" } }
+        }
+      },
+      "DamageRelations": {
+        "type": "object",
+        "properties": {
+          "double_damage_from": { "type": "array", "items": { "$ref": "#/components/schemas/NamedApiResource" } },
+          "double_damage_to": { "type": "array", "items": { "$ref": "#/components/schemas/NamedApiResource" } },
+          "half_damage_from": { "type": "array", "items": { "$ref": "#/components/schemas/NamedApiResource" } },
+          "half_damage_to": { "type": "array", "items": { "$ref": "#/components/schemas/NamedApiResource" } },
+          "no_damage_from": { "type": "array", "items": { "$ref": "#/components/schemas/NamedApiResource" } },
+          "no_damage_to": { "type": "array", "items": { "$ref": "#/components/schemas/NamedApiResource" } }
+        }
+      },
+      "TypePokemon": {
+        "type": "object",
+        "properties": {
+          "slot": { "type": "integer" },
+          "pokemon": { "$ref": "#/components/schemas/NamedApiResource" }
+        }
+      },
+      "PokeType": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "damage_relations": { "$ref": "#/components/schemas/DamageRelations" },
+          "generation": { "$ref": "#/components/schemas/NamedApiResource" },
+          "pokemon": { "type": "array", "items": { "$ref": "#/components/schemas/TypePokemon" } },
+          "moves": { "type": "array", "items": { "$ref": "#/components/schemas/NamedApiResource" } }
+        }
+      },
+      "PokeTypeCreate": {
+        "type": "object",
+        "required": ["name"],
+        "properties": { "name": { "type": "string" } }
+      }
+    }
+  }
+}

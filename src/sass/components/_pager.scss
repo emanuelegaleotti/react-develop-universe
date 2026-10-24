@@ -1,0 +1,15 @@
+@use "sass:map";
+@use '../base/palette' as palette;
+@use '../base/spaces' as spaces;
+@use '../abstract/functions' as functions;
+
+.rdu-pager {
+  --rdu-pager-li-font-size: #{functions.toRem(24)};
+  --rdu-pager-font-family: var(--rdu-font-family);
+  --rdu-pager-disabled-button: 0.7;
+  --rdu-pager-gap: #{functions.toRem(16)};
+  --rdu-page-pagination-gap: #{functions.toRem(16)};
+  --rdu-pager-li-active-background: #{map.get(palette.$palette, primary)};
+  --rdu-pager-li-padding: 0.5rem;
+  --rdu-pager-li-border-color: #{palette.$gray-15};
+}

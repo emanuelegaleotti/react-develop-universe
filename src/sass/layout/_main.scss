@@ -1,0 +1,28 @@
+;
+@use '../abstract/variables' as variables;
+@use '../abstract/breakpoints' as breakpoints;
+@use '../base/spaces' as spaces;
+@use 'sass:map';
+main {
+  grid-area: m;
+
+  min-height: calc(100vh - #{map.get(variables.$header-height, xs)});
+  @include breakpoints.media-breakpoint-up(sm) {
+    min-height: calc(100vh - #{map.get(variables.$header-height, sm)});
+  }
+  @include breakpoints.media-breakpoint-up(md) {
+    min-height: calc(100vh - #{map.get(variables.$header-height, md)});
+  }
+  @include breakpoints.media-breakpoint-up(lg) {
+    min-height: calc(100vh - #{map.get(variables.$header-height, lg)});
+  }
+  @include breakpoints.media-breakpoint-up(xl) {
+    min-height: calc(100vh - #{map.get(variables.$header-height, xl)});
+  }
+  @include breakpoints.media-breakpoint-up('2xl') {
+    min-height: calc(100vh - #{map.get(variables.$header-height, '2xl')});
+  }
+  @include breakpoints.media-breakpoint-up('3xl') {
+    min-height: calc(100vh - #{map.get(variables.$header-height, '3xl')});
+  }
+}

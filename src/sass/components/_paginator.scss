@@ -1,0 +1,14 @@
+@use 'sass:map';
+@use '../base/spaces' as spaces;
+
+.rdu-paginator {
+  --rdu-paginator-gap: #{map.get(spaces.$spaces, '4xs')};
+  --rdu-paginator-button-min-size: #{map.get(spaces.$spaces, lg)};
+  --rdu-paginator-button-border: 0;
+  --rdu-paginator-button-background: transparent;
+  --rdu-paginator-button-color: currentColor;
+  --rdu-paginator-disabled-opacity: 0.5;
+  --rdu-paginator-current-page-font-weight: 700;
+  --rdu-paginator-current-page-text-decoration: underline;
+  --rdu-paginator-current-page-text-underline-offset: 0.2em;
+}

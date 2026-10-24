@@ -1,0 +1,9 @@
+.rdu-card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: var(--rdu-card-footer-padding);
+  background: var(--rdu-card-footer-background);
+  font-size: var(--rdu-card-footer-font-size);
+  font-weight: var(--rdu-card-footer-font-weight);
+}

@@ -1,0 +1,46 @@
+.rdu-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--rdu-chips-icon-gap);
+  font-size: var(--rdu-chips-font-size);
+  font-weight: var(--rdu-chips-font-weight);
+  line-height: var(--rdu-chips-line-height);
+  letter-spacing: var(--rdu-chips-letter-spacing);
+  padding: var(--rdu-chips-padding);
+  background: var(--rdu-chips-background);
+  border: var(--rdu-chips-border);
+  border-radius: var(--rdu-chips-border-radius);
+  border-color: var(--rdu-chips-border-color);
+  color: var(--rdu-chips-color);
+
+  .rdu-chips-action {
+    background: var(--rdu-chips-action-background);
+    border: var(--rdu-chips-action-border);
+    border-radius: var(--rdu-chips-action-border-radius);
+    padding: var(--rdu-chips-action-padding);
+    border-color: var(--rdu-chips-action-border-color);
+    color: var(--rdu-chips-action-color);
+    @media (prefers-reduced-motion: no-preference) {
+      transition: all 0.3s;
+    }
+
+    svg {
+      width: var(--rdu-chips-action-icon-size);
+      height: var(--rdu-chips-action-icon-size);
+      color: var(--rdu-chips-action-icon-color);
+      @media (prefers-reduced-motion: no-preference) {
+        transition: all 0.3s;
+      }
+    }
+
+    &:hover {
+      background: var(--rdu-chips-action-hover-background);
+      border-color: var(--rdu-chips-action-hover-border-color);
+      color: var(--rdu-chips-action-hover-color);
+
+      svg {
+        fill: var(--rdu-chips-action-icon-hover-color);
+      }
+    }
+  }
+}

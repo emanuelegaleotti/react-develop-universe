@@ -1,0 +1,21 @@
+@use '../abstract/functions' as functions;
+
+h2 {
+  font-family: var(--rdu-font-family);
+  font-size: functions.toRem(32);
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.15;
+  letter-spacing: normal;
+}
+
+h5 {
+  font-family: var(--rdu-font-family);
+  font-size: functions.toRem(16);
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}

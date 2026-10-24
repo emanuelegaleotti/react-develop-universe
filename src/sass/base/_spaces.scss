@@ -1,0 +1,12 @@
+@use '../abstract/functions' as functions;
+
+$spaces: (
+        '4xs': functions.toRem(4),
+        '3xs': functions.toRem(8),
+        '2xs': functions.toRem(10),
+        xs: functions.toRem(12),
+        sm: functions.toRem(14),
+        md: functions.toRem(16),
+        lg: functions.toRem(24),
+        xl: functions.toRem(40),
+) !default;

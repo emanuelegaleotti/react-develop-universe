@@ -1,0 +1,88 @@
+@use '../abstract/breakpoints' as breakpoints;
+@use '../abstract/variables' as variables;
+@use '../base/spaces' as spaces;
+@use 'sass:map';
+
+@mixin grid-columns() {
+  & {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @include breakpoints.media-breakpoint-up(sm) {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  @include breakpoints.media-breakpoint-up(md) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@mixin column-gap() {
+  & {
+    column-gap: .5rem;
+  }
+  @include breakpoints.media-breakpoint-up(sm) {
+    column-gap: 1rem;
+  }
+}
+
+.#{variables.$project-acronym}-grid {
+  display: grid;
+  max-width: 1920px;
+  row-gap: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: map.get(spaces.$spaces, md);
+  padding-right: map.get(spaces.$spaces, md);
+  @include breakpoints.media-breakpoint-up(sm) {
+    padding-left: map.get(spaces.$spaces, lg);
+    padding-right: map.get(spaces.$spaces, lg);
+  }
+  @include grid-columns;
+  @include column-gap;
+}
+
+.#{variables.$project-acronym}-grid-margin-less {
+  display: grid;
+  max-width: 1920px;
+  row-gap: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  @include grid-columns;
+  @include column-gap;
+}
+
+.#{variables.$project-acronym}-grid-fluid {
+  display: grid;
+  row-gap: 1rem;
+  padding-left: map.get(spaces.$spaces, md);
+  padding-right: map.get(spaces.$spaces, md);
+  @include breakpoints.media-breakpoint-up(sm) {
+    padding-left: map.get(spaces.$spaces, lg);
+    padding-right: map.get(spaces.$spaces, lg);
+  }
+  @include grid-columns;
+  @include column-gap;
+}
+
+.#{variables.$project-acronym}-grid-fluid-margin-less {
+  display: grid;
+  row-gap: 1rem;
+  @include grid-columns;
+  @include column-gap;
+}
+
+.#{variables.$project-acronym}-grid-main {
+  display: grid;
+  row-gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  padding-left: map.get(spaces.$spaces, md);
+  padding-right: map.get(spaces.$spaces, md);
+  @include breakpoints.media-breakpoint-up(sm) {
+    grid-template-columns: repeat(6, 1fr);
+    padding-left: 0;
+    padding-right: 0;
+  }
+  @include breakpoints.media-breakpoint-up(md) {
+    grid-template-columns: repeat(10, 1fr);
+  }
+  @include column-gap;
+}

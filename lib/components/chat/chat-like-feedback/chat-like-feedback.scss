@@ -1,0 +1,136 @@
+.rdu-chat-like-feedback {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background: var(--rdu-chat-like-feedback-background);
+  padding: var(--rdu-chat-like-feedback-padding, 1rem);
+  border: var(--rdu-chat-like-feedback-border);
+  border-color: var(--rdu-chat-like-feedback-border-color);
+  border-radius: var(--rdu-chat-like-feedback-border-radius);
+  box-shadow: var(--rdu-chat-like-feedback-box-shadow);
+  margin-bottom: var(--rdu-chat-like-feedback-margin-bottom, 1rem);
+  gap: var(--rdu-chat-like-feedback-gap, 1rem);
+
+  .rdu-alert {
+    flex-basis: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--rdu-chat-like-feedback-alert-padding, 1rem);
+    border-radius: var(--rdu-chat-like-feedback-alert-border-radius);
+    border: var(--rdu-chat-like-feedback-alert-border);
+    border-color: var(--rdu-chat-like-feedback-alert-border-color);
+    font-size: var(--rdu-chat-like-feedback-alert-font-size, 1rem);
+    font-weight: var(--rdu-chat-like-feedback-alert-font-weight, normal);
+    font-family: var(--rdu-chat-like-feedback-alert-font-family);
+    line-height: var(--rdu-chat-like-feedback-alert-line-height);
+    letter-spacing: var(--rdu-chat-like-feedback-alert-letter-spacing);
+    background: var(--rdu-chat-like-feedback-alert-background);
+    color: var(--rdu-chat-like-feedback-alert-color);
+    margin-bottom: var(--rdu-chat-like-feedback-alert-margin-bottom);
+
+    button {
+      background: transparent;
+      border: 1px solid;
+      border-color: transparent;
+      padding: var(--rdu-chat-like-feedback-alert-button-padding);
+      svg {
+        height: var(--rdu-chat-like-feedback-alert-button-height, 1rem);
+        width: var(--rdu-chat-like-feedback-alert-button-width, 1rem);
+        fill: var(--rdu-chat-like-feedback-alert-button-color);
+        @media (prefers-reduced-motion: no-preference) {
+          transition: all .3s;
+        }
+      }
+      :hover {
+        svg {
+          fill: var(--rdu-chat-like-feedback-alert-button-hover-color);
+        }
+      }
+    }
+  }
+
+  div {
+    flex-basis: 100%;
+    margin-right: var(--rdu-chat-like-feedback-textarea-margin-right);
+
+    label {
+      display: inline-block;
+      color: var(--rdu-chat-like-feedback-label-color);
+      font-size: var(--rdu-chat-like-feedback-label-font-size, 1rem);
+      line-height: var(--rdu-chat-like-feedback-label-line-height, 1.5);
+      font-weight: var(--rdu-chat-like-feedback-label-font-weight, normal);
+      margin-bottom: var(--rdu-chat-like-feedback-label-margin-bottom);
+      font-family: var(--rdu-chat-like-feedback-label-font-family);
+    }
+
+    textarea {
+      resize: vertical;
+      width: 100%;
+      background: var(--rdu-chat-like-feedback-textarea-background);
+      color: var(--rdu-chat-like-feedback-textarea-color);
+      padding: var(--rdu-chat-like-feedback-textarea-padding);
+      min-height: var(--rdu-chat-like-feedback-textarea-min-height);
+      border: var(--rdu-chat-like-feedback-textarea-border);
+      border-color: var(--rdu-chat-like-feedback-textarea-border-color);
+      border-radius: var(--rdu-chat-like-feedback-textarea-border-radius, 0);
+      font-size: var(--rdu-chat-like-feedback-textarea-font-size, 1rem);
+      line-height: var(--rdu-chat-like-feedback-textarea-line-height, 1.5);
+      font-weight: var(--rdu-chat-like-feedback-textarea-font-weight, normal);
+      font-family: var(--rdu-chat-like-feedback-textarea-font-family);
+      @supports (field-sizing: content) {
+        field-sizing: content;
+      }
+    }
+  }
+
+  #like-feedback-submit {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: var(--rdu-chat-like-feedback--button-gap, .5rem);
+    background: var(--rdu-chat-like-feedback-button-background);
+    color: var(--rdu-chat-like-feedback-button-color);
+    padding: var(--rdu-chat-like-feedback-button-padding);
+    border: var(--rdu-chat-like-feedback-button-border);
+    border-color: var(--rdu-chat-like-feedback-button-border-color);
+    border-radius: var(--rdu-chat-like-feedback-button-border-radius);
+    font-size: var(--rdu-chat-like-feedback-button-font-size, 1rem);
+    line-height: var(--rdu-chat-like-feedback-button-line-height, 1.5);
+    font-weight: var(--rdu-chat-like-feedback-button-font-weight, normal);
+    @media (prefers-reduced-motion: no-preference) {
+      transition: all .3s;
+    }
+
+    svg {
+      fill: var(--rdu-chat-like-feedback-button-color);
+      height: var(--rdu-chat-like-feedback-button-icon-height, 1rem);
+      width: var(--rdu-chat-like-feedback-button-icon-width, 1rem);
+      @media (prefers-reduced-motion: no-preference) {
+        transition: all .3s;
+      }
+    }
+
+    &:hover {
+      background: var(--rdu-chat-like-feedback-button-hover-background);
+      color: var(--rdu-chat-like-feedback-button-hover-color);
+      border-color: var(--rdu-chat-like-feedback-button-hover-border-color);
+
+      svg {
+        fill: var(--rdu-chat-like-feedback-button-hover-color);
+      }
+    }
+
+    &:disabled {
+      background: var(--rdu-chat-like-feedback-button-disabled-background);
+      color: var(--rdu-chat-like-feedback-button-disabled-color);
+      border-color: var(--rdu-chat-like-feedback-button-disabled-border-color);
+    }
+
+    &:focus {
+      background: var(--rdu-chat-like-feedback-button-focus-background);
+      color: var(--rdu-chat-like-feedback-button-focus-color);
+      border-color: var(--rdu-chat-like-feedback-button-focus-border-color);
+    }
+  }
+}

@@ -1,0 +1,118 @@
+#rdu-error-dialog {
+  padding: var(--rdu-error-dialog-padding);
+  font-family: var(--rdu-error-dialog-font-family);
+  border: var(--rdu-error-dialog-border);
+  border-color: var(--rdu-error-dialog-border-color);
+  border-radius: var(--rdu-error-dialog-border-radius);
+  box-shadow: var(--rdu-error-dialog-box-shadow);
+
+  &::backdrop {
+    background: var(--rdu-error-dialog-backdrop-background);
+  }
+
+  .rdu-dialog-header {
+    padding: var(--rdu-error-dialog-header-padding, 1rem);
+    background: var(--rdu-error-dialog-header-background);
+    position: relative;
+    flex-direction: column;
+
+    h4 {
+      font-size: var(--rdu-error-dialog-header-h4-font-size);
+      line-height: var(--rdu-error-dialog-header-h4-line-height);
+      font-weight: var(--rdu-error-dialog-header-h4-font-weight);
+      letter-spacing: var(--rdu-error-dialog-header-h4-letter-spacing);
+      color: var(--rdu-error-dialog-header-h4-color);
+      font-family: var(--rdu-error-dialog-header-h4-font-family);
+      text-align: center;
+    }
+
+    h5 {
+      font-size: var(--rdu-error-dialog-header-h5-font-size);
+      line-height: var(--rdu-error-dialog-header-h4-line-height);
+      font-weight: var(--rdu-error-dialog-header-h4-font-weight);
+      letter-spacing: var(--rdu-error-dialog-header-h4-letter-spacing);
+      color: var(--rdu-error-dialog-header-h4-color);
+      font-family: var(--rdu-error-dialog-header-h4-font-family);
+      text-align: center;
+    }
+
+    .rdu-dialog-button-close {
+      position: absolute;
+      right: var(--rdu-error-dialog-close-button-right);
+      top: var(--rdu-error-dialog-close-button-top);
+      background: var(--rdu-error-dialog-close-button-background);
+      border: var(--rdu-error-dialog-close-button-border);
+      border-color: var(--rdu-error-dialog-close-button-border-color);
+      border-radius: var(--rdu-error-dialog-close-button-border-radius);
+      padding: var(--rdu-error-dialog-close-button-padding);
+      font-size: var(--rdu-error-dialog-close-button-font-size);
+      line-height: var(--rdu-error-dialog-close-button-line-height);
+      font-weight: var(--rdu-error-dialog-close-button-font-weight);
+      color: var(--rdu-error-dialog-close-button-color);
+      @media (prefers-reduced-motion: no-preference) {
+        transition: all .3s;
+      }
+
+      svg {
+        fill: var(--rdu-error-dialog-close-button-color);
+        height: var(--rdu-error-dialog-close-button-svg-height);
+        width: var(--rdu-error-dialog-close-button-svg-width);
+        line-height: var(--rdu-error-dialog-close-button-svg-line-height);
+      }
+
+      &:hover {
+        border-color: var(--rdu-error-dialog-close-button-hover-border-color);
+        background-color: var(--rdu-error-dialog-close-button-hover-background);
+        color: var(--rdu-error-dialog-close-button-hover-text-color);
+
+        svg {
+          fill: var(--rdu-error-dialog-close-button-hover-color);
+        }
+      }
+    }
+  }
+
+  .rdu-dialog-body {
+    padding: var(--rdu-error-dialog-body-padding, 1rem);
+    background: var(--rdu-error-dialog-body-background);
+
+    p {
+      text-align: center;
+      font-size: var(--rdu-error-dialog-body-font-size);
+      line-height: var(--rdu-error-dialog-body-line-height);
+      font-weight: var(--rdu-error-dialog-body-font-weight);
+      color: var(--rdu-error-dialog-body-color);
+      font-family: var(--rdu-error-dialog-body-font-family);
+      letter-spacing: var(--rdu-error-dialog-body-letter-spacing);
+    }
+  }
+
+  .rdu-dialog-footer {
+    padding: var(--rdu-error-dialog-footer-padding, 1rem);
+    background: var(--rdu-error-dialog-footer-background);
+    justify-content: center;
+
+    button {
+      background: var(--rdu-error-dialog-footer-button-background);
+      border: var(--rdu-error-dialog-footer-button-border);
+      border-color: var(--rdu-error-dialog-footer-button-border-color);
+      border-radius: var(--rdu-error-dialog-footer-button-border-radius);
+      padding: var(--rdu-error-dialog-footer-button-padding);
+      font-size: var(--rdu-error-dialog-footer-button-font-size);
+      line-height: var(--rdu-error-dialog-footer-button-line-height);
+      font-weight: var(--rdu-error-dialog-footer-button-font-weight);
+      color: var(--rdu-error-dialog-footer-button-color);
+      font-family: var(--rdu-error-dialog-footer-button-font-family);
+      letter-spacing: var(--rdu-error-dialog-footer-button-letter-spacing);
+      @media (prefers-reduced-motion: no-preference) {
+        transition: all .3s;
+      }
+
+      &:hover {
+        background: var(--rdu-error-dialog-footer-button-hover-background);
+        color: var(--rdu-error-dialog-footer-button-hover-color);
+        border-color: var(--rdu-error-dialog-footer-button-hover-color);
+      }
+    }
+  }
+}

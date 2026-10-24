@@ -1,0 +1,153 @@
+.rdu-chat-dislike-feedback {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background: var(--rdu-chat-dislike-feedback-background);
+  padding: var(--rdu-chat-dislike-feedback-padding, 1rem);
+  border: var(--rdu-chat-dislike-feedback-border);
+  border-color: var(--rdu-chat-dislike-feedback-border-color);
+  border-radius: var(--rdu-chat-dislike-feedback-border-radius);
+  box-shadow: var(--rdu-chat-dislike-feedback-box-shadow);
+  margin-bottom: var(--rdu-chat-dislike-feedback-margin-bottom, 1rem);
+  gap: var(--rdu-chat-dislike-feedback-gap, 1rem);
+
+  .rdu-alert {
+    flex-basis: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--rdu-chat-dislike-feedback-alert-padding, 1rem);
+    border-radius: var(--rdu-chat-dislike-feedback-alert-border-radius);
+    border: var(--rdu-chat-dislike-feedback-alert-border);
+    border-color: var(--rdu-chat-dislike-feedback-alert-border-color);
+    font-size: var(--rdu-chat-dislike-feedback-alert-font-size, 1rem);
+    font-weight: var(--rdu-chat-dislike-feedback-alert-font-weight, normal);
+    font-family: var(--rdu-chat-dislike-feedback-alert-font-family);
+    line-height: var(--rdu-chat-dislike-feedback-alert-line-height);
+    letter-spacing: var(--rdu-chat-dislike-feedback-alert-letter-spacing);
+    background: var(--rdu-chat-dislike-feedback-alert-background);
+    color: var(--rdu-chat-dislike-feedback-alert-color);
+    margin-bottom: var(--rdu-chat-dislike-feedback-alert-margin-bottom);
+    button {
+      background: transparent;
+      border: 1px solid;
+      border-color: transparent;
+      padding: var(--rdu-chat-dislike-feedback-alert-button-padding);
+      svg {
+        height: var(--rdu-chat-dislike-feedback-alert-button-height, 1rem);
+        width: var(--rdu-chat-dislike-feedback-alert-button-width, 1rem);
+        fill: var(--rdu-chat-dislike-feedback-alert-button-color);
+        @media (prefers-reduced-motion: no-preference) {
+          transition: all .3s;
+        }
+      }
+      :hover {
+        svg {
+          fill: var(--rdu-chat-dislike-feedback-alert-button-hover-color);
+        }
+      }
+    }
+  }
+
+  div {
+    flex-basis: 100%;
+    margin-right: var(--rdu-chat-dislike-feedback-textarea-margin-right);
+
+    label {
+      display: inline-block;
+      color: var(--rdu-chat-dislike-feedback-label-color);
+      font-size: var(--rdu-chat-dislike-feedback-label-font-size, 1rem);
+      line-height: var(--rdu-chat-dislike-feedback-label-line-height, 1.5);
+      font-weight: var(--rdu-chat-dislike-feedback-label-font-weight, normal);
+      margin-bottom: var(--rdu-chat-dislike-feedback-label-margin-bottom);
+      font-family: var(--rdu-chat-dislike-feedback-label-font-family);
+    }
+
+    textarea {
+      resize: vertical;
+      width: 100%;
+      background: var(--rdu-chat-dislike-feedback-textarea-background);
+      color: var(--rdu-chat-dislike-feedback-textarea-color);
+      padding: var(--rdu-chat-dislike-feedback-textarea-padding);
+      min-height: var(--rdu-chat-dislike-feedback-textarea-min-height);
+      border: var(--rdu-chat-dislike-feedback-textarea-border);
+      border-color: var(--rdu-chat-dislike-feedback-textarea-border-color);
+      border-radius: var(--rdu-chat-dislike-feedback-textarea-border-radius, 0);
+      font-size: var(--rdu-chat-dislike-feedback-textarea-font-size, 1rem);
+      line-height: var(--rdu-chat-dislike-feedback-textarea-line-height, 1.5);
+      font-weight: var(--rdu-chat-dislike-feedback-textarea-font-weight, normal);
+      font-family: var(--rdu-chat-dislike-feedback-textarea-font-family);
+      @supports (field-sizing: content) {
+        field-sizing: content;
+      }
+    }
+
+    .rdu-invalid-feedback {
+      color: var(--rdu-chat-dislike-feedback-invalid-color);
+      padding: var(--rdu-chat-dislike-feedback-invalid-padding);
+      font-size: var(--rdu-chat-dislike-feedback-invalid-font-size, 1rem);
+      line-height: var(--rdu-chat-dislike-feedback-invalid-line-height, 1.5);
+      font-weight: var(--rdu-chat-dislike-feedback-invalid-font-weight, normal);
+      font-family: var(--rdu-chat-dislike-feedback-invalid-font-family);
+    }
+  }
+
+  #dislike-feedback-submit {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: var(--rdu-chat-dislike-feedback-button-gap, .5rem);
+    background: var(--rdu-chat-dislike-feedback-button-background);
+    color: var(--rdu-chat-dislike-feedback-button-color);
+    padding: var(--rdu-chat-dislike-feedback-button-padding);
+    border: var(--rdu-chat-dislike-feedback-button-border);
+    border-color: var(--rdu-chat-dislike-feedback-button-border-color);
+    border-radius: var(--rdu-chat-dislike-feedback-button-border-radius);
+    font-size: var(--rdu-chat-dislike-feedback-button-font-size, 1rem);
+    line-height: var(--rdu-chat-dislike-feedback-button-line-height, 1.5);
+    font-weight: var(--rdu-chat-dislike-feedback-button-font-weight, normal);
+    font-family: var(--rdu-chat-dislike-feedback-button-font-family);
+    @media (prefers-reduced-motion: no-preference) {
+      transition: all .3s;
+    }
+
+    svg {
+      fill: var(--rdu-chat-dislike-feedback-button-color);
+      height: var(--rdu-chat-dislike-feedback-button-icon-height, 1rem);
+      width: var(--rdu-chat-dislike-feedback-button-icon-width, 1rem);
+      @media (prefers-reduced-motion: no-preference) {
+        transition: all .3s;
+      }
+    }
+
+    &:hover {
+      background: var(--rdu-chat-dislike-feedback-button-hover-background);
+      color: var(--rdu-chat-dislike-feedback-button-hover-color);
+      border-color: var(--rdu-chat-dislike-feedback-button-hover-border-color);
+
+      svg {
+        fill: var(--rdu-chat-dislike-feedback-button-hover-color);
+      }
+    }
+
+    &:disabled {
+      background: var(--rdu-chat-dislike-feedback-button-disabled-background);
+      color: var(--rdu-chat-dislike-feedback-button-disabled-color);
+      border-color: var(--rdu-chat-dislike-feedback-button-disabled-border-color);
+
+      svg {
+        fill: var(--rdu-chat-dislike-feedback-button-disabled-color);
+      }
+    }
+
+    &:focus {
+      background: var(--rdu-chat-dislike-feedback-button-focus-background);
+      color: var(--rdu-chat-dislike-feedback-button-focus-color);
+      border-color: var(--rdu-chat-dislike-feedback-button-focus-border-color);
+
+      svg {
+        fill: var(--rdu-chat-dislike-feedback-button-focus-color);
+      }
+    }
+  }
+}

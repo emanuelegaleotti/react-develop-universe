@@ -1,0 +1,56 @@
+@use './functions.scss' as functions;
+@mixin light-theme() {
+  @media (prefers-color-scheme: light) {
+    @content
+  }
+}
+
+@mixin reduce-motion() {
+  @media (prefers-reduced-motion: no-preference) {
+    @content
+  }
+}
+
+@mixin more-contrast() {
+  @media (prefers-contrast: more) {
+    @content
+  }
+}
+
+@mixin force-color() {
+  @media (forced-colors: active) {
+    @content
+  }
+}
+
+
+@mixin full-grid() {
+  grid-column: 1/5;
+  @include media-breakpoint-up(sm) {
+    grid-column: 1/9;
+  }
+  @include media-breakpoint-up(md) {
+    grid-column: 1/13;
+  }
+}
+
+@mixin placeholder($color) {
+  &::placeholder {
+    color: $color;
+    opacity: 1;
+  }
+
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+
+  &::-ms-input-placeholder {
+    color: $color;
+  }
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: functions.toRem($radius);
+  -moz-border-radius: functions.toRem($radius);
+  border-radius: functions.toRem($radius);
+}

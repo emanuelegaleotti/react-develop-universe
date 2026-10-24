@@ -1,0 +1,306 @@
+{
+  "rdu": {
+    "button": {
+      "primary": "Primario",
+      "secondary": "Secondario",
+      "tertiary": "Terziario",
+      "danger": "Pericolo",
+      "warning": "Attenzione",
+      "success": "Successo",
+      "info": "Informazione",
+      "light": "Chiaro",
+      "dark": "Scuro",
+      "link": "Collegamento",
+      "submit": "Invia",
+      "open-left": "Apri a sinistra",
+      "open-right": "Apri a destra",
+      "test": "Test",
+      "close": "Chiudi",
+      "show-error-dialog": "Mostra dialog di errore",
+      "create": "Crea",
+      "search": "Cerca",
+      "cancel": "Annulla",
+      "delete": "Elimina",
+      "save": "Salva",
+      "back": "Indietro",
+      "view": "Visualizza",
+      "edit": "Modifica",
+      "prev": "Pagina precedente",
+      "next": "Pagina successiva"
+    },
+    "paginator": {
+      "label": "Paginazione",
+      "first-page": "Prima pagina",
+      "last-page": "Ultima pagina",
+      "status": "Pagina {{currentPage}} di {{totalPages}}"
+    }
+  },
+  "navigation": {
+    "buttons": "Pulsanti",
+    "input-text": "Input Testo",
+    "input-checkbox": "Input Checkbox",
+    "input-radio": "Input Radio",
+    "input-number": "Input Numero",
+    "input-datalist": "Input Datalist",
+    "input-email": "Input Email",
+    "input-password": "Input Password",
+    "input-search": "Input Ricerca",
+    "input-tel": "Input Telefono",
+    "input-url": "Input Url",
+    "input-time": "Input Orario",
+    "input-date": "Input Data",
+    "input-datetime-local": "Input Data e Orario",
+    "input-color": "Input Colore",
+    "input-range": "Input Range",
+    "input-hidden": "Input Nascosto",
+    "input-textarea": "Blocco di testo",
+    "input-select": "Selezione",
+    "input-select-object": "Selezione Oggetto",
+    "input-file": "Input File",
+    "input-month": "Input Mese",
+    "input-week": "Input Settimana",
+    "chat": "Chat",
+    "offcanvas": "Offcanvas",
+    "error": "Errore",
+    "pokemon-crud": "Pokémon CRUD",
+    "pokemon-species-crud": "Pokémon Species CRUD",
+    "type-crud": "Types CRUD",
+    "charts-bar": "Bar Chart",
+    "charts-line": "Line Chart",
+    "charts-pie": "Pie Chart",
+    "charts-scatter": "Scatter Chart",
+    "charts-area": "Area Chart",
+    "paginator": "Paginazione"
+  },
+  "crud": {
+    "pokemon": {
+      "name": {
+        "label": "Nome",
+        "placeHolder": "es. bulbasaur",
+        "help": "",
+        "success": "Valido",
+        "required": "Il nome è obbligatorio",
+        "min": "Il nome non può essere vuoto"
+      },
+      "height": {
+        "label": "Altezza",
+        "placeHolder": "",
+        "help": "",
+        "success": "Valido",
+        "required": "L'altezza è obbligatoria",
+        "min": "L'altezza deve essere almeno 1"
+      },
+      "weight": {
+        "label": "Peso",
+        "placeHolder": "",
+        "help": "",
+        "success": "Valido",
+        "required": "Il peso è obbligatorio",
+        "min": "Il peso deve essere almeno 1"
+      },
+      "base_experience": {
+        "label": "Esperienza base",
+        "placeHolder": "",
+        "help": "",
+        "success": "Valido",
+        "required": "L'esperienza base è obbligatoria",
+        "min": "L'esperienza base deve essere almeno 0"
+      }
+    },
+    "species": {
+      "name": {
+        "label": "Nome",
+        "placeHolder": "es. bulbasaur",
+        "help": "",
+        "success": "Valido",
+        "required": "Il nome è obbligatorio",
+        "min": "Il nome non può essere vuoto"
+      },
+      "capture_rate": {
+        "label": "Tasso di cattura",
+        "placeHolder": "",
+        "help": "",
+        "success": "Valido",
+        "required": "Il tasso di cattura è obbligatorio",
+        "min": "Il tasso di cattura deve essere almeno 0"
+      },
+      "base_happiness": {
+        "label": "Felicità base",
+        "placeHolder": "",
+        "help": "",
+        "success": "Valido"
+      },
+      "gender_rate": {
+        "label": "Tasso di genere",
+        "placeHolder": "",
+        "help": "",
+        "success": "Valido",
+        "required": "Il tasso di genere è obbligatorio"
+      }
+    },
+    "type": {
+      "name": {
+        "label": "Nome",
+        "placeHolder": "es. fuoco",
+        "help": "",
+        "success": "Valido",
+        "required": "Il nome è obbligatorio"
+      }
+    },
+    "pageSize": {
+      "label": "Elementi per pagina",
+      "placeHolder": "",
+      "help": "",
+      "success": ""
+    }
+  },
+  "ks": {
+    "text": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "checkbox": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "radio": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "number": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "datalist": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "email": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "password": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "search": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "tel": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "url": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "time": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "date": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "datetime": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "color": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "range": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "textarea": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "select": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "select-object": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "file": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "month": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    },
+    "week": {
+      "label": "Etichetta",
+      "help": "Aiuto",
+      "success": "Successo",
+      "required": "Richiesto",
+      "placeHolder": "Placeholder"
+    }
+  }
+}

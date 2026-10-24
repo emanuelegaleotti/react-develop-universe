@@ -1,0 +1,77 @@
+@use "../abstract/variables" as variables;
+
+// react.dev design tokens (colors.js)
+$blue-80: #043849;
+$blue-60: #045975;
+$blue-50: #087ea4;
+$blue-40: #149eca;
+$blue-30: #58c4dc;
+$blue-20: #abe2ed;
+$blue-10: #e6f7ff;
+$blue-5: #e6f6fa;
+
+$gray-95: #16181d;
+$gray-90: #23272f;
+$gray-80: #343a46;
+$gray-70: #404756;
+$gray-60: #4e5769;
+$gray-50: #5e687e;
+$gray-40: #78839b;
+$gray-30: #99a1b3;
+$gray-20: #bcc1cd;
+$gray-15: #d0d3dc;
+$gray-10: #ebecf0;
+$gray-5: #f6f7f9;
+
+$green-50: #388f7f;
+$yellow-40: #db7d27;
+$red-40: #c1554d;
+$purple-50: #575fb7;
+
+$white: #ffffff;
+$black: $gray-95;
+
+$palette: (
+        primary: $blue-50,
+        primary-hover: $blue-60,
+        primary-disabled: $blue-20,
+        secondary: $gray-10,
+        tertiary: $white,
+        success: $green-50,
+        error: $red-40,
+        warning: $yellow-40,
+        info: $blue-40,
+        accent: $purple-50,
+        light: $gray-5,
+        dark: $gray-90
+) !default;
+
+$grays: (
+        100: $white,
+        200: $gray-5,
+        300: $gray-10,
+        400: $gray-30,
+        500: $gray-40,
+        600: $gray-50,
+        700: $gray-70,
+        800: $gray-90,
+        900: $gray-95,
+) !default;
+
+
+@mixin background-utility {
+  @each $name, $color in $palette {
+    &-background-#{$name} {
+      background: $color;
+    }
+  }
+  @each $name, $gray in $grays {
+    &-background-#{$name} {
+      background: $gray;
+    }
+  }
+}
+
+.#{variables.$project-acronym} {
+  @include background-utility;
+}

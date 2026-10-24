@@ -1,0 +1,97 @@
+@use '../../sass/abstract/breakpoints' as breakpoints;
+@use '../../sass/abstract/functions' as functions;
+
+#ks-header {
+  grid-area: h;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ks-space-xs);
+  background: var(--ks-gray-100);
+  border-bottom: 1px solid var(--ks-gray-300);
+  padding: var(--ks-space-md) var(--ks-space-md);
+  @include breakpoints.media-breakpoint-up(sm) {
+  padding: var(--ks-space-sm) var(--ks-space-lg);
+    justify-content: flex-start;
+  }
+
+  #ks-mobile-menu {
+    display: inline-block;
+    background: var(--ks-gray-100);
+    border: 1px solid;
+    border-color: var(--ks-gray-100);
+    padding: 0;
+    @include breakpoints.media-breakpoint-up(sm) {
+      display: none;
+    }
+
+    svg {
+      height: functions.toRem(18);
+      width: auto;
+      fill: var(--ks-gray-800);
+    }
+  }
+
+  #ks-logo {
+    cursor: pointer;
+    text-decoration: none;
+
+    span {
+      font-family: var(--rdu-font-family);
+      font-size: functions.toRem(20);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--ks-color-primary);
+      @include breakpoints.media-breakpoint-up(md) {
+        font-size: functions.toRem(24);
+      }
+    }
+  }
+
+  #ks-user-menu {
+    display: none;
+    margin-left: auto;
+    @include breakpoints.media-breakpoint-up(sm) {
+      display: flex;
+      gap: var(--ks-space-lg);
+    }
+
+    .separator {
+      width: 1px;
+      height: functions.toRem(52);
+      background: var(--ks-gray-300);
+      display: inline-block;
+    }
+
+
+    #ks-logout {
+      background: var(--ks-gray-100);
+      border: 1px solid;
+      border-color: var(--ks-gray-100);
+      padding: 0;
+
+      svg {
+        height: functions.toRem(18);
+        width: auto;
+        fill: var(--ks-gray-800);
+      }
+    }
+  }
+
+  #ticket-assistant-reference {
+    display: inline-block;
+    background: var(--ks-gray-100);
+    border: 1px solid;
+    border-color: var(--ks-gray-100);
+    padding: 0;
+    @include breakpoints.media-breakpoint-up(sm) {
+      display: none;
+    }
+
+    svg {
+      height: functions.toRem(18);
+      width: auto;
+      fill: var(--ks-gray-800);
+    }
+  }
+}

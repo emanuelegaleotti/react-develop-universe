@@ -1,0 +1,14 @@
+@use '../../sass/abstract/breakpoints' as breakpoints;
+
+#ks-aside {
+  grid-area: a;
+  flex-direction: column;
+  display: none;
+  height: 100%;
+  padding: var(--ks-space-md) var(--ks-space-lg);
+  background: var(--ks-gray-100);
+  border-right: 1px solid var(--ks-gray-300);
+  @include breakpoints.media-breakpoint-up(sm) {
+    display: flex;
+  }
+}

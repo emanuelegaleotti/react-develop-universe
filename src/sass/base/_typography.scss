@@ -1,0 +1,92 @@
+@use "../abstract/variables" as variables;
+@use "../abstract/functions" as functions;
+@use "../base/palette" as palette;
+$font-url: "../assets/fonts/";
+
+@font-face {
+  font-family: 'Source Code Pro';
+  src: url($font-url + "SourceCodePro-Variable.woff2") format('woff2');
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@mixin color-utility {
+  @each $name, $color in palette.$palette {
+    &-text-#{$name} {
+      color: $color;
+    }
+  }
+}
+
+@mixin gray-utility {
+  @each $name, $color in palette.$grays {
+    &-text-#{$name} {
+      color: palette.$grays;
+    }
+  }
+}
+
+.#{variables.$project-acronym} {
+  @include color-utility;
+}
+
+.#{variables.$project-acronym}-text-1 {
+  font-family: var(--rdu-font-family);
+  font-size: functions.toRem(16);
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+.#{variables.$project-acronym}-text-2 {
+  font-family: var(--rdu-font-family);
+  font-size: functions.toRem(14);
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+.#{variables.$project-acronym}-text-3 {
+  font-family: var(--rdu-font-family);
+  font-size: functions.toRem(14);
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+.#{variables.$project-acronym}-text-4 {
+  font-family: var(--rdu-font-family);
+  font-size: functions.toRem(18);
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+.#{variables.$project-acronym}-text-5 {
+  font-family: var(--rdu-font-family);
+  font-size: functions.toRem(16);
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+.#{variables.$project-acronym}-text-6 {
+  font-family: var(--rdu-font-family);
+  font-size: functions.toRem(16);
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}

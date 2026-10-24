@@ -1,0 +1,311 @@
+{
+  "rdu": {
+    "button": {
+      "primary": "Primary",
+      "secondary": "Secondary",
+      "tertiary": "Tertiary",
+      "danger": "Danger",
+      "warning": "Warning",
+      "success": "Success",
+      "info": "Info",
+      "light": "Light",
+      "dark": "Dark",
+      "link": "Link",
+      "submit": "Submit",
+      "open-left": "Open left",
+      "open-right": "Open right",
+      "test": "Test",
+      "close": "Close",
+      "show-error-dialog": "Show Error Dialog",
+      "create": "Create",
+      "search": "Search",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "save": "Save",
+      "back": "Back",
+      "view": "View",
+      "edit": "Edit",
+      "prev": "Previous page",
+      "next": "Next page",
+      "firstPage": "First",
+      "prevPage": "Previous",
+      "nextPage": "Next",
+      "lastPage": "Last"
+    },
+    "paginator": {
+      "label": "Pagination",
+      "first-page": "First page",
+      "last-page": "Last page",
+      "status": "Page {{currentPage}} of {{totalPages}}"
+    }
+  },
+  "navigation": {
+    "buttons": "Buttons",
+    "input-text": "Input Text",
+    "input-checkbox": "Input Checkbox",
+    "input-radio": "Input Radio",
+    "input-number": "Input Number",
+    "input-datalist": "Input Datalist",
+    "input-email": "Input Email",
+    "input-password": "Input Password",
+    "input-search": "Input Search",
+    "input-tel": "Input Telephone",
+    "input-url": "Input Url",
+    "input-time": "Input Time",
+    "input-date": "Input Date",
+    "input-datetime-local": "Input Date-Time",
+    "input-color": "Input Color",
+    "input-range": "Input Range",
+    "input-hidden": "Input Hidden",
+    "input-textarea": "Textarea",
+    "input-select": "Select",
+    "input-select-object": "Select Object",
+    "input-file": "Input File",
+    "input-month": "Input Month",
+    "input-week": "Input Week",
+    "chat": "Chat",
+    "offcanvas": "Offcanvas",
+    "error": "Error",
+    "pager": "Pager",
+    "pokemon-crud": "Pokémon CRUD",
+    "pokemon-species-crud": "Pokémon Species CRUD",
+    "type-crud": "Types CRUD",
+    "charts-bar": "Bar Chart",
+    "charts-line": "Line Chart",
+    "charts-pie": "Pie Chart",
+    "charts-scatter": "Scatter Chart",
+    "charts-area": "Area Chart",
+    "paginator": "Paginator"
+  },
+  "crud": {
+    "pokemon": {
+      "name": {
+        "label": "Name",
+        "placeHolder": "e.g. bulbasaur",
+        "help": "",
+        "success": "Valid",
+        "required": "Name is required",
+        "min": "Name must not be empty"
+      },
+      "height": {
+        "label": "Height",
+        "placeHolder": "",
+        "help": "",
+        "success": "Valid",
+        "required": "Height is required",
+        "min": "Height must be at least 1"
+      },
+      "weight": {
+        "label": "Weight",
+        "placeHolder": "",
+        "help": "",
+        "success": "Valid",
+        "required": "Weight is required",
+        "min": "Weight must be at least 1"
+      },
+      "base_experience": {
+        "label": "Base experience",
+        "placeHolder": "",
+        "help": "",
+        "success": "Valid",
+        "required": "Base experience is required",
+        "min": "Base experience must be at least 0"
+      }
+    },
+    "species": {
+      "name": {
+        "label": "Name",
+        "placeHolder": "e.g. bulbasaur",
+        "help": "",
+        "success": "Valid",
+        "required": "Name is required",
+        "min": "Name must not be empty"
+      },
+      "capture_rate": {
+        "label": "Capture Rate",
+        "placeHolder": "",
+        "help": "",
+        "success": "Valid",
+        "required": "Capture rate is required",
+        "min": "Capture rate must be at least 0"
+      },
+      "base_happiness": {
+        "label": "Base Happiness",
+        "placeHolder": "",
+        "help": "",
+        "success": "Valid"
+      },
+      "gender_rate": {
+        "label": "Gender Rate",
+        "placeHolder": "",
+        "help": "",
+        "success": "Valid",
+        "required": "Gender rate is required"
+      }
+    },
+    "type": {
+      "name": {
+        "label": "Name",
+        "placeHolder": "e.g. fire",
+        "help": "",
+        "success": "Valid",
+        "required": "Name is required"
+      }
+    },
+    "pageSize": {
+      "label": "Elements per page",
+      "placeHolder": "",
+      "help": "",
+      "success": ""
+    }
+  },
+  "ks": {
+    "text": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "checkbox": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "radio": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "number": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "datalist": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "email": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "password": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "search": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "tel": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "url": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "time": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "date": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "datetime": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "color": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "range": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "textarea": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "select": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "select-object": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "file": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "month": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    },
+    "week": {
+      "label": "Label",
+      "help": "Help",
+      "success": "Success",
+      "required": "Required",
+      "placeHolder": "Placeholder"
+    }
+  }
+}
