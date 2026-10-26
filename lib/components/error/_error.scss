@@ -1,5 +1,9 @@
 #rdu-error-dialog {
   padding: var(--rdu-error-dialog-padding);
+  width: var(--rdu-error-dialog-width, fit-content);
+  overflow: var(--rdu-error-dialog-overflow, auto);
+  background: var(--rdu-error-dialog-background, Canvas);
+  color: var(--rdu-error-dialog-color, CanvasText);
   font-family: var(--rdu-error-dialog-font-family);
   border: var(--rdu-error-dialog-border);
   border-color: var(--rdu-error-dialog-border-color);
@@ -8,15 +12,18 @@
 
   &::backdrop {
     background: var(--rdu-error-dialog-backdrop-background);
+    backdrop-filter: var(--rdu-error-dialog-backdrop-filter);
   }
 
   .rdu-dialog-header {
     padding: var(--rdu-error-dialog-header-padding, 1rem);
     background: var(--rdu-error-dialog-header-background);
+    border-bottom: var(--rdu-error-dialog-header-border-bottom, 0);
     position: relative;
     flex-direction: column;
 
     h4 {
+      margin: var(--rdu-error-dialog-header-h4-margin, 0);
       font-size: var(--rdu-error-dialog-header-h4-font-size);
       line-height: var(--rdu-error-dialog-header-h4-line-height);
       font-weight: var(--rdu-error-dialog-header-h4-font-weight);
@@ -27,6 +34,7 @@
     }
 
     h5 {
+      margin: var(--rdu-error-dialog-header-h5-margin, 0);
       font-size: var(--rdu-error-dialog-header-h5-font-size);
       line-height: var(--rdu-error-dialog-header-h4-line-height);
       font-weight: var(--rdu-error-dialog-header-h4-font-weight);
@@ -90,6 +98,7 @@
   .rdu-dialog-footer {
     padding: var(--rdu-error-dialog-footer-padding, 1rem);
     background: var(--rdu-error-dialog-footer-background);
+    border-top: var(--rdu-error-dialog-footer-border-top, 0);
     justify-content: center;
 
     button {

@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../../app/store'
 
-interface PokemonSpeciesState {
+export interface PokemonSpeciesState {
   currentPage: number
   pageSize: number
   searchTerm: string

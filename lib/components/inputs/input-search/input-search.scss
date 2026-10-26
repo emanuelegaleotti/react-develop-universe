@@ -10,6 +10,12 @@
     letter-spacing: var(--rdu-input-label-letter-spacing);
     color: var(--rdu-input-label-color);
     font-family: var(--rdu-input-label-font-family);
+    position: var(--rdu-input-label-position, static);
+    width: var(--rdu-input-label-width, auto);
+    height: var(--rdu-input-label-height, auto);
+    overflow: var(--rdu-input-label-overflow, visible);
+    clip-path: var(--rdu-input-label-clip-path, none);
+    white-space: var(--rdu-input-label-white-space, normal);
     @media (prefers-reduced-motion: no-preference) {
       transition: all 0.3s;
     }
@@ -25,7 +31,7 @@
     letter-spacing: var(--rdu-input-letter-spacing);
     font-family: var(--rdu-input-font-family);
     background: var(--rdu-input-background);
-    border: var(--rdu-input-border-width);
+    border: var(--rdu-input-border-width, var(--rdu-input-border));
     border-color: var(--rdu-input-border-color);
     border-radius: var(--rdu-input-border-radius);
     color: var(--rdu-input-color, inherit);

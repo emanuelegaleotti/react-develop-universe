@@ -6,20 +6,24 @@
 
   th,
   td {
-    padding: 0.75rem 1rem;
+    padding: var(--rdu-table-cell-padding, 0.75rem 1rem);
     text-align: left;
-    border-bottom: 1px solid palette.$gray-10;
+    border-bottom: 1px solid var(--rdu-table-border-color, #{palette.$gray-10});
   }
 
   th {
     font-size: 0.8125rem;
     font-weight: 600;
-    color: palette.$gray-50;
+    color: var(--rdu-table-head-color, #{palette.$gray-50});
     text-transform: uppercase;
     letter-spacing: 0.04em;
   }
 
   tbody tr:hover {
-    background: palette.$gray-5;
+    background: var(--rdu-table-row-hover-background, #{palette.$gray-5});
+  }
+
+  tbody tr:last-child td {
+    border-bottom-width: var(--rdu-table-last-row-border-width, 1px);
   }
 }

@@ -1,39 +1,48 @@
+import { useState } from 'react'
 import * as z from 'zod'
-import {SubmitHandler, useForm} from "react-hook-form";
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import './input-color.scss'
-import {zodResolver} from "@hookform/resolvers/zod";
-import {RDU_InputColor} from '../../../../lib/main.ts';
-import {RDU_Button} from "../../../../lib/components/buttons/button/Button.tsx";
 
-export function InputColor() {
-    const ColorForm = z.object({
-        color: z.string({message: 'required'}),
-    })
+import { RDU_InputColor } from '../../../../lib/main.ts'
+import { ControlState } from '../../../shared/control-state/control-state.tsx'
 
-    type FormControl = z.infer<typeof ColorForm>;
+const ColorForm = z.object({
+  color: z.string().nonempty({ message: 'required' })
+})
 
-    const {
-        register, handleSubmit, formState
-    } = useForm<FormControl>({
-        resolver: zodResolver(ColorForm),
-        mode: 'onChange'
-    });
+type FormControl = z.infer<typeof ColorForm>
 
-    const onSubmit: SubmitHandler<FormControl> = (data: FormControl) => {
-        console.log(data);
-    }
+export function InputColor () {
+  const [disabled, setDisabled] = useState(false)
 
-    return (
-        <section className={'ks-grid-main'} id={'ks-input-color'}>
-            <h2>Input Color</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <RDU_InputColor name={'color'} feature={'ks'} id={'test'} autoComplete={'none'}
-                               disabled={false} successMsg={true} helpMsg={true} errorMsg={true} register={register}
-                               formState={formState} schema={ColorForm}></RDU_InputColor>
-                <RDU_Button type={'submit'} text={'submit'}/>
-            </form>
-        </section>
-    );
+  const { register, formState, control } = useForm<FormControl>({
+    resolver: zodResolver(ColorForm),
+    mode: 'onChange',
+    defaultValues: { color: '' }
+  })
 
-
+  return (
+    <section id="ks-input-color">
+      <h2>Input color</h2>
+      <p>Selettore di colore nativo. Il valore è una stringa esadecimale <code>#rrggbb</code>.</p>
+      <form onSubmit={event => event.preventDefault()}>
+        <h3>Esempio</h3>
+        <RDU_InputColor name={'color'}
+                        feature={'ks'}
+                        id={'color'}
+                        autoComplete={'none'}
+                        disabled={disabled}
+                        errorMsg={true}
+                        successMsg={true}
+                        helpMsg={true}
+                        register={register}
+                        formState={formState}
+                        schema={ColorForm}
+        />
+      </form>
+      <ControlState control={control} name="color" schema={ColorForm} disabled={disabled}
+                     onToggleDisabled={() => setDisabled(value => !value)} />
+    </section>
+  )
 }

@@ -1,7 +1,7 @@
-import './pager.scss'
+import "./pager.scss"
 import {RDU_PagerComponent} from "../../../lib/components/pager/Pager.tsx";
 import {ChevronLeft, ChevronRight, FirstPage, LastPage} from "../../shared/icons.tsx";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 type ContentItemPagerComponent = {
   id: number,
@@ -25,28 +25,17 @@ const contentPagerComponent: ContentItemPagerComponent[] = [
   {id: 40, content: 'Content 40'}, {id: 41, content: 'Content 41'}, {id: 42, content: 'Content 42'},
 ]
 
+const PAGE_SIZE = 15
+
 export function Pager() {
   const [page, setPage] = useState(1)
-  const printDemo = contentPagerComponent
-  const [results, setResults] = useState<ContentItemPagerComponent[]>([])
-  const pageSize = 15
-  const count = printDemo.length
-
-  useEffect(() => {
-    getItems()
-  }, [page, pageSize]);
-
-  const onPageSelected = (pageNumber: number) => {
-    setPage(pageNumber)
-  }
-
-  const getItems = () => {
-    setResults(() => printDemo.filter(f => f.id > ((page - 1) * pageSize) && f.id <= (pageSize * page)))
-  }
+  const results = contentPagerComponent.filter(f => f.id > (page - 1) * PAGE_SIZE && f.id <= PAGE_SIZE * page)
 
   return (
-    <section className="ks-grid-main" id='ks-pager'>
+    <section id="ks-pager">
       <h2>Pager</h2>
+      <p>Paginazione client-side con <code>RDU_PagerComponent</code>: indice, dimensione e totale.</p>
+      <article>
       <table className="rdu-table">
         <thead>
         <tr>
@@ -55,8 +44,8 @@ export function Pager() {
         </tr>
         </thead>
         <tbody>
-        { results.map((item, index) => (
-          <tr key={index}>
+        { results.map(item => (
+          <tr key={item.id}>
             <td>{item.id}</td>
             <td>{item.content}</td>
           </tr>
@@ -65,13 +54,14 @@ export function Pager() {
       </table>
       <RDU_PagerComponent
         pageIndex={page}
-        pageSize={pageSize}
-        totalItems={count}
-        whenPageSelected={onPageSelected}
-        prevPage={ChevronLeft()}
-        nextPage={ChevronRight()}
-        firstPage={FirstPage()}
-        lastPage={LastPage()}/>
+        pageSize={PAGE_SIZE}
+        totalItems={contentPagerComponent.length}
+        whenPageSelected={setPage}
+        prevPage={<ChevronLeft />}
+        nextPage={<ChevronRight />}
+        firstPage={<FirstPage />}
+        lastPage={<LastPage />}/>
+      </article>
     </section>
   )
 }

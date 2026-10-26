@@ -471,17 +471,4 @@
     --rdu-chat-padding: 10px 14px;
     --rdu-chat-max-width: 70%;
     --rdu-chat-margin: 8px 0;
-
-    /* =========================
-       Paginator
-    ========================== */
-    --rdu-paginator-gap: 0.25rem;
-    --rdu-paginator-button-min-size: 1.5rem;
-    --rdu-paginator-button-border: 0;
-    --rdu-paginator-button-background: transparent;
-    --rdu-paginator-button-color: currentColor;
-    --rdu-paginator-disabled-opacity: 0.5;
-    --rdu-paginator-current-page-font-weight: 700;
-    --rdu-paginator-current-page-text-decoration: underline;
-    --rdu-paginator-current-page-text-underline-offset: 0.2em;
 }

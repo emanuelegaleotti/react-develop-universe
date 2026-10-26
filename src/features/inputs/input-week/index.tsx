@@ -1,39 +1,48 @@
+import { useState } from 'react'
 import * as z from 'zod'
-import {SubmitHandler, useForm} from "react-hook-form";
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import './input-week.scss'
-import {zodResolver} from "@hookform/resolvers/zod";
-import {RDU_InputWeek} from '../../../../lib/main.ts';
-import {RDU_Button} from "../../../../lib/components/buttons/button/Button.tsx";
 
-export function InputWeek() {
-    const WeekForm = z.object({
-        week: z.string().nonempty({ message: "required"}),
-    })
+import { RDU_InputWeek } from '../../../../lib/main.ts'
+import { ControlState } from '../../../shared/control-state/control-state.tsx'
 
-    type FormControl = z.infer<typeof WeekForm>;
+const WeekForm = z.object({
+  week: z.string().nonempty({ message: 'required' })
+})
 
-    const {
-        register, handleSubmit, formState
-    } = useForm<FormControl>({
-        resolver: zodResolver(WeekForm),
-        mode: 'onChange'
-    });
+type FormControl = z.infer<typeof WeekForm>
 
-    const onSubmit: SubmitHandler<FormControl> = (data: FormControl) => {
-        console.log(data);
-    }
+export function InputWeek () {
+  const [disabled, setDisabled] = useState(false)
 
-    return (
-        <section className={'ks-grid-main'} id={'ks-input-week'}>
-            <h2>Input Week</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <RDU_InputWeek name={'week'} feature={'ks'} id={'test'} autoComplete={'none'}
-                               disabled={false} successMsg={true} helpMsg={true} errorMsg={true} register={register}
-                               formState={formState} schema={WeekForm}></RDU_InputWeek>
-                <RDU_Button type={'submit'} text={'submit'}/>
-            </form>
-        </section>
-    );
+  const { register, formState, control } = useForm<FormControl>({
+    resolver: zodResolver(WeekForm),
+    mode: 'onChange',
+    defaultValues: { week: '' }
+  })
 
-
+  return (
+    <section id="ks-input-week">
+      <h2>Input week</h2>
+      <p>Selettore di settimana dell'anno. Il valore è una stringa <code>yyyy-Www</code>.</p>
+      <form onSubmit={event => event.preventDefault()}>
+        <h3>Esempio</h3>
+        <RDU_InputWeek name={'week'}
+                       feature={'ks'}
+                       id={'week'}
+                       autoComplete={'none'}
+                       disabled={disabled}
+                       errorMsg={true}
+                       successMsg={true}
+                       helpMsg={true}
+                       register={register}
+                       formState={formState}
+                       schema={WeekForm}
+        />
+      </form>
+      <ControlState control={control} name="week" schema={WeekForm} disabled={disabled}
+                     onToggleDisabled={() => setDisabled(value => !value)} />
+    </section>
+  )
 }

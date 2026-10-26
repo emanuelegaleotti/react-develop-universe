@@ -1,30 +1,24 @@
+import './type-delete.scss'
+
 import { useAppDispatch } from '../../../../app/hooks.ts'
-import { RDU_Button } from '../../../../../lib/components/buttons/button/Button.tsx'
+import { CrudConfirm } from '../../shared/crud-confirm.tsx'
 import { deleteType } from '../type-slice.ts'
 
 interface TypeDeleteProps {
   name: string
+  onDeleted: () => void
   onCancel: () => void
 }
 
-export function TypeDelete({ name, onCancel }: TypeDeleteProps) {
+export function TypeDelete({ name, onDeleted, onCancel }: TypeDeleteProps) {
   const dispatch = useAppDispatch()
 
-  const handleDelete = () => {
-    dispatch(deleteType(name))
-    onCancel()
-  }
-
   return (
-    <>
-      <div className="rdu-dialog-body">
-        <p>Sei sicuro di voler eliminare <strong>{name}</strong>?</p>
-        <p>Questa operazione non può essere annullata.</p>
-      </div>
-      <div className="rdu-dialog-footer">
-        <RDU_Button type="button" variant="light" text="cancel" onClick={onCancel} />
-        <RDU_Button type="button" variant="error" text="delete" onClick={handleDelete} />
-      </div>
-    </>
+    <CrudConfirm
+      id="ks-type-delete"
+      name={name}
+      onConfirm={() => dispatch(deleteType(name)).then(onDeleted)}
+      onCancel={onCancel}
+    />
   )
 }

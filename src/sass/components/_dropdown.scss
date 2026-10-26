@@ -1,0 +1,31 @@
+@use 'sass:map';
+@use '../abstract/functions' as functions;
+@use '../base/palette' as palette;
+@use '../base/spaces' as spaces;
+
+.rdu-dropdown {
+  --rdu-dropdown-button-gap: #{map.get(spaces.$spaces, '3xs')};
+  --rdu-dropdown-button-padding: #{map.get(spaces.$spaces, '3xs')} #{map.get(spaces.$spaces, md)};
+  --rdu-dropdown-button-border: 1px solid;
+  --rdu-dropdown-button-border-color: #{palette.$gray-15};
+  --rdu-dropdown-button-border-radius: #{functions.toRem(8)};
+  --rdu-dropdown-button-background: #{palette.$white};
+  --rdu-dropdown-button-color: #{palette.$gray-90};
+  --rdu-dropdown-button-font-family: var(--rdu-font-family);
+  --rdu-dropdown-button-font-size: #{functions.toRem(16)};
+  --rdu-dropdown-button-font-weight: 500;
+  --rdu-dropdown-button-line-height: 1.5;
+  --rdu-dropdown-button-hover-background: #{palette.$gray-5};
+  --rdu-dropdown-button-hover-border-color: #{palette.$gray-20};
+  --rdu-dropdown-menu-offset: #{map.get(spaces.$spaces, '4xs')};
+  --rdu-dropdown-menu-padding: #{map.get(spaces.$spaces, xs)};
+  --rdu-dropdown-menu-border: 1px solid;
+  --rdu-dropdown-menu-border-color: #{palette.$gray-10};
+  --rdu-dropdown-menu-border-radius: #{functions.toRem(12)};
+  --rdu-dropdown-menu-background: #{palette.$white};
+  --rdu-dropdown-menu-color: #{palette.$gray-80};
+  --rdu-dropdown-menu-font-family: var(--rdu-font-family);
+  --rdu-dropdown-menu-font-size: #{functions.toRem(15)};
+  --rdu-dropdown-menu-line-height: 1.5;
+  --rdu-dropdown-menu-box-shadow: 0 12px 32px rgb(0 0 0 / 14%);
+}

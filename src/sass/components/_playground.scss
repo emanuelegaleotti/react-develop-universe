@@ -1,0 +1,25 @@
+@use '../abstract/breakpoints' as breakpoints;
+
+// Playground layout shared by the input pages: form on the left, live state on the right.
+// Included by the stylesheet of each input page.
+@mixin layout {
+  > form {
+    @include breakpoints.media-breakpoint-up(lg) {
+      grid-column: 1 / span 6;
+    }
+  }
+
+  > form ~ article {
+    @include breakpoints.media-breakpoint-up(lg) {
+      grid-column: 7 / -1;
+      grid-row: 2;
+      align-self: start;
+    }
+  }
+
+  > h2 + p ~ form ~ article {
+    @include breakpoints.media-breakpoint-up(lg) {
+      grid-row: 3;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+#ks-loader {
+  .ks-loader-result {
+    padding: var(--ks-space-xs) var(--ks-space-md);
+    border-radius: .5rem;
+    border-left: .25rem solid var(--ks-gray-400);
+    background: var(--ks-gray-100);
+    font-size: .9375rem;
+
+    &[data-state='ok'] {
+      border-left-color: var(--ks-color-success);
+    }
+
+    &[data-state='error'] {
+      border-left-color: var(--ks-color-error);
+    }
+  }
+
+  .ks-loader-counter {
+    font-variant-numeric: tabular-nums;
+  }
+}

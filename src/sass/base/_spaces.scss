@@ -8,5 +8,7 @@ $spaces: (
         sm: functions.toRem(14),
         md: functions.toRem(16),
         lg: functions.toRem(24),
+        '2xl': functions.toRem(32),
         xl: functions.toRem(40),
+        '3xl': functions.toRem(48),
 ) !default;

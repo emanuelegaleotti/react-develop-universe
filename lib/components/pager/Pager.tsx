@@ -1,5 +1,5 @@
 import './pager.scss'
-import {ReactNode, useState} from "react";
+import {ReactNode} from "react";
 import {RDU_Button} from "../buttons/button/Button.tsx";
 
 interface RduPagerProps {
@@ -23,8 +23,7 @@ export function RDU_PagerComponent({
   firstPage,
   lastPage
 }: RduPagerProps) {
-  const [currentPage, setCurrentPage] = useState<number>(pageIndex)
-
+  const currentPage = pageIndex
 
   const pagesLength = (() => {
     const total = totalItems
@@ -61,23 +60,24 @@ export function RDU_PagerComponent({
   }
 
   const setPage = (page: number) => {
-    setCurrentPage(page)
     whenPageSelected(page)
   }
 
+  const lastPageIndex = pagesLength()
+
   return (
-    <nav className="rdu-pager">
-      <RDU_Button id={"firstPage"} text={"firstPage"} type={"button"} onClick={() => setPage(1)} disabled={currentPage === 1} variant={"primary"} icon={firstPage} iconPosition={'only'}/>
-      <RDU_Button id={"prevPage"} text={"prevPage"} type={"button"} onClick={() => setPage(currentPage-1)} disabled={currentPage === 1} variant={"primary"} icon={prevPage} iconPosition={'only'}/>
+    <nav className="rdu-pager" aria-label="pagination">
+      <RDU_Button id={"firstPage"} text={"firstPage"} type={"button"} onClick={() => setPage(1)} disabled={currentPage <= 1} variant={"primary"} icon={firstPage} iconPosition={'only'}/>
+      <RDU_Button id={"prevPage"} text={"prevPage"} type={"button"} onClick={() => setPage(currentPage-1)} disabled={currentPage <= 1} variant={"primary"} icon={prevPage} iconPosition={'only'}/>
       <ul className="pagination">
-        { pages().map((page, i) => (
-            <li key={i} className={`${page === currentPage ? 'active' : ''}`}>
-              <a onClick={() => setPage(page)}>{ page }</a>
+        { pages().map((page) => (
+            <li key={page} className={`${page === currentPage ? 'active' : ''}`}>
+              <button type="button" aria-current={page === currentPage ? 'page' : undefined} onClick={() => setPage(page)}>{ page }</button>
             </li>
         ))}
       </ul>
-      <RDU_Button id={"nextPage"} text={"nextPage"} type={"button"} onClick={() => setPage(currentPage+1)} disabled={currentPage === pagesLength()} variant={"primary"} icon={nextPage} iconPosition={'only'}/>
-      <RDU_Button id={"lastPage"} text={"lastPage"} type={"button"} onClick={() => setPage(pagesLength())} disabled={currentPage === pagesLength()} variant={"primary"} icon={lastPage} iconPosition={'only'}/>
+      <RDU_Button id={"nextPage"} text={"nextPage"} type={"button"} onClick={() => setPage(currentPage+1)} disabled={currentPage >= lastPageIndex} variant={"primary"} icon={nextPage} iconPosition={'only'}/>
+      <RDU_Button id={"lastPage"} text={"lastPage"} type={"button"} onClick={() => setPage(lastPageIndex)} disabled={currentPage >= lastPageIndex} variant={"primary"} icon={lastPage} iconPosition={'only'}/>
     </nav>
   )
 }

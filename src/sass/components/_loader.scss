@@ -1,0 +1,10 @@
+@use "sass:map";
+@use '../base/palette' as palette;
+@use '../base/spaces' as spaces;
+@use '../abstract/functions' as functions;
+
+#rdu-loader {
+  --rdu-loader-background: #{map.get(palette.$grays, 100)};
+  --rdu-loader-backdrop-filter: none;
+  --rdu-loader-z-index: 10000;
+}

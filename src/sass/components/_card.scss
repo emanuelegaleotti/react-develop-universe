@@ -1,0 +1,40 @@
+@use "sass:map";
+@use '../base/palette' as palette;
+@use '../base/spaces' as spaces;
+@use '../abstract/functions' as functions;
+
+.rdu-card {
+  --rdu-card-width: 100%;
+  --rdu-card-padding: 0;
+  --rdu-card-overflow: hidden;
+  --rdu-card-border-color: #{palette.$gray-15};
+  --rdu-card-border-radius: #{functions.toRem(12)};
+  --rdu-card-background: #{palette.$white};
+  --rdu-card-color: #{palette.$gray-90};
+  --rdu-card-font-family: var(--rdu-font-family);
+  --rdu-card-font-size: #{functions.toRem(16)};
+  --rdu-card-font-weight: 400;
+  --rdu-card-outlined-background: transparent;
+  --rdu-card-elevated-border-color: transparent;
+  --rdu-card-elevated-box-shadow: 0 8px 24px rgb(35 39 47 / 12%);
+  --rdu-card-accent-border-color: #{map.get(palette.$palette, primary)};
+  --rdu-card-accent-background: #{palette.$blue-5};
+  --rdu-card-header-padding: #{map.get(spaces.$spaces, md)} #{map.get(spaces.$spaces, lg)};
+  --rdu-card-header-background: #{palette.$gray-5};
+  --rdu-card-header-color: #{palette.$gray-90};
+  --rdu-card-header-border-bottom: 1px solid #{palette.$gray-10};
+  --rdu-card-header-font-size: #{functions.toRem(18)};
+  --rdu-card-header-font-weight: 600;
+  --rdu-card-body-padding: #{map.get(spaces.$spaces, lg)};
+  --rdu-card-body-background: transparent;
+  --rdu-card-body-color: #{palette.$gray-70};
+  --rdu-card-body-font-size: #{functions.toRem(16)};
+  --rdu-card-body-font-weight: 400;
+  --rdu-card-footer-padding: #{map.get(spaces.$spaces, md)} #{map.get(spaces.$spaces, lg)};
+  --rdu-card-footer-background: #{palette.$gray-5};
+  --rdu-card-footer-color: #{palette.$gray-50};
+  --rdu-card-footer-border-top: 1px solid #{palette.$gray-10};
+  --rdu-card-footer-font-size: #{functions.toRem(14)};
+  --rdu-card-footer-font-weight: 500;
+  --rdu-card-footer-gap: #{map.get(spaces.$spaces, xs)};
+}

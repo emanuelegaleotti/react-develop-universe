@@ -1,0 +1,9 @@
+@use '../../../../sass/components/form-page' as form-page;
+
+#ks-type-edit {
+  @include form-page.form-page;
+
+  .ks-crud-fields {
+    max-width: 32rem;
+  }
+}

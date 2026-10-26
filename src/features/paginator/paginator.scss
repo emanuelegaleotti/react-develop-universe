@@ -1,9 +1,0 @@
-#ks-paginator {
-  grid-template-rows: min-content min-content min-content;
-
-  h2,
-  p,
-  .rdu-paginator {
-    grid-column: 1 / -1;
-  }
-}

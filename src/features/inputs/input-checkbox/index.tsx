@@ -1,47 +1,50 @@
-import { RDU_InputCheckbox } from '../../../../lib/components/inputs/input-checkbox/input-checkbox.tsx'
+import { useState } from 'react'
 import * as z from 'zod'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { RDU_Button } from '../../../../lib/components/buttons/button/Button.tsx'
 import './input-checkbox.scss'
 
+import { RDU_InputCheckbox } from '../../../../lib/components/inputs/input-checkbox/input-checkbox.tsx'
+import { ControlState } from '../../../shared/control-state/control-state.tsx'
+
+// The box must be checked: a plain boolean would also accept false
+const CheckboxForm = z.object({
+  checkbox: z.boolean().refine(value => value, { message: 'required' })
+})
+
+type FormControl = z.infer<typeof CheckboxForm>
+
 export function InputCheckbox () {
-  const CheckboxForm = z.object({
-    checkbox: z.boolean(),
-  })
+  const [disabled, setDisabled] = useState(false)
 
-  type FormControl = z.infer<typeof CheckboxForm>;
-
-  const {
-    register,
-    handleSubmit,
-    formState
-  } = useForm<FormControl>({
+  const { register, formState, control } = useForm<FormControl>({
     resolver: zodResolver(CheckboxForm),
-    mode: 'onChange'
+    mode: 'onChange',
+    defaultValues: { checkbox: false }
   })
-
-  const onSubmit: SubmitHandler<FormControl> = (data: FormControl) =>
-    console.log(data)
 
   return (
-    <section className="ks-grid-main" id={'ks-input-checkbox'}>
+    <section id="ks-input-checkbox">
       <h2>Input checkbox</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <RDU_InputCheckbox id={'test'}
-                          name={'checkbox'}
-                          label={'checkbox'}
-                          disabled={false}
-                          feature={'ks'}
-                          register={register}
-                          errorMsg={true}
-                          successMsg={true}
-                          helpMsg={true}
-                          formState={formState}
-                          schema={CheckboxForm}
-        ></RDU_InputCheckbox>
-        <RDU_Button type={'submit'} text={'submit'}></RDU_Button>
+      <p>Casella booleana. Per obbligare l'utente a spuntarla si usa <code>refine</code>, perché un <code>boolean</code> semplice considera valido anche <code>false</code>.</p>
+      <form onSubmit={event => event.preventDefault()}>
+        <h3>Esempio</h3>
+        <RDU_InputCheckbox id={'checkbox'}
+                           name={'checkbox'}
+                           label={'checkbox'}
+                           feature={'ks'}
+                           autoComplete={'none'}
+                           disabled={disabled}
+                           errorMsg={true}
+                           successMsg={true}
+                           helpMsg={true}
+                           register={register}
+                           formState={formState}
+                           schema={CheckboxForm}
+        />
       </form>
+      <ControlState control={control} name="checkbox" schema={CheckboxForm} disabled={disabled}
+                    onToggleDisabled={() => setDisabled(value => !value)} />
     </section>
   )
 }

@@ -1,3 +1,5 @@
+import './pokemon-detail.scss'
+
 import { useEffect, useState } from 'react'
 import type { Pokemon } from '../pokemon.model'
 import { pokemonService } from '../pokemon.service'
@@ -10,75 +12,75 @@ export function PokemonDetail({ name }: PokemonDetailProps) {
   const [pokemon, setPokemon] = useState<Pokemon | null>(null)
 
   useEffect(() => {
-    pokemonService.getByName(name).then(setPokemon)
+    let active = true
+    pokemonService.getByName(name).then(data => {
+      if (active) setPokemon(data)
+    })
+    return () => { active = false }
   }, [name])
 
   if (!pokemon) return null
 
   return (
-    <article className="rdu-offcanvas-body">
-      <hgroup id="offcanvas-pokemon-title">
-        <p>#{pokemon.id}</p>
-        <h3>{pokemon.name}</h3>
-      </hgroup>
+    <article className="ks-detail" id="ks-pokemon-detail">
+      <header className="ks-detail-hero">
+        {pokemon.sprites.front_default && (
+          <img src={pokemon.sprites.front_default} alt={pokemon.name} width={80} height={80} loading="lazy" />
+        )}
+        <div>
+          <p>#{pokemon.id}</p>
+          <h3>{pokemon.name}</h3>
+        </div>
+        {pokemon.sprites.front_shiny && (
+          <div className="ks-detail-sprites">
+            <img src={pokemon.sprites.front_shiny} alt={`${pokemon.name} shiny`} width={56} height={56} loading="lazy" />
+          </div>
+        )}
+      </header>
 
-      {pokemon.sprites.front_default && (
-        <figure>
-          <img src={pokemon.sprites.front_default} alt={pokemon.name} width={96} height={96} loading="lazy" />
-          {pokemon.sprites.front_shiny && (
-            <img src={pokemon.sprites.front_shiny} alt={`${pokemon.name} shiny`} width={96} height={96} loading="lazy" />
-          )}
-        </figure>
-      )}
+      <dl className="ks-detail-facts">
+        <div>
+          <dt>Altezza</dt>
+          <dd>{pokemon.height / 10} <small>m</small></dd>
+        </div>
+        <div>
+          <dt>Peso</dt>
+          <dd>{pokemon.weight / 10} <small>kg</small></dd>
+        </div>
+        <div>
+          <dt>Esperienza base</dt>
+          <dd>{pokemon.base_experience}</dd>
+        </div>
+      </dl>
 
       <section>
-        <dl id="info-pokemon-section">
-          <div className="info-pokemon">
-            <dt>Height</dt>
-            <dd>{pokemon.height / 10} m</dd>
-          </div>
-          <div className="info-pokemon">
-            <dt>Weight</dt>
-            <dd>{pokemon.weight / 10} kg</dd>
-          </div>
-          <div className="info-pokemon">
-            <dt>Base Experience</dt>
-            <dd>{pokemon.base_experience}</dd>
-          </div>
-          <div className="info-pokemon">
-            <dt>Types</dt>
-            <dd>{pokemon.types.map(t => t.type.name).join(' / ')}</dd>
-          </div>
-        </dl>
+        <h4>Tipi</h4>
+        <ul className="ks-detail-chips">
+          {pokemon.types.map(t => <li key={t.type.name}>{t.type.name}</li>)}
+        </ul>
       </section>
 
-      <section id="stats">
-        <h3>Stats</h3>
-        <table className="rdu-table">
-          <thead>
-            <tr><th>Stat</th><th>Base</th><th>Effort</th></tr>
-          </thead>
-          <tbody>
-            {pokemon.stats.map(s => (
-              <tr key={s.stat.name}>
-                <td>{s.stat.name}</td>
-                <td>{s.base_stat}</td>
-                <td>{s.effort}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <section>
+        <h4>Statistiche</h4>
+        <div className="ks-detail-list">
+          {pokemon.stats.map(s => (
+            <div className="ks-detail-stat" key={s.stat.name}>
+              <span>{s.stat.name}</span>
+              <output>{s.base_stat}</output>
+              <meter min={0} max={255} value={s.base_stat} />
+            </div>
+          ))}
+        </div>
       </section>
 
-      <section id="abilities">
-        <h3>Abilities</h3>
-        <ul>
+      <section>
+        <h4>Abilità</h4>
+        <ul className="ks-detail-chips">
           {pokemon.abilities.map(a => (
-            <li key={a.ability.name}>{a.ability.name}{a.is_hidden ? ' (hidden)' : ''}</li>
+            <li key={a.ability.name}>{a.ability.name}{a.is_hidden && ' · nascosta'}</li>
           ))}
         </ul>
       </section>
     </article>
   )
 }
-

@@ -1,9 +1,11 @@
+@use 'sass:map';
+@use '../../../sass/base/spaces' as spaces;
+@use '../../../sass/components/playground' as playground;
+
 #ks-input-color {
-  grid-template-rows: min-content min-content min-content;
-  h2 {
-    grid-column: 1/-1;
-  }
-  form {
-    grid-column: span 4;
-  }
+  @include playground.layout;
+
+  --rdu-input-color-padding: #{map.get(spaces.$spaces, '4xs')};
+  --rdu-input-color-height: 2.75rem;
+  --rdu-input-color-cursor: pointer;
 }

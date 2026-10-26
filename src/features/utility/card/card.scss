@@ -1,0 +1,24 @@
+#ks-card-page {
+  .ks-card-single {
+    max-width: 24rem;
+  }
+
+  .ks-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: var(--ks-space-lg);
+
+    figure {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      gap: var(--ks-space-3xs);
+      min-width: 0;
+      margin: 0;
+    }
+
+    figcaption {
+      font-size: .875rem;
+      color: var(--ks-gray-600);
+    }
+  }
+}

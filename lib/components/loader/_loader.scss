@@ -1,20 +1,43 @@
 #rdu-loader {
   position: fixed;
-  top: 0;
-  left: 0;
-  background: var(--rdu-loader-background);
+  inset: 0;
+  background: var(--rdu-loader-background, rgb(0 0 0 / 10%));
+  backdrop-filter: var(--rdu-loader-backdrop-filter, none);
   width: 100vw;
   height: 100vh;
-  z-index: 10000;
+  z-index: var(--rdu-loader-z-index, 10000);
 
-  div {
+  > div {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    inset: 0;
+    display: grid;
+    place-items: center;
   }
 
   img {
     user-select: none;
+  }
+}
+
+.rdu-spinner {
+  display: block;
+  box-sizing: border-box;
+  width: var(--rdu-spinner-size, 3rem);
+  height: var(--rdu-spinner-size, 3rem);
+  border: var(--rdu-spinner-thickness, 0.25rem) solid var(--rdu-spinner-track-color, rgb(0 0 0 / 15%));
+  border-top-color: var(--rdu-spinner-color, currentcolor);
+  border-radius: 50%;
+  animation: rdu-spinner-rotate var(--rdu-spinner-duration, 0.8s) linear infinite;
+}
+
+@keyframes rdu-spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rdu-spinner {
+    animation-duration: calc(var(--rdu-spinner-duration, 0.8s) * 4);
   }
 }

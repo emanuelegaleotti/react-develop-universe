@@ -1,42 +1,50 @@
+import { useState } from 'react'
 import * as z from 'zod'
-import {SubmitHandler, useForm} from "react-hook-form";
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import './input-email.scss'
-import {zodResolver} from "@hookform/resolvers/zod";
-import {RDU_InputEmail} from '../../../../lib/main.ts';
-import {RDU_Button} from "../../../../lib/components/buttons/button/Button.tsx";
 
-export function InputEmail() {
-    const EmailForm = z.object({
-        email: z.email({message: 'required'}).max(30, {message: 'maxLength'}),
-    })
+import { RDU_InputEmail } from '../../../../lib/main.ts'
+import { ControlState } from '../../../shared/control-state/control-state.tsx'
 
-    type FormControl = z.infer<typeof EmailForm>;
+// pipe: the format check runs only on a non empty value, like Validators.email
+const EmailForm = z.object({
+  email: z.string().nonempty({ message: 'required' }).max(30, { message: 'maxLength' }).pipe(z.email({ message: 'email' }))
+})
 
-    const {
-        register, handleSubmit, formState
-    } = useForm<FormControl>({
-        resolver: zodResolver(EmailForm),
-        mode: 'onChange',
-        defaultValues: {
-            email: 'prova@prova.com'
-        }
-    });
+type FormControl = z.infer<typeof EmailForm>
 
-    const onSubmit: SubmitHandler<FormControl> = (data: FormControl) => {
-        console.log(data);
-    }
+export function InputEmail () {
+  const [disabled, setDisabled] = useState(false)
 
-    return (
-        <section className={'ks-grid-main'} id={'ks-input-email'}>
-            <h2>Input Email</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <RDU_InputEmail name={'email'} feature={'ks'} id={'test'} maxLength={30} autoComplete={'none'}
-                               disabled={false} successMsg={true} helpMsg={true} errorMsg={true} register={register}
-                               formState={formState} schema={EmailForm}></RDU_InputEmail>
-                <RDU_Button type={'submit'} text={'submit'}/>
-            </form>
-        </section>
-    );
+  const { register, formState, control } = useForm<FormControl>({
+    resolver: zodResolver(EmailForm),
+    mode: 'onChange',
+    defaultValues: { email: '' }
+  })
 
-
+  return (
+    <section id="ks-input-email">
+      <h2>Input email</h2>
+      <p>Campo email con validazione del formato tramite <code>zod</code> (<code>z.email</code>).</p>
+      <form onSubmit={event => event.preventDefault()}>
+        <h3>Esempio</h3>
+        <RDU_InputEmail name={'email'}
+                        feature={'ks'}
+                        id={'email'}
+                        maxLength={30}
+                        autoComplete={'none'}
+                        disabled={disabled}
+                        errorMsg={true}
+                        successMsg={true}
+                        helpMsg={true}
+                        register={register}
+                        formState={formState}
+                        schema={EmailForm}
+        />
+      </form>
+      <ControlState control={control} name="email" schema={EmailForm} disabled={disabled}
+                    onToggleDisabled={() => setDisabled(value => !value)} />
+    </section>
+  )
 }

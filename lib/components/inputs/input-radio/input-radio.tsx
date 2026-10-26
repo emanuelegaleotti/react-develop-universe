@@ -16,6 +16,8 @@ interface RduInputRadioProps {
   helpMsg?: boolean;
   schema: any;
   labelIsVisible?: boolean;
+  // i18n key of the option label; defaults to `${feature}.${name}.label`
+  radioLabel?: string;
 }
 
 export function RDU_InputRadio ({
@@ -31,6 +33,7 @@ export function RDU_InputRadio ({
   successMsg,
   helpMsg,
   labelIsVisible = true,
+  radioLabel,
 }: RduInputRadioProps) {
   const { t } = useTranslation()
 
@@ -41,6 +44,11 @@ export function RDU_InputRadio ({
         id={id}
         value={value}
         disabled={disabled}
+        className={[
+          errorMsg && formState.errors?.[name] && formState.dirtyFields[name] ? 'rdu-is-invalid' : '',
+          successMsg && !formState.errors?.[name] && formState.dirtyFields[name] ? 'rdu-is-valid' : '',
+          helpMsg ? 'rdu-show-help' : ''
+        ].join(' ')}
         autoComplete={autoComplete}
         aria-placeholder={ t(`${feature}.${name}.placeHolder`) }
         aria-disabled={disabled}
@@ -53,7 +61,7 @@ export function RDU_InputRadio ({
       />
       {labelIsVisible && (
         <label htmlFor={id} id={`${id}-label`} className={'rdu-radio-label'}>
-          { t(`${feature}.${name}.label`) }
+          { t(radioLabel ?? `${feature}.${name}.label`) }
         </label>
       )}
       {

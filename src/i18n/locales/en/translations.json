@@ -30,13 +30,54 @@
       "firstPage": "First",
       "prevPage": "Previous",
       "nextPage": "Next",
-      "lastPage": "Last"
+      "lastPage": "Last",
+      "enable": "Enable",
+      "disable": "Disable",
+      "send": "Send",
+      "set-value": "Set value",
+      "ghost": "Ghost",
+      "small": "Small",
+      "default": "Default",
+      "large": "Large",
+      "download": "Download",
+      "continue": "Continue",
+      "add": "Add",
+      "details": "Details",
+      "confirm": "Confirm",
+      "open-dialog": "Open dialog",
+      "show-error": "Show error",
+      "export-csv": "Export CSV",
+      "export-pdf": "Export PDF",
+      "toast-top-left": "↖ Top Left (4s)",
+      "toast-top-center": "↑ Top Center (3s)",
+      "toast-top-right": "↗ Top Right (4s)",
+      "toast-bottom-left": "↙ Bottom Left (persistent)",
+      "toast-bottom-center": "↓ Bottom Center (3s)",
+      "toast-bottom-right": "↘ Bottom Right (5s)",
+      "popover-bottom": "Bottom (default)",
+      "popover-top": "Top",
+      "popover-right": "Right",
+      "popover-left": "Left",
+      "popover-flip": "Flip upwards",
+      "open-bottom-sheet": "Open",
+      "notification-request": "Request permission",
+      "notification-send": "Send test notification",
+      "notification-close": "Close notification",
+      "retry": "Retry",
+      "call": "Call",
+      "show-loader": "Show loader for 3 seconds",
+      "show-nested-loaders": "Show two stacked loaders",
+      "toast-hide": "Close the active toast"
     },
-    "paginator": {
-      "label": "Pagination",
-      "first-page": "First page",
-      "last-page": "Last page",
-      "status": "Page {{currentPage}} of {{totalPages}}"
+    "chat-form": {
+      "textarea": {
+        "label": "Write a message",
+        "placeholder": "Write a message…"
+      },
+      "loading": "Sending"
+    },
+    "chat": {
+      "help": "Answers may contain mistakes. Always double-check important information."
     }
   },
   "navigation": {
@@ -74,8 +115,7 @@
     "charts-line": "Line Chart",
     "charts-pie": "Pie Chart",
     "charts-scatter": "Scatter Chart",
-    "charts-area": "Area Chart",
-    "paginator": "Paginator"
+    "charts-area": "Area Chart"
   },
   "crud": {
     "pokemon": {
@@ -179,7 +219,13 @@
       "help": "Help",
       "success": "Success",
       "required": "Required",
-      "placeHolder": "Placeholder"
+      "placeHolder": "Placeholder",
+      "options": {
+        "white": "White",
+        "red": "Red",
+        "black": "Black",
+        "blue": "Blue"
+      }
     },
     "number": {
       "label": "Label",
@@ -291,7 +337,10 @@
       "help": "Help",
       "success": "Success",
       "required": "Required",
-      "placeHolder": "Placeholder"
+      "placeHolder": "Placeholder",
+      "buttonAddFile": "Add file",
+      "buttonRemove": "Remove file",
+      "dropMessage": "Drop files here or"
     },
     "month": {
       "label": "Label",
@@ -306,6 +355,20 @@
       "success": "Success",
       "required": "Required",
       "placeHolder": "Placeholder"
+    }
+  },
+  "error": {
+    "403": {
+      "title": "Access denied",
+      "message": "You do not have permission to view this resource."
+    },
+    "404": {
+      "title": "Not found",
+      "message": "The requested resource does not exist or has been moved."
+    },
+    "500": {
+      "title": "Server error",
+      "message": "Something went wrong. Please try again later."
     }
   }
 }

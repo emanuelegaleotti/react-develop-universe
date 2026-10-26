@@ -2,13 +2,29 @@
 
 #ks-aside {
   grid-area: a;
-  flex-direction: column;
   display: none;
-  height: 100%;
-  padding: var(--ks-space-md) var(--ks-space-lg);
+  position: fixed;
+  inset: var(--ks-header-height) 0 0;
+  z-index: 15;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding: var(--ks-space-lg) var(--ks-space-md);
   background: var(--ks-gray-100);
-  border-right: 1px solid var(--ks-gray-300);
-  @include breakpoints.media-breakpoint-up(sm) {
-    display: flex;
+
+  &[data-open='true'] {
+    display: block;
+  }
+
+  @include breakpoints.media-breakpoint-up(md) {
+    display: block;
+    position: sticky;
+    inset: auto;
+    top: var(--ks-header-height);
+    align-self: start;
+    height: calc(100vh - var(--ks-header-height));
+    z-index: auto;
+    background: transparent;
+    border-right: 1px solid var(--ks-gray-300);
   }
 }

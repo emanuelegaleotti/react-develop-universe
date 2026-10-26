@@ -1,0 +1,19 @@
+.rdu-picture {
+  display: var(--rdu-picture-display, block);
+  width: fit-content;
+  max-width: var(--rdu-picture-max-width, 100%);
+  overflow: hidden;
+  border: var(--rdu-picture-border, none);
+  border-color: var(--rdu-picture-border-color, transparent);
+  border-radius: var(--rdu-picture-border-radius, 0);
+  box-shadow: var(--rdu-picture-box-shadow, none);
+  background: var(--rdu-picture-background, transparent);
+
+  .rdu-picture-img {
+    display: block;
+    width: var(--rdu-picture-img-width, auto);
+    max-width: 100%;
+    height: auto;
+    object-fit: var(--rdu-picture-object-fit, cover);
+  }
+}

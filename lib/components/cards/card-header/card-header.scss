@@ -1,6 +1,8 @@
 .rdu-card-header {
   padding: var(--rdu-card-header-padding);
   background: var(--rdu-card-header-background);
+  color: var(--rdu-card-header-color, inherit);
+  border-bottom: var(--rdu-card-header-border-bottom, none);
   font-size: var(--rdu-card-header-font-size);
   font-weight: var(--rdu-card-header-font-weight);
 }

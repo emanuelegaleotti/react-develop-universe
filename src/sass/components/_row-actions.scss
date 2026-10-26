@@ -1,0 +1,28 @@
+// Azioni di riga (dettagli, modifica, elimina): pulsanti solo icona senza sfondo.
+// Valorizza solo le custom property dei pulsanti RDU.
+@mixin row-actions {
+  .ks-crud-row-actions {
+    display: inline-flex;
+    gap: var(--ks-space-4xs);
+
+    .rdu-button {
+      --rdu-button-padding: var(--ks-space-3xs);
+      --rdu-button-tertiary-background: transparent;
+      --rdu-button-tertiary-border-color: transparent;
+      --rdu-button-tertiary-color: var(--ks-gray-600);
+      --rdu-button-tertiary-hover-background: var(--ks-gray-300);
+      --rdu-button-tertiary-border-hover-color: transparent;
+      --rdu-button-tertiary-hover-color: var(--ks-gray-900);
+      --rdu-button-danger-background: transparent;
+      --rdu-button-danger-border-color: transparent;
+      --rdu-button-danger-color: var(--ks-gray-600);
+      --rdu-button-danger-hover-background: color-mix(in srgb, var(--ks-color-error) 12%, transparent);
+      --rdu-button-danger-border-hover-color: transparent;
+      --rdu-button-danger-hover-color: var(--ks-color-error);
+    }
+
+    .rdu-button:has(.rdu-button-icon.rdu-only) {
+      --rdu-button-padding: var(--ks-space-3xs);
+    }
+  }
+}

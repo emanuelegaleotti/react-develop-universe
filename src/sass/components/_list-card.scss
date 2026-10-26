@@ -1,0 +1,130 @@
+@use '../abstract/card' as card;
+@use '../abstract/breakpoints' as breakpoints;
+
+// Scheda delle liste: toolbar, tabella e footer in un'unica superficie.
+// Inclusa dallo scss di ogni pagina sotto il suo id: le regole specifiche restano nella pagina.
+@mixin list-card {
+  .ks-crud-card {
+    @include card.card;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+    align-self: start;
+    overflow: hidden;
+    padding: 0;
+    background: var(--ks-gray-100);
+  }
+
+  .ks-crud-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--ks-space-md);
+    padding: var(--ks-space-md) var(--ks-space-lg);
+    border-bottom: 1px solid var(--ks-gray-300);
+
+    form[role='search'] {
+      display: flex;
+      flex: 1 1 18rem;
+      align-items: flex-end;
+      gap: var(--ks-space-xs);
+      max-width: 36rem;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      // La label resta solo per gli screen reader: il placeholder spiega il campo
+      --rdu-input-label-position: absolute;
+      --rdu-input-label-width: 1px;
+      --rdu-input-label-height: 1px;
+      --rdu-input-label-overflow: hidden;
+      --rdu-input-label-clip-path: inset(50%);
+      --rdu-input-label-white-space: nowrap;
+
+      fieldset {
+        flex: 1;
+        min-width: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+    }
+
+    > .rdu-button {
+      margin-inline-start: auto;
+    }
+  }
+
+  .ks-crud-table {
+    overflow-x: auto;
+    --rdu-table-cell-padding: var(--ks-space-2xs) var(--ks-space-lg);
+    --rdu-table-last-row-border-width: 0;
+
+    td.ks-crud-cell-actions,
+    th.ks-crud-cell-actions {
+      text-align: end;
+      white-space: nowrap;
+    }
+
+    td.ks-crud-index {
+      width: 4rem;
+      color: var(--ks-gray-500);
+      font-family: var(--rdu-font-family-mono);
+      font-size: .8125rem;
+    }
+
+    td.ks-crud-name {
+      font-weight: 500;
+      color: var(--ks-gray-900);
+      text-transform: capitalize;
+    }
+  }
+
+  .ks-crud-empty {
+    padding: var(--ks-space-xl) var(--ks-space-lg);
+    text-align: center;
+    color: var(--ks-gray-600);
+  }
+
+  .ks-crud-footer {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    justify-items: center;
+    gap: var(--ks-space-md);
+    padding: var(--ks-space-md) var(--ks-space-lg);
+    border-top: 1px solid var(--ks-gray-300);
+    font-size: .875rem;
+    color: var(--ks-gray-600);
+
+    @include breakpoints.media-breakpoint-up(md) {
+      grid-template-columns: 1fr auto 1fr;
+
+      > :first-child {
+        justify-self: start;
+      }
+
+      > :last-child {
+        justify-self: end;
+      }
+    }
+
+    form {
+      display: flex;
+      align-items: center;
+      gap: var(--ks-space-xs);
+      margin: 0;
+      padding: 0;
+      border: 0;
+
+      fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+
+      select {
+        min-width: 5rem;
+      }
+    }
+  }
+}

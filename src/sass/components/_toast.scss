@@ -1,0 +1,66 @@
+@use 'sass:map';
+@use '../abstract/functions' as functions;
+@use '../base/palette' as palette;
+@use '../base/spaces' as spaces;
+
+.rdu-toast-stack {
+  --rdu-toast-stack-gap: #{map.get(spaces.$spaces, xs)};
+  --rdu-toast-stack-padding: #{map.get(spaces.$spaces, md)};
+  --rdu-toast-stack-max-width: min(#{functions.toRem(448)}, 100vw);
+}
+
+.rdu-toast {
+  --rdu-toast-max-width: #{functions.toRem(352)};
+  --rdu-toast-background: #{palette.$white};
+  --rdu-toast-color: #{palette.$gray-90};
+  --rdu-toast-font-family: var(--rdu-font-family);
+  --rdu-toast-border: 1px solid;
+  --rdu-toast-border-color: #{palette.$gray-10};
+  --rdu-toast-border-radius: #{functions.toRem(12)};
+  --rdu-toast-box-shadow: 0 12px 32px rgb(0 0 0 / 14%);
+  --rdu-toast-padding: 0;
+  --rdu-toast-header-gap: #{map.get(spaces.$spaces, xs)};
+  --rdu-toast-header-padding: #{map.get(spaces.$spaces, xs)} #{map.get(spaces.$spaces, md)} 0;
+  --rdu-toast-icon-size: #{functions.toRem(24)};
+  --rdu-toast-icon-color: #{palette.$gray-50};
+  --rdu-toast-title-font-size: #{functions.toRem(16)};
+  --rdu-toast-title-font-family: var(--rdu-font-family);
+  --rdu-toast-title-font-weight: 600;
+  --rdu-toast-title-line-height: 1.4;
+  --rdu-toast-title-color: #{palette.$gray-90};
+  --rdu-toast-message-padding: #{map.get(spaces.$spaces, '3xs')} #{map.get(spaces.$spaces, md)} #{map.get(spaces.$spaces, xs)};
+  --rdu-toast-message-font-size: #{functions.toRem(15)};
+  --rdu-toast-message-font-family: var(--rdu-font-family);
+  --rdu-toast-message-line-height: 1.5;
+  --rdu-toast-message-color: #{palette.$gray-70};
+  --rdu-toast-datetime-padding: 0 #{map.get(spaces.$spaces, md)} #{map.get(spaces.$spaces, xs)};
+  --rdu-toast-datetime-font-size: #{functions.toRem(13)};
+  --rdu-toast-datetime-color: #{palette.$gray-40};
+  --rdu-toast-close-background: transparent;
+  --rdu-toast-close-border: 1px solid;
+  --rdu-toast-close-border-color: transparent;
+  --rdu-toast-close-border-radius: #{functions.toRem(8)};
+  --rdu-toast-close-padding: #{map.get(spaces.$spaces, '4xs')};
+  --rdu-toast-close-color: #{palette.$gray-50};
+  --rdu-toast-close-svg-width: #{functions.toRem(20)};
+  --rdu-toast-close-svg-height: #{functions.toRem(20)};
+  --rdu-toast-close-hover-background: #{palette.$gray-5};
+  --rdu-toast-close-hover-border-color: #{palette.$gray-10};
+  --rdu-toast-close-hover-color: #{palette.$gray-90};
+}
+
+// Colour variants are plain classes passed through `className`: they only set custom properties
+.ks-toast-success {
+  --rdu-toast-icon-color: #{palette.$green-50};
+  --rdu-toast-border-color: #{palette.$green-50};
+}
+
+.ks-toast-warning {
+  --rdu-toast-icon-color: #{palette.$yellow-40};
+  --rdu-toast-border-color: #{palette.$yellow-40};
+}
+
+.ks-toast-info {
+  --rdu-toast-icon-color: #{palette.$blue-50};
+  --rdu-toast-border-color: #{palette.$blue-50};
+}

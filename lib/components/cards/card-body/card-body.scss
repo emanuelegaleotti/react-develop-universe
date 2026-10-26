@@ -1,6 +1,7 @@
 .rdu-card-body {
   padding: var(--rdu-card-body-padding);
   background: var(--rdu-card-body-background);
+  color: var(--rdu-card-body-color, inherit);
   font-size: var(--rdu-card-body-font-size);
   font-weight: var(--rdu-card-body-font-weight);
 }

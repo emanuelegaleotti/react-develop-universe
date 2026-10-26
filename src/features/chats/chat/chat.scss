@@ -1,0 +1,9 @@
+@use '../../../sass/abstract/breakpoints' as breakpoints;
+
+#ks-chat {
+  .ks-chat-card {
+    @include breakpoints.media-breakpoint-up(lg) {
+      grid-column: 1 / span 8;
+    }
+  }
+}

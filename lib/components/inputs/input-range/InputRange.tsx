@@ -60,7 +60,7 @@ export function RDU_InputRange({
                 required={!schema.shape[name]?.isOptional()}
                 placeholder={ t(`${feature}.${name}.placeholder`) }
                 aria-placeholder={ t(`${feature}.${name}.placeholder`) }
-                { ...register(name)}
+                { ...register(name, { valueAsNumber: true })}
             />
 
             { helpMsg && <div className={'rdu-help-feedback'}>

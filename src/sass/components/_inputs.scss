@@ -3,6 +3,8 @@
 @use '../base/spaces' as spaces;
 @use '../abstract/functions' as functions;
 
+$check-icon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 -960 960 960' fill='white'><path d='M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z'/></svg>");
+
 fieldset[class^='rdu-input-'], fieldset[class^='rdu-select'], fieldset[class^='rdu-textarea'] {
   --rdu-input-label-font-family: var(--rdu-font-family);
   --rdu-input-font-family: var(--rdu-font-family);
@@ -24,14 +26,19 @@ fieldset[class^='rdu-input-'], fieldset[class^='rdu-select'], fieldset[class^='r
   --rdu-input-checkbox-background: #{map.get(palette.$grays,100)};
   --rdu-input-checkbox-width: 1.5rem;
   --rdu-input-checkbox-height: 1.5rem;
-  --rdu-input-checkbox-after-checked-background:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIyNHB4IiA+CiAgICA8cGF0aCBkPSJNMzgyLTI0MCAxNTQtNDY4bDU3LTU3IDE3MSAxNzEgMzY3LTM2NyA1NyA1Ny00MjQgNDI0WiIvPgo8L3N2Zz4=") ,#ffffff;
+  --rdu-input-checkbox-after-checked-background: #{$check-icon} center / 80% no-repeat #{palette.$blue-50};
+  --rdu-input-checkbox-checked-border-color: #{palette.$blue-50};
   --rdu-input-checkbox-border-radius: 0.25rem;
   --rdu-input-radio-border: 1px solid;
   --rdu-input-radio-border-color: #{palette.$gray-20};
   --rdu-input-radio-background: #{map.get(palette.$grays,100)};
   --rdu-input-radio-width: 1.5rem;
   --rdu-input-radio-height: 1.5rem;
-  --rdu-input-radio-after-checked-background:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIyNHB4IiA+CiAgICA8cGF0aCBkPSJNMzgyLTI0MCAxNTQtNDY4bDU3LTU3IDE3MSAxNzEgMzY3LTM2NyA1NyA1Ny00MjQgNDI0WiIvPgo8L3N2Zz4=") ,#ffffff;
+  --rdu-input-radio-after-width: 50%;
+  --rdu-input-radio-after-height: 50%;
+  --rdu-input-radio-after-background: transparent;
+  --rdu-input-radio-after-checked-background: #{palette.$blue-50};
+  --rdu-input-radio-checked-border-color: #{palette.$blue-50};
   --rdu-input-radio-border-radius: 50%;
   --rdu-input-radio-after-border-radius: 50%;
   --rdu-input-invalid-feedback-font-family: var(--rdu-font-family);

@@ -1,0 +1,7 @@
+// Row of buttons shared by the demo pages
+.ks-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ks-space-xs);
+}

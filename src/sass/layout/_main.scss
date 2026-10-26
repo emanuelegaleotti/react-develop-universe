@@ -1,28 +1,25 @@
-;
-@use '../abstract/variables' as variables;
 @use '../abstract/breakpoints' as breakpoints;
-@use '../base/spaces' as spaces;
-@use 'sass:map';
+
+// The grid every routed page is a subgrid of
 main {
   grid-area: m;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: max-content;
+  align-content: start;
+  column-gap: var(--ks-space-md);
+  padding: var(--ks-space-lg) var(--ks-space-md) var(--ks-space-xl);
+  min-width: 0;
+  min-height: calc(100vh - var(--ks-header-height));
 
-  min-height: calc(100vh - #{map.get(variables.$header-height, xs)});
   @include breakpoints.media-breakpoint-up(sm) {
-    min-height: calc(100vh - #{map.get(variables.$header-height, sm)});
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    padding-inline: var(--ks-space-lg);
   }
+
   @include breakpoints.media-breakpoint-up(md) {
-    min-height: calc(100vh - #{map.get(variables.$header-height, md)});
-  }
-  @include breakpoints.media-breakpoint-up(lg) {
-    min-height: calc(100vh - #{map.get(variables.$header-height, lg)});
-  }
-  @include breakpoints.media-breakpoint-up(xl) {
-    min-height: calc(100vh - #{map.get(variables.$header-height, xl)});
-  }
-  @include breakpoints.media-breakpoint-up('2xl') {
-    min-height: calc(100vh - #{map.get(variables.$header-height, '2xl')});
-  }
-  @include breakpoints.media-breakpoint-up('3xl') {
-    min-height: calc(100vh - #{map.get(variables.$header-height, '3xl')});
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--ks-space-lg);
+    padding-inline: var(--ks-space-xl);
   }
 }

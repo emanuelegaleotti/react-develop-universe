@@ -7,9 +7,9 @@ import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { RDU_Button } from '../../../../../lib/components/buttons/button/Button.tsx'
 import { RDU_InputText } from '../../../../../lib/components/inputs/input-text/InputText.tsx'
-import { useAppDispatch, useAppSelector } from '../../../../app/hooks.ts'
-import { createType, selectSelectedType, selectType, updateType } from '../type-slice.ts'
-import type { PokeTypeCreate } from '../type.model.ts'
+import { useAppDispatch } from '../../../../app/hooks.ts'
+import { createType, updateType } from '../type-slice.ts'
+import { typeService } from '../type.service'
 
 const FEATURE = 'crud.type'
 
@@ -24,7 +24,6 @@ export function TypeEdit() {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const isCreateMode = name === 'create'
-  const selectedType = useAppSelector(selectSelectedType)
 
   const { register, handleSubmit, reset, formState } = useForm<TypeFormData>({
     resolver: zodResolver(TypeSchema),
@@ -32,59 +31,49 @@ export function TypeEdit() {
   })
 
   useEffect(() => {
-    if (!isCreateMode && name) {
-      dispatch(selectType(name))
-    } else {
-      reset()
-    }
-  }, [dispatch, isCreateMode, name, reset])
+    if (isCreateMode || !name) return
+    let active = true
+    typeService.getByName(name).then(type => {
+      if (active) reset({ name: type.name })
+    })
+    return () => { active = false }
+  }, [isCreateMode, name, reset])
 
-  useEffect(() => {
-    if (selectedType && !isCreateMode) {
-      reset({ name: selectedType.name })
-    }
-  }, [selectedType, isCreateMode, reset])
-
-  const onSubmit = handleSubmit(async (data: PokeTypeCreate) => {
-    if (isCreateMode) {
-      await dispatch(createType(data))
-    } else {
-      await dispatch(updateType(data))
-    }
+  const onSubmit = handleSubmit(async data => {
+    await dispatch(isCreateMode ? createType(data) : updateType(data))
     navigate('/crud/type')
   })
 
   return (
-    <section className="rdu-grid-main" id="type-edit">
-      <hgroup>
-        <h2>{isCreateMode ? 'Crea Type' : 'Modifica Type'}</h2>
-        <p>
-          {isCreateMode
-            ? <>Esempio di creazione di un tipo tramite <strong>form</strong>. La chiamata al servizio è uno stub.</>
-            : <>Esempio di modifica di un tipo tramite <strong>form</strong>. La chiamata al servizio è uno stub.</>}
-        </p>
-      </hgroup>
+    <section id="ks-type-edit">
+      <h2>{isCreateMode ? 'Crea tipo' : 'Modifica tipo'}</h2>
+      <p>
+        {isCreateMode ? 'Creazione' : 'Modifica'} di un&apos;entità tramite <strong>react-hook-form</strong> e <strong>zod</strong>.
+        La chiamata al servizio è uno stub: i dati non vengono salvati.
+      </p>
 
-      <form onSubmit={onSubmit}>
-        <RDU_InputText
-          name="name"
-          feature={FEATURE}
-          id="type-name"
-          maxLength={100}
-          autoComplete="none"
-          disabled={formState.isSubmitting}
-          register={register}
-          formState={formState}
-          errorMsg={true}
-          successMsg={true}
-          helpMsg={false}
-          schema={TypeSchema}
-        />
-
-        <fieldset>
-          <RDU_Button type="button" variant="light" text="cancel" disabled={formState.isSubmitting} onClick={() => navigate('/crud/type')} />
-          <RDU_Button type="submit" variant="primary" text={isCreateMode ? 'create' : 'save'} disabled={formState.isSubmitting} />
-        </fieldset>
+      <form className="ks-crud-form" onSubmit={onSubmit}>
+        <h3>Dati del tipo</h3>
+        <div className="ks-crud-fields">
+          <RDU_InputText
+            name="name"
+            feature={FEATURE}
+            id="name"
+            maxLength={100}
+            autoComplete="none"
+            disabled={formState.isSubmitting}
+            register={register}
+            formState={formState}
+            errorMsg={true}
+            successMsg={false}
+            helpMsg={false}
+            schema={TypeSchema}
+          />
+        </div>
+        <div className="ks-crud-form-actions">
+          <RDU_Button type="button" variant="secondary" text="cancel" onClick={() => navigate('/crud/type')} />
+          <RDU_Button type="submit" variant="primary" text={isCreateMode ? 'create' : 'save'} disabled={!formState.isValid || formState.isSubmitting} />
+        </div>
       </form>
     </section>
   )

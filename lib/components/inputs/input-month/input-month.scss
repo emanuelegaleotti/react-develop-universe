@@ -20,17 +20,18 @@
 
   input[type="month"] {
     width: 100%;
-    padding: 0.5rem;
-    font-size: 1rem;
+    padding: var(--rdu-input-padding, 0.5rem);
+    font-size: var(--rdu-input-font-size, 1rem);
+    color: var(--rdu-input-color, inherit);
     line-height: var(--rdu-input-line-height, 1.5);
     font-weight: var(--rdu-input-font-weight, normal);
     font-style: var(--rdu-input-font-style, normal);
     letter-spacing: var(--rdu-input-letter-spacing);
     font-family: var(--rdu-input-font-family);
     background: var(--rdu-input-background);
-    border: 1px solid var(--rdu-input-border, #d0d3dc);
+    border: var(--rdu-input-border, 1px solid #d0d3dc);
     border-color: var(--rdu-input-border-color);
-    border-radius: 4px;
+    border-radius: var(--rdu-input-border-radius, 4px);
     @media (prefers-reduced-motion: no-preference) {
       transition: all 0.3s;
     }

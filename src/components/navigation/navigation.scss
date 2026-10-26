@@ -1,95 +1,99 @@
-@use '../../sass/abstract/functions' as function;
-@use '../../sass/abstract/mixins' as mixins;
-@use '../../sass/abstract/breakpoints' as breakpoints;
-
 .ks-navigation {
-  position: relative;
-  padding: var(--ks-space-xs);
-  border-radius: var(--ks-border-radius-sm);
-  @include mixins.reduce-motion {
-    transition: all .3s;
-  }
-  @include breakpoints.media-breakpoint-up(sm){
-    padding: var(--ks-space-sm) 0;
-    margin-top: auto;
-  }
+  display: grid;
+  gap: var(--ks-space-4xs);
 
+  details {
+    @media (prefers-reduced-motion: no-preference) {
+      @supports (interpolate-size: allow-keywords) {
+        interpolate-size: allow-keywords;
 
-  summary {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--ks-space-2xs);
-    width: 100%;
+        &::details-content {
+          block-size: 0;
+          overflow: clip;
+          transition: block-size .25s ease, content-visibility .25s ease allow-discrete;
+        }
 
-    .ks-icon-wrapper {
-      border-radius: 50%;
-      background-color: var(--ks-color-primary);
-      border: 1px solid;
-      border-color: var(--ks-color-primary);
-      line-height: 3.2;
-      height: function.toRem(48);
-      width: function.toRem(48);
-      display: inline-block;
-      text-align: center;
-
-      svg {
-        height: function.toRem(24);
-        width: auto;
-        fill: var(--ks-gray-100);
-
-      }
-    }
-
-    .ks-route {
-      display: none;
-      @include breakpoints.media-breakpoint-up(md){
-        display: inline-block;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-    }
-
-    svg {
-      height: function.toRem(24);
-      width: auto;
-      fill: var(--ks-gray-800);
-      @include mixins.reduce-motion {
-        transition: all .3s;
-      }
-    }
-  }
-
-  &[open] {
-    background-color: var(--ks-gray-200);
-
-    summary {
-      svg {
-        &:not(span svg) {
-          transform: rotate(-180deg);
+        &[open]::details-content {
+          block-size: auto;
         }
       }
     }
+
+    summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--ks-space-3xs) var(--ks-space-xs);
+      border-radius: .5rem;
+      color: var(--ks-gray-800);
+      cursor: pointer;
+      font-size: .9375rem;
+      font-weight: 600;
+      list-style: none;
+      user-select: none;
+      transition: background-color .2s ease, color .2s ease;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      &::after {
+        content: '';
+        flex: none;
+        width: .5rem;
+        height: .5rem;
+        border-right: 2px solid var(--ks-gray-500);
+        border-bottom: 2px solid var(--ks-gray-500);
+        transform: translateY(-15%) rotate(45deg);
+        transition: transform .25s ease, border-color .2s ease;
+      }
+
+      &:hover {
+        background: var(--ks-gray-300);
+      }
+    }
+
+    &[open] > summary::after {
+      transform: translateY(15%) rotate(-135deg);
+    }
+
+    &:has(a.active) > summary {
+      color: var(--ks-color-primary);
+
+      &::after {
+        border-color: var(--ks-color-primary);
+      }
+    }
+
+    ul {
+      margin-left: var(--ks-space-md);
+      padding: var(--ks-space-4xs) 0 var(--ks-space-3xs) var(--ks-space-xs);
+      border-left: 1px solid var(--ks-gray-300);
+    }
   }
 
-  nav {
-    max-height: 70vh;
-    position: absolute;
-    left: 105%;
-    bottom: 0;
-    border-radius: var(--ks-border-radius-sm);
-    background: var(--ks-gray-100);
-    border: 1px solid;
-    border-color: var(--ks-gray-200);
-    z-index: 33;
-    overflow-y: scroll;
+  li a {
+    display: block;
+    margin-left: -1px;
+    padding: var(--ks-space-4xs) var(--ks-space-xs);
+    border-left: 2px solid transparent;
+    border-radius: 0 .5rem .5rem 0;
+    color: var(--ks-gray-700);
+    font-size: .875rem;
+    line-height: 1.5;
+    text-decoration: none;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
 
-    li {
-      list-style: none;
-      padding: var(--ks-space-sm) var(--ks-space-md);
-      white-space: nowrap;
+    &:hover {
+      background: var(--ks-gray-300);
+      color: var(--ks-gray-800);
+    }
+
+    &.active {
+      background: var(--ks-gray-300);
+      border-left-color: var(--ks-color-primary);
+      color: var(--ks-color-primary);
+      font-weight: 600;
     }
   }
 }

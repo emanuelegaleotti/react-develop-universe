@@ -1,0 +1,69 @@
+.rdu-dropdown {
+  display: inline-block;
+
+  .rdu-dropdown-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--rdu-dropdown-button-gap, 0.5rem);
+    padding: var(--rdu-dropdown-button-padding, 0.5rem 1rem);
+    border: var(--rdu-dropdown-button-border, 1px solid);
+    border-color: var(--rdu-dropdown-button-border-color, currentColor);
+    border-radius: var(--rdu-dropdown-button-border-radius, 0);
+    background: var(--rdu-dropdown-button-background, ButtonFace);
+    color: var(--rdu-dropdown-button-color, inherit);
+    font-family: var(--rdu-dropdown-button-font-family, inherit);
+    font-size: var(--rdu-dropdown-button-font-size, inherit);
+    font-weight: var(--rdu-dropdown-button-font-weight, inherit);
+    line-height: var(--rdu-dropdown-button-line-height, inherit);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: background-color .2s, border-color .2s;
+    }
+
+    &:hover {
+      background: var(--rdu-dropdown-button-hover-background, var(--rdu-dropdown-button-background, ButtonFace));
+      border-color: var(--rdu-dropdown-button-hover-border-color, var(--rdu-dropdown-button-border-color, currentColor));
+    }
+
+    &::after {
+      content: '';
+      width: 0.4em;
+      height: 0.4em;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: translateY(-25%) rotate(45deg);
+    }
+
+  }
+
+  &[open] .rdu-dropdown-button::after {
+    transform: translateY(25%) rotate(225deg);
+  }
+
+  // Positioned through CSS anchor positioning relative to the summary button
+  .rdu-dropdown-menu {
+    position: fixed;
+    position-area: block-end span-inline-end;
+    position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+    margin: var(--rdu-dropdown-menu-offset, 0.25rem) 0;
+    min-width: anchor-size(width);
+    padding: var(--rdu-dropdown-menu-padding, 0.5rem);
+    border: var(--rdu-dropdown-menu-border, 1px solid);
+    border-color: var(--rdu-dropdown-menu-border-color, currentColor);
+    border-radius: var(--rdu-dropdown-menu-border-radius, 0);
+    background: var(--rdu-dropdown-menu-background, Canvas);
+    color: var(--rdu-dropdown-menu-color, CanvasText);
+    font-family: var(--rdu-dropdown-menu-font-family, inherit);
+    font-size: var(--rdu-dropdown-menu-font-size, inherit);
+    line-height: var(--rdu-dropdown-menu-line-height, inherit);
+    box-shadow: var(--rdu-dropdown-menu-box-shadow, none);
+    z-index: var(--rdu-dropdown-menu-z-index, 10);
+  }
+}

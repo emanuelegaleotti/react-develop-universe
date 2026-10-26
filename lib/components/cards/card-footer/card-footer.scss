@@ -1,9 +1,17 @@
 .rdu-card-footer {
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
+  gap: var(--rdu-card-footer-gap, 0.5rem);
   padding: var(--rdu-card-footer-padding);
   background: var(--rdu-card-footer-background);
+  color: var(--rdu-card-footer-color, inherit);
+  border-top: var(--rdu-card-footer-border-top, none);
   font-size: var(--rdu-card-footer-font-size);
   font-weight: var(--rdu-card-footer-font-weight);
+
+  &[hidden] {
+    display: none;
+  }
 }

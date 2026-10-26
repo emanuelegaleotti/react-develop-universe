@@ -1,0 +1,6 @@
+// Chart canvas shared by the chart pages. Included by the stylesheet of each chart page.
+@mixin canvas {
+  display: block;
+  width: 100%;
+  height: 420px;
+}

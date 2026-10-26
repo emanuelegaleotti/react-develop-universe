@@ -1,156 +1,79 @@
-import { useEffect, useRef } from 'react'
-import { init, use } from 'echarts/core'
-import { LineChart } from 'echarts/charts'
-import {
-    GridComponent,
-    LegendComponent,
-    MarkAreaComponent,
-    TitleComponent,
-    TooltipComponent
-} from 'echarts/components'
-import { CanvasRenderer } from 'echarts/renderers'
-import type { EChartsOption } from 'echarts'
-import '../chart.scss'
+import type { EChartsCoreOption } from 'echarts/core'
+import type { Options } from 'highcharts'
+import { ChartCompare } from '../../../shared/chart-compare/chart-compare.tsx'
+import { categoryAxis, chartBase, gridBox, legend, MONTHS, tooltip, valueAxis } from '../../../shared/chart-compare/chart-theme.ts'
 
-use([
-    LineChart,
-    GridComponent,
-    LegendComponent,
-    MarkAreaComponent,
-    TitleComponent,
-    TooltipComponent,
-    CanvasRenderer
-])
+const FILL_COLOR = 'rgba(8, 126, 164, 0.45)'
+
+const fade = (color: string) => ({
+  type: 'linear' as const,
+  x: 0, y: 0, x2: 0, y2: 1,
+  colorStops: [{ offset: 0, color }, { offset: 1, color: 'rgba(255, 255, 255, 0)' }]
+})
+
+const VISITS = [820, 932, 901, 934, 1290, 1330, 1320, 1450, 1380, 1620, 1710, 1900]
+const TRAFFIC = [
+  { name: 'Organico', data: [120, 132, 101, 134, 90, 230, 210, 182, 191, 234, 290, 330] },
+  { name: 'Social', data: [220, 182, 191, 234, 290, 330, 310, 201, 154, 190, 330, 410] },
+  { name: 'Email', data: [150, 232, 201, 154, 190, 330, 410, 320, 332, 301, 334, 390] }
+]
+
+const SIMPLE_ECHARTS: EChartsCoreOption = {
+  ...chartBase,
+  tooltip: tooltip('axis'),
+  grid: gridBox,
+  xAxis: categoryAxis(MONTHS, { boundaryGap: false }),
+  yAxis: valueAxis(),
+  series: [{
+    name: 'Visite',
+    type: 'line',
+    smooth: true,
+    showSymbol: false,
+    lineStyle: { width: 3 },
+    areaStyle: { color: fade(FILL_COLOR) },
+    data: VISITS
+  }]
+}
+
+const STACKED_ECHARTS: EChartsCoreOption = {
+  ...chartBase,
+  tooltip: tooltip('axis'),
+  legend: legend(),
+  grid: gridBox,
+  xAxis: categoryAxis(MONTHS, { boundaryGap: false }),
+  yAxis: valueAxis(),
+  series: TRAFFIC.map(t => ({ name: t.name, type: 'line', stack: 'traffico', smooth: true, showSymbol: false, areaStyle: { opacity: 0.55 }, data: t.data }))
+}
+
+const SIMPLE_HIGHCHARTS: Options = {
+  legend: { enabled: false },
+  tooltip: { shared: true },
+  xAxis: { categories: MONTHS, tickmarkPlacement: 'on', crosshair: true },
+  series: [{
+    type: 'areaspline',
+    name: 'Visite',
+    lineWidth: 3,
+    marker: { enabled: false },
+    fillColor: { linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 }, stops: [[0, FILL_COLOR], [1, 'rgba(255, 255, 255, 0)']] },
+    data: VISITS
+  }]
+}
+
+const STACKED_HIGHCHARTS: Options = {
+  tooltip: { shared: true },
+  xAxis: { categories: MONTHS, tickmarkPlacement: 'on', crosshair: true },
+  yAxis: { reversedStacks: false },
+  plotOptions: { areaspline: { stacking: 'normal', fillOpacity: 0.55, marker: { enabled: false } } },
+  series: TRAFFIC.map(t => ({ type: 'areaspline' as const, name: t.name, data: t.data }))
+}
 
 export function AreaChartExample() {
-    const chartContainerRef = useRef<HTMLDivElement>(null)
-
-    useEffect(() => {
-        if (!chartContainerRef.current) return
-
-        const chart = init(chartContainerRef.current)
-
-        const option: EChartsOption = {
-            animation: false, // Render immediately without the initial transition
-            title: {
-                top: 0,
-                text: 'Weekly sales',
-                subtext: 'Actual compared with forecast',
-                textStyle: {
-                    color: '#23272f',
-                    fontSize: 18,
-                    fontWeight: 600
-                },
-                subtextStyle: {
-                    color: '#5e687e',
-                    fontSize: 13
-                }
-            },
-            legend: {
-                bottom: 10,
-                data: ['Sales', 'Forecast'],
-                selectedMode: false // Prevent legend clicks from hiding series
-            },
-            tooltip: {
-                trigger: 'axis', // Show all series values for the hovered day
-                backgroundColor: '#e6f6fa',
-                borderColor: '#087ea4',
-                borderWidth: 1,
-                padding: 12,
-                textStyle: {
-                    color: '#23272f',
-                    fontSize: 14
-                },
-                axisPointer: {
-                    type: 'line', // Track the hovered day with a vertical guide
-                    lineStyle: {
-                        color: '#087ea4',
-                        width: 1,
-                        type: 'dashed'
-                    }
-                },
-                valueFormatter: value => `${value} units`
-            },
-            xAxis: {
-                name: 'Day',
-                nameLocation: 'middle',
-                nameGap: 30,
-                type: 'category',
-                boundaryGap: false, // Align the first and last points with the axis ends
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                splitLine: {
-                    show: true, // Draw a vertical grid line for each day
-                    lineStyle: {
-                        color: '#ebecf0',
-                        type: 'dashed'
-                    }
-                }
-            },
-            yAxis: {
-                name: 'Sales',
-                nameLocation: 'middle',
-                nameGap: 30,
-                position: 'left',
-                type: 'value',
-            },
-            series: [
-                {
-                    name: 'Sales',
-                    type: 'line',
-                    data: [120, 225, 150, 80, 70, 110, 110],
-                    areaStyle: {}, // Enable the filled area beneath the line
-                    itemStyle: {
-                        color: '#087ea4'
-                    },
-                    showSymbol: true, // Keep a visible marker at every data point
-                    symbol: 'square',
-                    symbolSize: 8,
-                    lineStyle: {
-                        width: 3,
-                        type: 'solid'
-                    },
-                    markArea: {
-                        silent: true, // Prevent the marked region from handling pointer events
-                        itemStyle: {
-                            color: 'rgb(8 126 164 / 0.35)'
-                        },
-                        data: [
-                            // Each pair defines the start and end of a marked region
-                            [
-                                { name: 'Weekend', xAxis: 'Sat' },
-                                { xAxis: 'Sun' }
-                            ]
-                        ]
-                    }
-                },
-                {
-                    name: 'Forecast',
-                    type: 'line',
-                    data: [100, 190, 170, 95, 85, 125, 145],
-                    areaStyle: {
-                        opacity: 0.25,
-                    },
-                    itemStyle: {
-                        color: '#abe2ed'
-                    }
-                }
-            ]
-        }
-
-        chart.setOption(option)
-
-        return () => {
-            chart.dispose()
-        }
-    }, [])
-
-    return (
-        <section className="ks-grid-main" id={'ks-chart'}>
-            <h2>Area chart with additional options</h2>
-            <div
-                ref={chartContainerRef}
-                className="ks-chart-container"
-            />
-        </section>
-    )
+  return (
+    <section id="ks-chart-area">
+      <h2>Area chart</h2>
+      <p>Una linea con l'area sottostante riempita: utile per volumi e per serie impilate. Ogni grafico è disegnato sia con ECharts sia con Highcharts.</p>
+      <ChartCompare heading="Visite mensili" echarts={SIMPLE_ECHARTS} highcharts={SIMPLE_HIGHCHARTS} />
+      <ChartCompare heading="Aree impilate" echarts={STACKED_ECHARTS} highcharts={STACKED_HIGHCHARTS} />
+    </section>
+  )
 }

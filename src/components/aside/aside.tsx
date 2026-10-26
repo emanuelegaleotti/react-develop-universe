@@ -1,9 +1,13 @@
-
 import './aside.scss'
 import {Navigation} from "../navigation/navigation.tsx";
-export default function Aside () {
+
+type AsideProps = {
+  open: boolean
+}
+
+export default function Aside ({ open }: AsideProps) {
   return (
-    <aside id='ks-aside'>
+    <aside id='ks-aside' data-open={open}>
       <Navigation />
     </aside>
   )

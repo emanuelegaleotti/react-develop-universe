@@ -1,0 +1,46 @@
+// Live state of a control. The card itself comes from the page layout.
+.ks-control-state {
+  --ks-card-background: var(--ks-gray-800);
+  border-color: var(--ks-gray-800);
+
+  > h3 {
+    color: var(--ks-gray-100);
+  }
+
+  dl {
+    display: grid;
+    gap: var(--ks-space-3xs);
+    margin: 0;
+    font-size: .875rem;
+
+    > div {
+      display: grid;
+      grid-template-columns: max-content minmax(0, 1fr);
+      gap: var(--ks-space-lg);
+    }
+
+    dt {
+      color: var(--ks-gray-400);
+      font-weight: 500;
+    }
+
+    dd {
+      margin: 0;
+      font-family: var(--rdu-font-family-mono);
+      color: var(--ks-gray-100);
+      overflow-wrap: anywhere;
+
+      &[data-tone='ok'] {
+        color: #5fd3b2;
+      }
+
+      &[data-tone='ko'] {
+        color: #f08a82;
+      }
+
+      &[data-tone='muted'] {
+        color: var(--ks-gray-400);
+      }
+    }
+  }
+}

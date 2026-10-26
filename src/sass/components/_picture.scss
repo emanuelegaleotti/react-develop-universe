@@ -1,0 +1,11 @@
+@use '../base/palette' as palette;
+@use '../abstract/functions' as functions;
+
+.rdu-picture {
+  --rdu-picture-border: 1px solid;
+  --rdu-picture-border-color: #{palette.$gray-15};
+  --rdu-picture-border-radius: #{functions.toRem(12)};
+  --rdu-picture-box-shadow: 0 4px 16px rgb(35 39 47 / 10%);
+  --rdu-picture-background: #{palette.$gray-10};
+  --rdu-picture-object-fit: cover;
+}

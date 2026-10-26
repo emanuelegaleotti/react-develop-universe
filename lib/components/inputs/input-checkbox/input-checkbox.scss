@@ -13,7 +13,7 @@
     height: 0;
 
     &:checked + .rdu-visible-checkbox {
-      border-color: var(--rdu-input-checkbox-checked-border-color);
+      border-color: var(--rdu-input-checkbox-checked-border-color, var(--rdu-input-checkbox-border-color));
 
       &::after {
         background: var(--rdu-input-checkbox-after-checked-background);
@@ -74,9 +74,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-position: center;
       border-radius: var(--rdu-input-checkbox-border-radius);
-      background: var(--rdu-input-checkbox-after-background);
+      background: var(--rdu-input-checkbox-after-background, transparent);
       @media (prefers-reduced-motion: no-preference) {
         transition: all .3s;
       }

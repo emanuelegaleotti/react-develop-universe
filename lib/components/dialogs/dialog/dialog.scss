@@ -1,5 +1,9 @@
 .rdu-dialog {
   padding: var(--rdu-dialog-padding);
+  width: var(--rdu-dialog-width, fit-content);
+  overflow: var(--rdu-dialog-overflow, auto);
+  background: var(--rdu-dialog-background, Canvas);
+  color: var(--rdu-dialog-color, CanvasText);
   font-family: var(--rdu-dialog-font-family);
   border: var(--rdu-dialog-border);
   border-color: var(--rdu-dialog-border-color);
@@ -8,6 +12,7 @@
 
   &::backdrop {
     background: var(--rdu-dialog-backdrop-background);
+    backdrop-filter: var(--rdu-dialog-backdrop-filter);
   }
 
   .rdu-dialog-header {
@@ -16,8 +21,10 @@
     align-items: center;
     padding: var(--rdu-dialog-header-padding);
     background: var(--rdu-dialog-header-background);
+    border-bottom: var(--rdu-dialog-header-border-bottom, 0);
 
     h4 {
+      margin: var(--rdu-dialog-header-title-margin, 0);
       font-size: var(--rdu-dialog-header-font-size);
       line-height: var(--rdu-dialog-header-line-height);
       font-weight: var(--rdu-dialog-header-font-weight);
@@ -68,6 +75,8 @@
   .rdu-dialog-footer {
     padding: var(--rdu-dialog-footer-padding);
     background: var(--rdu-dialog-footer-background);
+    border-top: var(--rdu-dialog-footer-border-top, 0);
+    gap: var(--rdu-dialog-footer-gap, 0);
     display: flex;
     align-items: center;
     justify-content: var(--rdu-dialog-footer-justify-content, flex-end);

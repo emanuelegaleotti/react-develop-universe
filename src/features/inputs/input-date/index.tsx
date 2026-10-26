@@ -1,39 +1,48 @@
+import { useState } from 'react'
 import * as z from 'zod'
-import {SubmitHandler, useForm} from "react-hook-form";
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import './input-date.scss'
-import {zodResolver} from "@hookform/resolvers/zod";
-import {RDU_InputDate} from '../../../../lib/main.ts';
-import {RDU_Button} from "../../../../lib/components/buttons/button/Button.tsx";
 
-export function InputDate() {
-    const DateForm = z.object({
-        date: z.string().nonempty({ message: "required"}),
-    })
+import { RDU_InputDate } from '../../../../lib/main.ts'
+import { ControlState } from '../../../shared/control-state/control-state.tsx'
 
-    type FormControl = z.infer<typeof DateForm>;
+const DateForm = z.object({
+  date: z.string().nonempty({ message: 'required' })
+})
 
-    const {
-        register, handleSubmit, formState
-    } = useForm<FormControl>({
-        resolver: zodResolver(DateForm),
-        mode: 'onChange'
-    });
+type FormControl = z.infer<typeof DateForm>
 
-    const onSubmit: SubmitHandler<FormControl> = (data: FormControl) => {
-        console.log(data);
-    }
+export function InputDate () {
+  const [disabled, setDisabled] = useState(false)
 
-    return (
-        <section className={'ks-grid-main'} id={'ks-input-date'}>
-            <h2>Input Date</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <RDU_InputDate name={'date'} feature={'ks'} id={'test'} autoComplete={'none'}
-                               disabled={false} successMsg={true} helpMsg={true} errorMsg={true} register={register}
-                               formState={formState} schema={DateForm}></RDU_InputDate>
-                <RDU_Button type={'submit'} text={'submit'}/>
-            </form>
-        </section>
-    );
+  const { register, formState, control } = useForm<FormControl>({
+    resolver: zodResolver(DateForm),
+    mode: 'onChange',
+    defaultValues: { date: '' }
+  })
 
-
+  return (
+    <section id="ks-input-date">
+      <h2>Input date</h2>
+      <p>Selettore di data nativo del browser. Il valore è una stringa ISO <code>yyyy-mm-dd</code>.</p>
+      <form onSubmit={event => event.preventDefault()}>
+        <h3>Esempio</h3>
+        <RDU_InputDate name={'date'}
+                       feature={'ks'}
+                       id={'date'}
+                       autoComplete={'none'}
+                       disabled={disabled}
+                       errorMsg={true}
+                       successMsg={true}
+                       helpMsg={true}
+                       register={register}
+                       formState={formState}
+                       schema={DateForm}
+        />
+      </form>
+      <ControlState control={control} name="date" schema={DateForm} disabled={disabled}
+                    onToggleDisabled={() => setDisabled(value => !value)} />
+    </section>
+  )
 }

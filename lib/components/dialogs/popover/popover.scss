@@ -1,0 +1,47 @@
+.rdu-popover {
+  inset: auto;
+  margin: var(--rdu-popover-offset, 0.25rem);
+  max-width: var(--rdu-popover-max-width, 20rem);
+  padding: var(--rdu-popover-padding, 0.5rem);
+  overflow: var(--rdu-popover-overflow, auto);
+  border: var(--rdu-popover-border, 1px solid);
+  border-color: var(--rdu-popover-border-color, currentColor);
+  border-radius: var(--rdu-popover-border-radius, 0);
+  background: var(--rdu-popover-background, Canvas);
+  color: var(--rdu-popover-color, CanvasText);
+  font-family: var(--rdu-popover-font-family, inherit);
+  font-size: var(--rdu-popover-font-size, inherit);
+  line-height: var(--rdu-popover-line-height, inherit);
+  box-shadow: var(--rdu-popover-box-shadow, none);
+  position-area: block-end span-inline-end;
+  position-try-fallbacks: flip-block, flip-block flip-inline;
+
+  &[data-placement='top'] {
+    position-area: block-start span-inline-end;
+  }
+
+  &[data-placement='right'] {
+    position-area: inline-end span-block-end;
+    position-try-fallbacks: flip-inline, flip-block flip-inline;
+  }
+
+  &[data-placement='left'] {
+    position-area: inline-start span-block-end;
+    position-try-fallbacks: flip-inline, flip-block flip-inline;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    opacity: 0;
+    transition: opacity var(--rdu-popover-transition-duration, 0.15s) ease-out,
+      display var(--rdu-popover-transition-duration, 0.15s) allow-discrete,
+      overlay var(--rdu-popover-transition-duration, 0.15s) allow-discrete;
+
+    &:popover-open {
+      opacity: 1;
+
+      @starting-style {
+        opacity: 0;
+      }
+    }
+  }
+}

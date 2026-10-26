@@ -1,0 +1,54 @@
+// Dialog di conferma eliminazione: struttura comune, ogni pagina rifinisce nel proprio scss.
+@mixin confirm {
+  display: grid;
+  min-width: min(26rem, 90vw);
+
+  strong {
+    text-transform: capitalize;
+    color: var(--ks-gray-900);
+  }
+
+  .ks-confirm-body {
+    display: flex;
+    gap: var(--ks-space-md);
+    padding: var(--ks-space-lg);
+
+    p {
+      margin: 0;
+      color: var(--ks-gray-700);
+      line-height: 1.5;
+    }
+
+    p + p {
+      margin-top: var(--ks-space-4xs);
+      font-size: .875rem;
+      color: var(--ks-gray-600);
+    }
+  }
+
+  .ks-confirm-icon {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--ks-color-error) 12%, transparent);
+    color: var(--ks-color-error);
+
+    svg {
+      width: 1.375rem;
+      height: 1.375rem;
+      fill: currentColor;
+    }
+  }
+
+  .ks-confirm-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--ks-space-xs);
+    padding: var(--ks-space-md) var(--ks-space-lg);
+    border-top: 1px solid var(--ks-gray-300);
+    background: var(--ks-gray-200);
+  }
+}

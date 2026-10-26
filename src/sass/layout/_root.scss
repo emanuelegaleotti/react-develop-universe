@@ -1,5 +1,6 @@
 @use '../abstract/variables' as variables;
 @use '../base/spaces' as spaces;
+@use '../abstract/breakpoints' as breakpoints;
 @use '../base/palette' as palette;
 
 :root,::backdrop, ::selection {
@@ -19,6 +20,14 @@
   }
   @each $size, $radius in variables.$border-radius {
     --#{variables.$project-acronym}-border-radius-#{$size}: #{$radius};
+  }
+  --#{variables.$project-acronym}-header-height: var(--#{variables.$project-acronym}-header-height-xs);
+  --#{variables.$project-acronym}-aside-width: 16rem;
+  @include breakpoints.media-breakpoint-up(sm) {
+    --#{variables.$project-acronym}-header-height: var(--#{variables.$project-acronym}-header-height-sm);
+  }
+  @include breakpoints.media-breakpoint-up(lg) {
+    --#{variables.$project-acronym}-aside-width: 18rem;
   }
 
 }

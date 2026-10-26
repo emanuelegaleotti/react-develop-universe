@@ -1,0 +1,33 @@
+#ks-dropdown {
+  .ks-dropdown-demo {
+    display: flex;
+    gap: var(--ks-space-md);
+    flex-wrap: wrap;
+  }
+
+  .ks-dropdown-bottom {
+    margin-top: 30vh;
+  }
+
+  .ks-menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    button {
+      width: 100%;
+      padding: var(--ks-space-3xs) var(--ks-space-xs);
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      text-align: start;
+      cursor: pointer;
+
+      &:hover,
+      &:focus-visible {
+        background: var(--ks-gray-300);
+      }
+    }
+  }
+}

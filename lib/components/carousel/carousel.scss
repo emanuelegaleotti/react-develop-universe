@@ -1,0 +1,202 @@
+.rdu-carousel {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  container-type: inline-size scroll-state;
+  anchor-name: var(--rdu-carousel-anchor-name);
+
+  width: var(--rdu-carousel-width, 100%);
+  padding: var(--rdu-carousel-padding, 3rem);
+
+  .rdu-carousel-item {
+    margin-right: calc(calc(var(--rdu-carousel-padding, 3rem) * 2) / var(--rdu-carousel-slides-per-view));
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/*
+ * CONTAINER
+ */
+.rdu-carousel--container {
+  border: var(--rdu-carousel-border, 1px solid);
+  border-color: var(--rdu-carousel-border-color);
+  border-radius: var(--rdu-carousel-border-radius, 1.125rem);
+}
+
+/*
+ * BUTTONS
+ */
+.rdu-carousel--scroll-buttons {
+  &::scroll-button(*) {
+    cursor: pointer;
+    position: fixed;
+    position-anchor: var(--rdu-carousel-anchor-name);
+    position-visibility: always;
+    font-size: var(--rdu-scroll-buttons-font-size, 1.125rem);
+    height: var(--rdu-scroll-buttons-height, 3.75rem);
+    width: var(--rdu-scroll-buttons-width, 1.875rem);
+    opacity: var(--rdu-scroll-buttons-opacity, 0.7);
+    inline-size: 44px;
+    line-height: 1;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    aspect-ratio: 1;
+    background: var(--rdu-scroll-buttons-background-color);
+    color: var(--rdu-scroll-buttons-color);
+    border: var(--rdu-scroll-buttons-border, 2px solid);
+    border-color: var(--rdu-scroll-buttons-border-color);
+    border-radius: var(--rdu-scroll-buttons-border-radius, 0px);
+    margin: var(--rdu-scroll-buttons-margin, -50px);
+  }
+
+  &::scroll-button(*) {
+    &:not(:disabled):hover {
+      opacity: var(--rdu-scroll-buttons-hover-opacity, 1);
+    }
+  }
+
+  &::scroll-button(*) {
+    &:disabled {
+      opacity: var(--rdu-scroll-buttons-disabled-opacity, 0);
+    }
+  }
+
+
+  &::scroll-button(right) {
+    position-area: inline-end center;
+    content: "►" / 'Next';
+  }
+
+  &::scroll-button(left) {
+    position-area: inline-start center;
+    content: "◄" / 'Previous';
+  }
+}
+
+/*
+ * SCROLL-MARKER
+ */
+.rdu-carousel--scroll-marker {
+  scroll-marker-group: after;
+
+  &::scroll-marker-group {
+    position: fixed;
+    position-anchor: var(--rdu-carousel-anchor-name);
+    position-area: block-end;
+    position-visibility: always;
+    margin-block-start: var(--rdu-scroll-marker-margin-block-start, 1rem);
+    display: grid;
+    grid-auto-columns: var(--rdu-scroll-marker-auto-columns, 1rem);
+    grid-auto-flow: column;
+    gap: var(--rdu-scroll-marker-gap, 1rem);
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/*
+ * INERT
+ */
+.rdu-carousel--inert {
+  .rdu-carousel-item {
+    > * {
+      @container not scroll-state(snapped) {
+        interactivity: inert;
+        opacity: var(--rdu-inert-opacity, 0.25);
+      }
+    }
+  }
+}
+
+/*
+ * NO PAGES
+ */
+.rdu-carousel--no-pages {
+  .rdu-carousel-item {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    flex: 0 0 calc(100% / var(--rdu-carousel-slides-per-view));
+    container-type: scroll-state;
+    height: var(--rdu-carousel-item-height, 10rem)
+  }
+}
+
+/*
+ * PAGES
+ */
+.rdu-carousel--pages {
+  columns: 1;
+  block-size: var(--rdu-carousel-column-block-size, 41rem);
+  resize: vertical;
+  text-align: center;
+
+  .rdu-carousel-item {
+    display: inline-block;
+    height: var(--rdu-carousel-item-pages-height, 85%);
+    aspect-ratio: var(--rdu-carousel-item-pages-aspect-ratio, 4/3);
+    margin: var(--rdu-carousel-item-pages-margin, 0.5rem);
+  }
+
+  &::column {
+    scroll-snap-align: center;
+  }
+}
+
+/*
+ * SCROLL-MARKER NO PAGES
+ */
+.rdu-carousel--scroll-marker-no-pages {
+  > .rdu-carousel-item {
+    &::scroll-marker {
+      content: '';
+      display: block;
+      width: var(--rdu-scroll-marker-item-width, 0.75rem);
+      height: var(--rdu-scroll-marker-item-height, 0.75rem);
+      border: var(--rdu-scroll-marker-item-border, 2px solid);
+      border-color: var(--rdu-scroll-marker-item-border-color);
+      border-radius: var(--rdu-scroll-marker-item-border-radius, 1.875rem);
+      background: var(--rdu-scroll-marker-item-background, transparent);
+      cursor: pointer;
+      aspect-ratio: 1;
+    }
+
+    &::scroll-marker:target-current {
+      background: var(--rdu-scroll-marker-item-background-target-current);
+    }
+  }
+}
+
+/*
+ * SCROLL-MARKER PAGES
+ */
+.rdu-carousel--scroll-marker-pages {
+  &::column::scroll-marker {
+    content: '';
+    display: block;
+    width: var(--rdu-scroll-marker-item-width, 0.75rem);
+    height: var(--rdu-scroll-marker-item-height, 0.75rem);
+    border: var(--rdu-scroll-marker-item-border, 2px solid);
+    border-color: var(--rdu-scroll-marker-item-border-color);
+    border-radius: var(--rdu-scroll-marker-item-border-radius, 1.875rem);
+    background: var(--rdu-scroll-marker-item-background, transparent);
+    cursor: pointer;
+  }
+
+  &::column::scroll-marker:target-current {
+    background: var(--rdu-scroll-marker-item-background-target-current);
+  }
+}

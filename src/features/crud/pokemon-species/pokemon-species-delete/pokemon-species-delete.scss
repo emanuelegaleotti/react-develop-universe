@@ -1,0 +1,5 @@
+@use '../../../../sass/components/confirm' as confirm;
+
+#ks-species-delete {
+  @include confirm.confirm;
+}

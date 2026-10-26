@@ -1,5 +1,4 @@
 @use '../abstract/breakpoints' as breakpoints;
-@use '../base/grid' as grid;
 @use '../base/palette' as palette;
 
 body {
@@ -16,27 +15,16 @@ body {
     margin-left: auto;
     margin-right: auto;
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
-    'h h h h'
-    'm m m m';
-    @include breakpoints.media-breakpoint-up(sm) {
-      grid-template-areas:
-    'h h h h h h h h'
-    'a a m m m m m m';
-    }
+    'h'
+    'm';
     @include breakpoints.media-breakpoint-up(md) {
+      grid-template-columns: var(--ks-aside-width) minmax(0, 1fr);
       grid-template-areas:
-    'h h h h h h h h h h h h'
-    'a a a m m m m m m m m m';
+    'h h'
+    'a m';
     }
-    @include breakpoints.media-breakpoint-up(lg) {
-      grid-template-areas:
-    'h h h h h h h h h h h h'
-    'a a m m m m m m m m m m';
-    }
-
-    @include grid.grid-columns;
-    @include grid.column-gap;
   }
 }
 

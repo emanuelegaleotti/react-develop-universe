@@ -1,0 +1,27 @@
+@use '../abstract/breakpoints' as breakpoints;
+
+// Form di creazione/modifica: larghezza, campi e barra delle azioni.
+// Inclusa dallo scss di ogni pagina sotto il suo id.
+@mixin form-page {
+  .ks-crud-form {
+    @include breakpoints.media-breakpoint-up(md) {
+      grid-column: 1 / span 6;
+    }
+  }
+
+  .ks-crud-fields {
+    display: grid;
+    gap: var(--ks-space-md);
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .ks-crud-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--ks-space-xs);
+    padding-top: var(--ks-space-md);
+    border-top: 1px solid var(--ks-gray-300);
+  }
+}

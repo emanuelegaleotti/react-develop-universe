@@ -1,0 +1,15 @@
+@use '../../../../sass/components/form-page' as form-page;
+
+#ks-species-edit {
+  @include form-page.form-page;
+
+  .ks-crud-fields {
+    @media (min-width: 40rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+
+      > :first-child {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+}

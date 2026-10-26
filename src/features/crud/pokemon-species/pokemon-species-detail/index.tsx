@@ -1,3 +1,5 @@
+import './pokemon-species-detail.scss'
+
 import { useEffect, useState } from 'react'
 import type { PokemonSpecies } from '../pokemon-species.model'
 import { pokemonSpeciesService } from '../pokemon-species.service'
@@ -10,71 +12,68 @@ export function PokemonSpeciesDetail({ name }: PokemonSpeciesDetailProps) {
   const [species, setSpecies] = useState<PokemonSpecies | null>(null)
 
   useEffect(() => {
-    pokemonSpeciesService.getByName(name).then(setSpecies)
+    let active = true
+    pokemonSpeciesService.getByName(name).then(data => {
+      if (active) setSpecies(data)
+    })
+    return () => { active = false }
   }, [name])
 
   if (!species) return null
 
-  return (
-    <article className="rdu-offcanvas-body">
-      <hgroup id="offcanvas-species-title">
-        <p>#{species.id}</p>
-        <h3>{species.name}</h3>
-      </hgroup>
+  const flavor = species.flavor_text_entries.find(entry => entry.language.name === 'en')?.flavor_text
+  const flavorText = flavor?.replace(/[\n\f]/g, ' ')
 
-      <section id="info-species-section">
-        <dl id="info-species">
-          <div className="info-pokemon">
-            <dt>Color</dt>
-            <dd>{species.color.name}</dd>
-          </div>
-          <div className="info-pokemon">
-            <dt>Habitat</dt>
-            <dd>{species.habitat?.name ?? 'None'}</dd>
-          </div>
-          <div className="info-pokemon">
-            <dt>Capture Rate</dt>
-            <dd>{species.capture_rate}</dd>
-          </div>
-          <div className="info-pokemon">
-            <dt>Base Happiness</dt>
-            <dd>{species.base_happiness ?? '—'}</dd>
-          </div>
-          <div className="info-pokemon">
-            <dt>Gender Rate</dt>
-            <dd>{species.gender_rate}</dd>
-          </div>
-          <div className="info-pokemon">
-            <dt>Legendary</dt>
-            <dd>{species.is_legendary ? 'Yes' : 'No'}</dd>
-          </div>
-          <div className="info-pokemon">
-            <dt>Mythical</dt>
-            <dd>{species.is_mythical ? 'Yes' : 'No'}</dd>
-          </div>
-          <div className="info-pokemon">
-            <dt>Evolves From</dt>
-            <dd>{species.evolves_from_species?.name ?? 'None'}</dd>
-          </div>
-        </dl>
+  return (
+    <article className="ks-detail" id="ks-species-detail">
+      <header className="ks-detail-hero">
+        <div>
+          <p>#{species.id}</p>
+          <h3>{species.name}</h3>
+        </div>
+        {(species.is_legendary || species.is_mythical) && (
+          <ul className="ks-detail-chips">
+            {species.is_legendary && <li>Leggendario</li>}
+            {species.is_mythical && <li>Misterioso</li>}
+          </ul>
+        )}
+      </header>
+
+      <dl className="ks-detail-facts">
+        <div>
+          <dt>Colore</dt>
+          <dd>{species.color.name}</dd>
+        </div>
+        <div>
+          <dt>Habitat</dt>
+          <dd>{species.habitat?.name ?? '—'}</dd>
+        </div>
+        <div>
+          <dt>Cattura</dt>
+          <dd>{species.capture_rate}</dd>
+        </div>
+        <div>
+          <dt>Felicità base</dt>
+          <dd>{species.base_happiness ?? '—'}</dd>
+        </div>
+        <div>
+          <dt>Rapporto sessi</dt>
+          <dd>{species.gender_rate}</dd>
+        </div>
+        <div>
+          <dt>Si evolve da</dt>
+          <dd>{species.evolves_from_species?.name ?? '—'}</dd>
+        </div>
+      </dl>
+
+      <section>
+        <h4>Gruppi uova</h4>
+        <ul className="ks-detail-chips">
+          {species.egg_groups.map(group => <li key={group.name}>{group.name}</li>)}
+        </ul>
       </section>
 
-      {species.egg_groups.length > 0 && (
-        <section id="egg-groups">
-          <h3>Egg Groups</h3>
-          <ul>
-            {species.egg_groups.map(eg => (
-              <li key={eg.name}>{eg.name}</li>
-            ))}
-          </ul>
-        </section>
-      )}
-
-      {species.flavor_text_entries.length > 0 && (
-        <blockquote>
-          {species.flavor_text_entries[0].flavor_text}
-        </blockquote>
-      )}
+      {flavorText && <blockquote>{flavorText}</blockquote>}
     </article>
   )
 }

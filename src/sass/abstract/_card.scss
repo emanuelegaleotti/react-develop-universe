@@ -1,0 +1,7 @@
+// Card surface shared by every block of a demo page
+@mixin card {
+  padding: var(--ks-space-lg);
+  border: 1px solid var(--ks-gray-300);
+  border-radius: 1rem;
+  background: var(--ks-card-background, var(--ks-gray-200));
+}

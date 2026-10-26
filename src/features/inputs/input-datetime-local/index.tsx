@@ -1,39 +1,48 @@
+import { useState } from 'react'
 import * as z from 'zod'
-import {SubmitHandler, useForm} from "react-hook-form";
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import './input-datetime-local.scss'
-import {zodResolver} from "@hookform/resolvers/zod";
-import {RDU_Button} from "../../../../lib/components/buttons/button/Button.tsx";
-import {RDU_InputDatetimeLocal} from "../../../../lib/main.ts";
 
-export function InputDatetimeLocal() {
-    const DatetimeForm = z.object({
-        datetime: z.string().nonempty({ message: "required"}),
-    })
+import { RDU_InputDatetimeLocal } from '../../../../lib/main.ts'
+import { ControlState } from '../../../shared/control-state/control-state.tsx'
 
-    type FormControl = z.infer<typeof DatetimeForm>;
+const DatetimeForm = z.object({
+  datetime: z.string().nonempty({ message: 'required' })
+})
 
-    const {
-        register, handleSubmit, formState
-    } = useForm<FormControl>({
-        resolver: zodResolver(DatetimeForm),
-        mode: 'onChange'
-    });
+type FormControl = z.infer<typeof DatetimeForm>
 
-    const onSubmit: SubmitHandler<FormControl> = (data: FormControl) => {
-        console.log(data);
-    }
+export function InputDatetimeLocal () {
+  const [disabled, setDisabled] = useState(false)
 
-    return (
-        <section className={'ks-grid-main'} id={'ks-input-datetime'}>
-            <h2>Input Datetime</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <RDU_InputDatetimeLocal name={'datetime'} feature={'ks'} id={'test'} autoComplete={'none'}
-                              disabled={false} successMsg={true} helpMsg={true} errorMsg={true} register={register}
-                              formState={formState} schema={DatetimeForm}></RDU_InputDatetimeLocal>
-                <RDU_Button type={'submit'} text={'submit'}/>
-            </form>
-        </section>
-    );
+  const { register, formState, control } = useForm<FormControl>({
+    resolver: zodResolver(DatetimeForm),
+    mode: 'onChange',
+    defaultValues: { datetime: '' }
+  })
 
-
+  return (
+    <section id="ks-input-datetime-local">
+      <h2>Input datetime-local</h2>
+      <p>Selettore di data e ora locali. Il valore è una stringa <code>yyyy-mm-ddThh:mm</code>.</p>
+      <form onSubmit={event => event.preventDefault()}>
+        <h3>Esempio</h3>
+        <RDU_InputDatetimeLocal name={'datetime'}
+                                feature={'ks'}
+                                id={'datetime'}
+                                autoComplete={'none'}
+                                disabled={disabled}
+                                errorMsg={true}
+                                successMsg={true}
+                                helpMsg={true}
+                                register={register}
+                                formState={formState}
+                                schema={DatetimeForm}
+        />
+      </form>
+      <ControlState control={control} name="datetime" schema={DatetimeForm} disabled={disabled}
+                    onToggleDisabled={() => setDisabled(value => !value)} />
+    </section>
+  )
 }

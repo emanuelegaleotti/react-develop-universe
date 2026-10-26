@@ -1,0 +1,78 @@
+@use "sass:map";
+@use '../base/palette' as palette;
+@use '../base/spaces' as spaces;
+@use '../abstract/functions' as functions;
+@use '../abstract/breakpoints' as breakpoints;
+
+.rdu-carousel {
+  --rdu-carousel-width: 100%;
+  --rdu-carousel-items-gap: #{map.get(spaces.$spaces, '3xl')};
+  --rdu-carousel-padding: #{map.get(spaces.$spaces, '3xl')};
+
+  //Container carousel
+  --rdu-carousel-border: 1px solid;
+  --rdu-carousel-border-color: #{map.get(palette.$palette, 'primary')};
+  --rdu-carousel-border-radius: #{functions.toRem(8)};
+
+  //Scroll buttons carousel
+  --rdu-scroll-buttons-height: #{functions.toRem(60)};
+  --rdu-scroll-buttons-width: #{functions.toRem(30)};
+  --rdu-scroll-buttons-opacity: 0.7;
+  --rdu-scroll-buttons-color: #{palette.$white};
+  --rdu-scroll-buttons-background-color: #{map.get(palette.$palette, 'primary')};
+  --rdu-scroll-buttons-border: 2px solid;
+  --rdu-scroll-buttons-border-color: #{map.get(palette.$grays, 600)};
+  --rdu-scroll-buttons-border-radius: 0px;
+  --rdu-scroll-buttons-font-size: #{functions.toRem(18)};
+  --rdu-scroll-buttons-margin: calc(-1 * #{map.get(spaces.$spaces, '3xl')});
+
+  //Scroll buttons disabled
+  --rdu-scroll-buttons-disabled-opacity: 0;
+
+  //Scroll buttons hover
+  --rdu-scroll-buttons-hover-opacity: 1;
+
+  //Scroll marker group
+  --rdu-scroll-marker-margin: #{map.get(spaces.$spaces, lg)};
+  --rdu-scroll-marker-auto-columns: #{map.get(spaces.$spaces, md)};
+  --rdu-scroll-marker-gap: #{map.get(spaces.$spaces, md)};
+  --rdu-scroll-marker-margin-block-start: #{map.get(spaces.$spaces, md)};
+
+  //Scroll marker item
+  --rdu-scroll-marker-item-width: #{functions.toRem(12)};
+  --rdu-scroll-marker-item-height: #{functions.toRem(12)};
+  --rdu-scroll-marker-item-border: 2px solid;
+  --rdu-scroll-marker-item-border-color: #{map.get(palette.$palette, 'primary')};
+  --rdu-scroll-marker-item-border-radius: 0.25rem;
+  --rdu-scroll-marker-item-background: transparent;
+
+  //Scroll marker item target current
+  --rdu-scroll-marker-item-background-target-current: #{map.get(palette.$palette, 'primary')};
+
+  //Inert
+  --rdu-inert-opacity: 0.75;
+
+  //Carousel item
+  --rdu-carousel-item-height: #{functions.toRem(300)};
+
+  //Pages
+  --rdu-carousel-column-block-size: 150px;
+  @include breakpoints.media-breakpoint-up(sm) {
+    --rdu-carousel-column-block-size: 250px;
+  }
+  @include breakpoints.media-breakpoint-up(md) {
+    --rdu-carousel-column-block-size: 350px;
+  }
+  @include breakpoints.media-breakpoint-up(lg) {
+    --rdu-carousel-column-block-size: 450px;
+  }
+  @include breakpoints.media-breakpoint-up(xl) {
+    --rdu-carousel-column-block-size: 550px;
+  }
+  @include breakpoints.media-breakpoint-up('2xl') {
+    --rdu-carousel-column-block-size: 650px;
+  }
+  --rdu-carousel-item-pages-height: 85%;
+  --rdu-carousel-item-pages-aspect-ratio: 4/3;
+  --rdu-carousel-item-pages-margin: #{map.get(spaces.$spaces, '3xs')};
+}

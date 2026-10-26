@@ -12,7 +12,7 @@ import { typeService } from './type.service'
 
 // ─── State ───────────────────────────────────────────────────────────────────
 
-interface TypeState {
+export interface TypeState {
   currentPage: number
   pageSize: number
   searchTerm: string

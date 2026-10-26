@@ -1,93 +1,81 @@
+import { useState } from 'react'
 import * as z from 'zod'
-import {SubmitHandler, useForm} from "react-hook-form";
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import './input-file.scss'
-import {zodResolver} from "@hookform/resolvers/zod";
-import {RDU_Button} from "../../../../lib/components/buttons/button/Button.tsx";
-import {RDU_InputFile} from "../../../../lib/main.ts";
-import { DeleteIcon} from "../../../shared/icons.tsx";
 
-export function InputFile() {
-    const FileForm = z.object({
-        file: z.instanceof(FileList).refine((v) => v.length > 0, "required")
-    });
+import { RDU_InputFile } from '../../../../lib/main.ts'
+import { ControlState } from '../../../shared/control-state/control-state.tsx'
+import { DeleteIcon } from '../../../shared/icons.tsx'
 
-    const {
-        setValue,
-        trigger,
-        handleSubmit, formState
-    } = useForm<FormControl>({
-        resolver: zodResolver(FileForm),
-        mode: 'onChange'
-    });
+const DELETE_ICON = DeleteIcon()
 
-    const {
-        setValue: setValueMultiple,
-        trigger: triggerMultiple,
-        handleSubmit: handleSubmitMultiple,
-        formState: formStateMultiple
-    } = useForm<FormControl>({
-        resolver: zodResolver(FileForm),
-        mode: 'onChange'
-    });
+const FileForm = z.object({
+  file: z.custom<FileList>(value => value instanceof FileList && value.length > 0, { message: 'required' })
+})
 
-    type FormControl = z.infer<typeof FileForm>;
+type FormControl = z.infer<typeof FileForm>
 
-    const onSubmit: SubmitHandler<FormControl> = (data: FormControl) => {
-        console.log(data);
-    }
+export function InputFile () {
+  const [singleDisabled, setSingleDisabled] = useState(false)
+  const [multipleDisabled, setMultipleDisabled] = useState(false)
 
+  const single = useForm<FormControl>({ resolver: zodResolver(FileForm), mode: 'onChange' })
+  const multiple = useForm<FormControl>({ resolver: zodResolver(FileForm), mode: 'onChange' })
 
-    return (
-        <>
-            <section className={'ks-grid-main'} id={'ks-input-file'}>
-                <h2>Input File</h2>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <RDU_InputFile
-                        id={'test'}
-                        name={'file'}
-                        feature={'ks'}
-                        autoComplete={'none'}
-                        disabled={false}
-                        accept={''}
-                        formState={formState}
-                        successMsg={true}
-                        helpMsg={true}
-                        errorMsg={true}
-                        setValue={setValue}
-                        trigger={trigger}
-                        multiple={false}
-                        schema={FileForm}
-                        deleteIcon={DeleteIcon()}
-                    />
-                    <RDU_Button type={'submit'} variant={'primary'} text={'submit'}/>
-                </form>
-            </section>
-            <section className={'ks-grid-main'} id={'ks-input-file'}>
-                <h2>Input File (multiple)</h2>
-                <form onSubmit={handleSubmitMultiple(onSubmit)}>
-                    <RDU_InputFile
-                        id={'test'}
-                        name={'file'}
-                        feature={'ks'}
-                        autoComplete={'none'}
-                        disabled={false}
-                        accept={''}
-                        formState={formStateMultiple}
-                        successMsg={true}
-                        helpMsg={true}
-                        errorMsg={true}
-                        setValue={setValueMultiple}
-                        trigger={triggerMultiple}
-                        multiple={true}
-                        schema={FileForm}
-                        deleteIcon={DeleteIcon()}
-                    />
-                    <RDU_Button type={'submit'} variant={'primary'} text={'submit'}/>
-                </form>
-            </section>
-        </>
+  return (
+    <>
+      <section id="ks-input-file">
+        <h2>Input file</h2>
+        <p>Caricamento di un singolo file tramite pulsante o drag &amp; drop.</p>
+        <form onSubmit={event => event.preventDefault()}>
+          <h3>Singolo file</h3>
+          <RDU_InputFile name={'file'}
+                         feature={'ks'}
+                         id={'file-single'}
+                         multiple={false}
+                         accept={''}
+                         autoComplete={'none'}
+                         disabled={singleDisabled}
+                         errorMsg={true}
+                         successMsg={true}
+                         helpMsg={true}
+                         setValue={single.setValue}
+                         trigger={single.trigger}
+                         formState={single.formState}
+                         schema={FileForm}
+                         deleteIcon={DELETE_ICON}
+          />
+        </form>
+        <ControlState control={single.control} name="file" schema={FileForm} disabled={singleDisabled}
+                      onToggleDisabled={() => setSingleDisabled(value => !value)} />
+      </section>
 
-    );
-
-
+      <section id="ks-input-file-multiple">
+        <h2>Input file (multiple)</h2>
+        <p>Con <code>multiple</code> attivo il controllo contiene l'elenco di tutti i file selezionati.</p>
+        <form onSubmit={event => event.preventDefault()}>
+          <h3>File multipli</h3>
+          <RDU_InputFile name={'file'}
+                         feature={'ks'}
+                         id={'file-multiple'}
+                         multiple={true}
+                         accept={''}
+                         autoComplete={'none'}
+                         disabled={multipleDisabled}
+                         errorMsg={true}
+                         successMsg={true}
+                         helpMsg={true}
+                         setValue={multiple.setValue}
+                         trigger={multiple.trigger}
+                         formState={multiple.formState}
+                         schema={FileForm}
+                         deleteIcon={DELETE_ICON}
+          />
+        </form>
+        <ControlState control={multiple.control} name="file" schema={FileForm} disabled={multipleDisabled}
+                      onToggleDisabled={() => setMultipleDisabled(value => !value)} />
+      </section>
+    </>
+  )
 }

@@ -1,54 +1,49 @@
+import { useState } from 'react'
 import * as z from 'zod'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import './input-text.scss'
 
-import {RDU_InputText} from "../../../../lib/components/inputs/input-text/InputText.tsx";
-import {RDU_Button} from "../../../../lib/components/buttons/button/Button.tsx";
+import { RDU_InputText } from '../../../../lib/main.ts'
+import { ControlState } from '../../../shared/control-state/control-state.tsx'
 
+const TextForm = z.object({
+  text: z.string().nonempty({ message: 'required' }).max(36, { message: 'maxLength' })
+})
 
+type FormControl = z.infer<typeof TextForm>
 
 export function InputText () {
-  const TextForm = z.object({
-    text: z.string().nonempty({message: 'required'}).max(5, {message: 'maxLength'}),
-  })
+  const [disabled, setDisabled] = useState(false)
 
-  type FormControl = z.infer<typeof TextForm>;
-
-  const {
-    register,
-    handleSubmit,
-    formState
-  } = useForm<FormControl>({
+  const { register, formState, control } = useForm<FormControl>({
     resolver: zodResolver(TextForm),
     mode: 'onChange',
-    defaultValues: {
-      text: 'prova'
-    }
+    defaultValues: { text: '' }
   })
 
-  const onSubmit: SubmitHandler<FormControl> = (data: FormControl) =>
-    console.log(data)
-
   return (
-    <section className="ks-grid-main" id={'ks-input-text'}>
+    <section id="ks-input-text">
       <h2>Input text</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <p>Campo di testo libero con label, help, messaggio di successo ed errore generati dalle traduzioni.</p>
+      <form onSubmit={event => event.preventDefault()}>
+        <h3>Esempio</h3>
         <RDU_InputText name={'text'}
-                      feature={'ks'}
-                      id={'test'}
-                      maxLength={256}
-                      autoComplete={'none'}
-                      disabled={false}
-                      errorMsg={true}
-                      successMsg={true}
-                      helpMsg={true}
-                      register={register}
-                      formState={formState}
-                      schema={TextForm}
-        ></RDU_InputText>
-        <RDU_Button type={'submit'} text={'submit'}></RDU_Button>
+                       feature={'ks'}
+                       id={'text'}
+                       maxLength={36}
+                       autoComplete={'none'}
+                       disabled={disabled}
+                       errorMsg={true}
+                       successMsg={true}
+                       helpMsg={true}
+                       register={register}
+                       formState={formState}
+                       schema={TextForm}
+        />
       </form>
+      <ControlState control={control} name="text" schema={TextForm} disabled={disabled}
+                    onToggleDisabled={() => setDisabled(value => !value)} />
     </section>
   )
 }

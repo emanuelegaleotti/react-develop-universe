@@ -4,12 +4,23 @@
 @use '../abstract/functions' as functions;
 
 .rdu-pager {
-  --rdu-pager-li-font-size: #{functions.toRem(24)};
+  --rdu-pager-columns: auto auto auto auto auto;
+  --rdu-pager-li-font-size: #{functions.toRem(16)};
+  --rdu-pager-li-font-weight: 500;
   --rdu-pager-font-family: var(--rdu-font-family);
-  --rdu-pager-disabled-button: 0.7;
-  --rdu-pager-gap: #{functions.toRem(16)};
-  --rdu-page-pagination-gap: #{functions.toRem(16)};
-  --rdu-pager-li-active-background: #{map.get(palette.$palette, primary)};
-  --rdu-pager-li-padding: 0.5rem;
+  --rdu-pager-disabled-button: 0.5;
+  --rdu-pager-gap: #{map.get(spaces.$spaces, xs)};
+  --rdu-page-pagination-gap: #{map.get(spaces.$spaces, '3xs')};
+  --rdu-pager-pagination-padding: #{map.get(spaces.$spaces, md)};
+  --rdu-pager-li-min-size: #{functions.toRem(40)};
+  --rdu-pager-li-padding: 0 #{map.get(spaces.$spaces, xs)};
+  --rdu-pager-li-radius: #{functions.toRem(8)};
   --rdu-pager-li-border-color: #{palette.$gray-15};
+  --rdu-pager-li-background: #{palette.$gray-5};
+  --rdu-pager-li-color: #{palette.$gray-80};
+  --rdu-pager-li-hover-background: #{palette.$gray-10};
+  --rdu-pager-li-active-background: #{map.get(palette.$palette, primary)};
+  --rdu-pager-li-active-border-color: #{map.get(palette.$palette, primary)};
+  --rdu-pager-li-active-color: #{palette.$white};
+  --rdu-pager-li-active-font-weight: 600;
 }

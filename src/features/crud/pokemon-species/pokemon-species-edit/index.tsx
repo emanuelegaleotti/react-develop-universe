@@ -12,39 +12,41 @@ import { pokemonSpeciesService } from '../pokemon-species.service'
 
 const FEATURE = 'crud.species'
 
-const PokemonSpeciesSchema = z.object({
+const SpeciesSchema = z.object({
   name: z.string().min(1, { message: 'required' }),
   capture_rate: z.number({ message: 'required' }).min(0, { message: 'min' }),
-  base_happiness: z.number().nullable().catch(null),
-  gender_rate: z.number({ message: 'required' }),
+  base_happiness: z.number({ message: 'required' }).min(0, { message: 'min' }),
+  gender_rate: z.number({ message: 'required' }).min(-1, { message: 'min' }),
 })
 
-type PokemonSpeciesFormData = z.infer<typeof PokemonSpeciesSchema>
+type SpeciesFormData = z.infer<typeof SpeciesSchema>
 
 export function PokemonSpeciesEdit() {
   const { name } = useParams<{ name: string }>()
   const navigate = useNavigate()
   const isCreateMode = name === 'create'
 
-  const { register, handleSubmit, reset, formState } = useForm<PokemonSpeciesFormData>({
-    resolver: zodResolver(PokemonSpeciesSchema),
+  const { register, handleSubmit, reset, formState } = useForm<SpeciesFormData>({
+    resolver: zodResolver(SpeciesSchema),
     mode: 'onChange',
   })
 
   useEffect(() => {
-    if (!isCreateMode && name) {
-      pokemonSpeciesService.getByName(name).then(species => {
-        reset({
-          name: species.name,
-          capture_rate: species.capture_rate,
-          base_happiness: species.base_happiness,
-          gender_rate: species.gender_rate,
-        })
+    if (isCreateMode || !name) return
+    let active = true
+    pokemonSpeciesService.getByName(name).then(species => {
+      if (!active) return
+      reset({
+        name: species.name,
+        capture_rate: species.capture_rate,
+        base_happiness: species.base_happiness ?? 0,
+        gender_rate: species.gender_rate,
       })
-    }
+    })
+    return () => { active = false }
   }, [isCreateMode, name, reset])
 
-  const onSubmit = handleSubmit(async (data) => {
+  const onSubmit = handleSubmit(async data => {
     if (isCreateMode) {
       await pokemonSpeciesService.create(data)
     } else {
@@ -54,78 +56,74 @@ export function PokemonSpeciesEdit() {
   })
 
   return (
-    <section className="rdu-grid-main" id="pokemon-species-edit">
-      <hgroup>
-        <h2>{isCreateMode ? 'Crea Pokémon Species' : 'Modifica Pokémon Species'}</h2>
-        <p>
-          {isCreateMode
-            ? <>Esempio di creazione di una specie tramite <strong>form</strong>. La chiamata al servizio è uno stub.</>
-            : <>Esempio di modifica di una specie tramite <strong>form</strong>. La chiamata al servizio è uno stub.</>}
-        </p>
-      </hgroup>
+    <section id="ks-species-edit">
+      <h2>{isCreateMode ? 'Crea specie' : 'Modifica specie'}</h2>
+      <p>
+        {isCreateMode ? 'Creazione' : 'Modifica'} di un&apos;entità tramite <strong>react-hook-form</strong> e <strong>zod</strong>.
+        La chiamata al servizio è uno stub: i dati non vengono salvati.
+      </p>
 
-      <form onSubmit={onSubmit}>
-        <RDU_InputText
-          name="name"
-          feature={FEATURE}
-          id="species-name"
-          maxLength={100}
-          autoComplete="none"
-          disabled={formState.isSubmitting}
-          register={register}
-          formState={formState}
-          errorMsg={true}
-          successMsg={true}
-          helpMsg={false}
-          schema={PokemonSpeciesSchema}
-        />
-
-        <RDU_InputNumber
-          name="capture_rate"
-          feature={FEATURE}
-          id="species-capture-rate"
-          min={0}
-          autoComplete="none"
-          disabled={formState.isSubmitting}
-          register={register}
-          formState={formState}
-          errorMsg={true}
-          successMsg={true}
-          helpMsg={false}
-        />
-
-        <RDU_InputNumber
-          name="base_happiness"
-          feature={FEATURE}
-          id="species-base-happiness"
-          min={0}
-          autoComplete="none"
-          disabled={formState.isSubmitting}
-          register={register}
-          formState={formState}
-          errorMsg={false}
-          successMsg={false}
-          helpMsg={false}
-        />
-
-        <RDU_InputNumber
-          name="gender_rate"
-          feature={FEATURE}
-          id="species-gender-rate"
-          min={-1}
-          autoComplete="none"
-          disabled={formState.isSubmitting}
-          register={register}
-          formState={formState}
-          errorMsg={true}
-          successMsg={true}
-          helpMsg={false}
-        />
-
-        <fieldset>
-          <RDU_Button type="button" variant="light" text="cancel" disabled={formState.isSubmitting} onClick={() => navigate('/crud/pokemon-species')} />
-          <RDU_Button type="submit" variant="primary" text={isCreateMode ? 'create' : 'save'} disabled={formState.isSubmitting} />
-        </fieldset>
+      <form className="ks-crud-form" onSubmit={onSubmit}>
+        <h3>Dati della specie</h3>
+        <div className="ks-crud-fields">
+          <RDU_InputText
+            name="name"
+            feature={FEATURE}
+            id="name"
+            maxLength={100}
+            autoComplete="none"
+            disabled={formState.isSubmitting}
+            register={register}
+            formState={formState}
+            errorMsg={true}
+            successMsg={false}
+            helpMsg={false}
+            schema={SpeciesSchema}
+          />
+          <RDU_InputNumber
+            name="capture_rate"
+            feature={FEATURE}
+            id="capture_rate"
+            min={0}
+            autoComplete="none"
+            disabled={formState.isSubmitting}
+            register={register}
+            formState={formState}
+            errorMsg={true}
+            successMsg={false}
+            helpMsg={false}
+          />
+          <RDU_InputNumber
+            name="base_happiness"
+            feature={FEATURE}
+            id="base_happiness"
+            min={0}
+            autoComplete="none"
+            disabled={formState.isSubmitting}
+            register={register}
+            formState={formState}
+            errorMsg={true}
+            successMsg={false}
+            helpMsg={false}
+          />
+          <RDU_InputNumber
+            name="gender_rate"
+            feature={FEATURE}
+            id="gender_rate"
+            min={-1}
+            autoComplete="none"
+            disabled={formState.isSubmitting}
+            register={register}
+            formState={formState}
+            errorMsg={true}
+            successMsg={false}
+            helpMsg={false}
+          />
+        </div>
+        <div className="ks-crud-form-actions">
+          <RDU_Button type="button" variant="secondary" text="cancel" onClick={() => navigate('/crud/pokemon-species')} />
+          <RDU_Button type="submit" variant="primary" text={isCreateMode ? 'create' : 'save'} disabled={!formState.isValid || formState.isSubmitting} />
+        </div>
       </form>
     </section>
   )

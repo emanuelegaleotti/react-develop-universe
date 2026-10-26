@@ -1,0 +1,28 @@
+.rdu-chat-message {
+  align-self: flex-start;
+  max-width: var(--rdu-chat-max-width, 70%);
+  padding: var(--rdu-chat-message-padding, 0.625rem 1rem);
+  border-radius: var(--rdu-chat-border-radius, 0.5rem) var(--rdu-chat-border-radius, 0.5rem) var(--rdu-chat-border-radius, 0.5rem) 0.125rem;
+  background: var(--rdu-chat-primary-background);
+  color: var(--rdu-chat-primary-text-color);
+
+  p {
+    margin: 0;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+  }
+
+  time {
+    display: block;
+    margin-bottom: var(--rdu-chat-message-time-margin-bottom, 0.25rem);
+    font-size: var(--rdu-chat-message-time-font-size, 0.75rem);
+    opacity: var(--rdu-chat-message-time-opacity, 0.6);
+  }
+
+  &.rdu-chat-message-user {
+    align-self: flex-end;
+    border-radius: var(--rdu-chat-border-radius, 0.5rem) var(--rdu-chat-border-radius, 0.5rem) 0.125rem var(--rdu-chat-border-radius, 0.5rem);
+    background: var(--rdu-chat-secondary-background);
+    color: var(--rdu-chat-secondary-text-color);
+  }
+}

@@ -26,13 +26,58 @@
       "view": "Visualizza",
       "edit": "Modifica",
       "prev": "Pagina precedente",
-      "next": "Pagina successiva"
+      "next": "Pagina successiva",
+      "enable": "Abilita",
+      "disable": "Disabilita",
+      "send": "Invia",
+      "set-value": "Imposta valore",
+      "ghost": "Ghost",
+      "small": "Piccolo",
+      "default": "Predefinito",
+      "large": "Grande",
+      "download": "Scarica",
+      "continue": "Avanti",
+      "add": "Aggiungi",
+      "details": "Dettagli",
+      "confirm": "Conferma",
+      "open-dialog": "Apri dialog",
+      "show-error": "Mostra errore",
+      "firstPage": "Prima",
+      "prevPage": "Precedente",
+      "nextPage": "Successiva",
+      "lastPage": "Ultima",
+      "export-csv": "Esporta CSV",
+      "export-pdf": "Esporta PDF",
+      "toast-top-left": "↖ Top Left (4s)",
+      "toast-top-center": "↑ Top Center (3s)",
+      "toast-top-right": "↗ Top Right (4s)",
+      "toast-bottom-left": "↙ Bottom Left (persistente)",
+      "toast-bottom-center": "↓ Bottom Center (3s)",
+      "toast-bottom-right": "↘ Bottom Right (5s)",
+      "popover-bottom": "Bottom (default)",
+      "popover-top": "Top",
+      "popover-right": "Right",
+      "popover-left": "Left",
+      "popover-flip": "Flip verso l'alto",
+      "open-bottom-sheet": "Apri",
+      "notification-request": "Richiedi permesso",
+      "notification-send": "Invia notifica di prova",
+      "notification-close": "Chiudi notifica",
+      "retry": "Riprova",
+      "call": "Chiama",
+      "show-loader": "Mostra loader per 3 secondi",
+      "show-nested-loaders": "Mostra due loader sovrapposti",
+      "toast-hide": "Chiudi il Toast attivo"
     },
-    "paginator": {
-      "label": "Paginazione",
-      "first-page": "Prima pagina",
-      "last-page": "Ultima pagina",
-      "status": "Pagina {{currentPage}} di {{totalPages}}"
+    "chat-form": {
+      "textarea": {
+        "label": "Scrivi un messaggio",
+        "placeholder": "Scrivi un messaggio…"
+      },
+      "loading": "Invio in corso"
+    },
+    "chat": {
+      "help": "Le risposte possono contenere errori. Verifica sempre le informazioni importanti."
     }
   },
   "navigation": {
@@ -69,8 +114,7 @@
     "charts-line": "Line Chart",
     "charts-pie": "Pie Chart",
     "charts-scatter": "Scatter Chart",
-    "charts-area": "Area Chart",
-    "paginator": "Paginazione"
+    "charts-area": "Area Chart"
   },
   "crud": {
     "pokemon": {
@@ -83,16 +127,16 @@
         "min": "Il nome non può essere vuoto"
       },
       "height": {
-        "label": "Altezza",
-        "placeHolder": "",
+        "label": "Altezza (dm)",
+        "placeHolder": "es. 7",
         "help": "",
         "success": "Valido",
         "required": "L'altezza è obbligatoria",
         "min": "L'altezza deve essere almeno 1"
       },
       "weight": {
-        "label": "Peso",
-        "placeHolder": "",
+        "label": "Peso (hg)",
+        "placeHolder": "es. 69",
         "help": "",
         "success": "Valido",
         "required": "Il peso è obbligatorio",
@@ -100,7 +144,7 @@
       },
       "base_experience": {
         "label": "Esperienza base",
-        "placeHolder": "",
+        "placeHolder": "es. 64",
         "help": "",
         "success": "Valido",
         "required": "L'esperienza base è obbligatoria",
@@ -118,7 +162,7 @@
       },
       "capture_rate": {
         "label": "Tasso di cattura",
-        "placeHolder": "",
+        "placeHolder": "es. 45",
         "help": "",
         "success": "Valido",
         "required": "Il tasso di cattura è obbligatorio",
@@ -126,16 +170,19 @@
       },
       "base_happiness": {
         "label": "Felicità base",
-        "placeHolder": "",
+        "placeHolder": "es. 70",
         "help": "",
-        "success": "Valido"
+        "success": "Valido",
+        "required": "La felicità base è obbligatoria",
+        "min": "La felicità base deve essere almeno 0"
       },
       "gender_rate": {
         "label": "Tasso di genere",
-        "placeHolder": "",
+        "placeHolder": "es. 4",
         "help": "",
         "success": "Valido",
-        "required": "Il tasso di genere è obbligatorio"
+        "required": "Il tasso di genere è obbligatorio",
+        "min": "Il tasso di genere deve essere almeno -1"
       }
     },
     "type": {
@@ -148,159 +195,230 @@
       }
     },
     "pageSize": {
-      "label": "Elementi per pagina",
+      "label": "Righe per pagina",
       "placeHolder": "",
       "help": "",
       "success": ""
-    }
+    },
+    "search": {
+      "label": "Cerca",
+      "placeHolder": "Cerca per nome…",
+      "help": "",
+      "success": ""
+    },
+    "total": "{{count}} totali"
   },
   "ks": {
     "text": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
-    },
-    "checkbox": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
-    },
-    "radio": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
+      "label": "Nome utente",
+      "help": "Massimo 36 caratteri.",
+      "success": "Perfetto, il nome utente è valido.",
+      "placeHolder": "es. mario.rossi",
+      "required": "Il nome utente è obbligatorio.",
+      "maxLength": "Hai superato il numero massimo di caratteri."
     },
     "number": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
-    },
-    "datalist": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
+      "label": "Età",
+      "help": "Un numero tra 0 e 15.",
+      "success": "Valore valido.",
+      "placeHolder": "es. 10",
+      "required": "L'età è obbligatoria.",
+      "min": "Il valore minimo è 0.",
+      "max": "Il valore massimo è 15."
     },
     "email": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
+      "label": "Email",
+      "help": "Useremo questo indirizzo solo per contattarti.",
+      "success": "Indirizzo email valido.",
+      "placeHolder": "nome@esempio.it",
+      "required": "L'email è obbligatoria.",
+      "email": "Inserisci un indirizzo email valido.",
+      "maxLength": "L'email è troppo lunga."
     },
     "password": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
+      "label": "Password",
+      "help": "Massimo 30 caratteri.",
+      "success": "Password valida.",
+      "placeHolder": "Inserisci la password",
+      "required": "La password è obbligatoria.",
+      "maxLength": "La password è troppo lunga."
     },
     "search": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
+      "label": "Cerca",
+      "help": "Digita almeno un carattere.",
+      "success": "Ricerca pronta.",
+      "placeHolder": "Cerca…",
+      "required": "Inserisci un termine di ricerca.",
+      "maxLength": "Il termine di ricerca è troppo lungo."
     },
     "tel": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
-    },
-    "url": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
+      "label": "Telefono",
+      "help": "Includi il prefisso internazionale.",
+      "success": "Numero valido.",
+      "placeHolder": "+39 333 1234567",
+      "required": "Il numero di telefono è obbligatorio.",
+      "maxLength": "Il numero è troppo lungo."
     },
     "time": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
+      "label": "Orario",
+      "help": "Scegli un orario.",
+      "success": "Orario valido.",
+      "placeHolder": "hh:mm",
+      "required": "L'orario è obbligatorio."
     },
     "date": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
+      "label": "Data di nascita",
+      "help": "Scegli una data dal calendario.",
+      "success": "Data valida.",
+      "placeHolder": "gg/mm/aaaa",
+      "required": "La data è obbligatoria."
     },
     "datetime": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
-    },
-    "color": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
-    },
-    "range": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
-    },
-    "textarea": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
-    },
-    "select": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
-    },
-    "select-object": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
-    },
-    "file": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
+      "label": "Data e ora",
+      "help": "Scegli data e ora locali.",
+      "success": "Data e ora valide.",
+      "placeHolder": "gg/mm/aaaa hh:mm",
+      "required": "Data e ora sono obbligatorie."
     },
     "month": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
+      "label": "Mese",
+      "help": "Scegli un mese e un anno.",
+      "success": "Mese valido.",
+      "placeHolder": "mm/aaaa",
+      "required": "Il mese è obbligatorio."
     },
     "week": {
-      "label": "Etichetta",
-      "help": "Aiuto",
-      "success": "Successo",
-      "required": "Richiesto",
-      "placeHolder": "Placeholder"
+      "label": "Settimana",
+      "help": "Scegli una settimana dell'anno.",
+      "success": "Settimana valida.",
+      "placeHolder": "Settimana",
+      "required": "La settimana è obbligatoria."
+    },
+    "url": {
+      "label": "Sito web",
+      "help": "L'indirizzo deve iniziare con http://",
+      "success": "URL valido.",
+      "placeHolder": "http://esempio.it",
+      "required": "L'URL è obbligatorio.",
+      "pattern": "L'URL deve iniziare con http://"
+    },
+    "range": {
+      "label": "Volume",
+      "help": "Trascina il cursore per cambiare il valore.",
+      "success": "Valore impostato.",
+      "placeHolder": "Volume",
+      "required": "Il valore è obbligatorio."
+    },
+    "hidden": {
+      "label": "Campo nascosto",
+      "help": "Questo campo non è visibile all'utente.",
+      "success": "Valore nascosto presente.",
+      "placeHolder": "",
+      "required": "Il campo nascosto è obbligatorio."
+    },
+    "color": {
+      "label": "Colore preferito",
+      "help": "Scegli un colore dal selettore.",
+      "success": "Colore selezionato.",
+      "placeHolder": "Colore",
+      "required": "Il colore è obbligatorio."
+    },
+    "datalist": {
+      "label": "Browser",
+      "help": "Inizia a scrivere per vedere i suggerimenti.",
+      "success": "Browser valido.",
+      "placeHolder": "es. Firefox",
+      "required": "Il browser è obbligatorio.",
+      "maxLength": "Il valore è troppo lungo."
+    },
+    "datalistObject": {
+      "label": "Browser (oggetto)",
+      "help": "Il valore salvato è l'id dell'opzione scelta.",
+      "success": "Browser valido.",
+      "placeHolder": "es. Firefox",
+      "required": "Il browser è obbligatorio.",
+      "maxLength": "Il valore è troppo lungo."
+    },
+    "file": {
+      "label": "Allegato",
+      "help": "Seleziona o trascina un file.",
+      "success": "File caricato.",
+      "placeHolder": "Scegli un file",
+      "required": "Devi selezionare almeno un file.",
+      "dropMessage": "Trascina qui i file oppure",
+      "buttonAddFile": "Aggiungi file",
+      "buttonRemove": "Rimuovi file"
+    },
+    "select": {
+      "label": "Colore",
+      "help": "Scegli un valore dall'elenco.",
+      "success": "Selezione valida.",
+      "placeHolder": "Seleziona…",
+      "required": "Devi selezionare un valore."
+    },
+    "selectObject": {
+      "label": "Colore (oggetto)",
+      "help": "Il valore salvato è l'id dell'opzione scelta.",
+      "success": "Selezione valida.",
+      "placeHolder": "Seleziona…",
+      "required": "Devi selezionare un valore."
+    },
+    "textarea": {
+      "label": "Messaggio",
+      "help": "Massimo 256 caratteri.",
+      "success": "Messaggio valido.",
+      "placeHolder": "Scrivi qui il tuo messaggio",
+      "required": "Il messaggio è obbligatorio.",
+      "maxLength": "Il messaggio è troppo lungo."
+    },
+    "checkbox": {
+      "label": "Accetto i termini e le condizioni",
+      "help": "Devi accettare per proseguire.",
+      "success": "Grazie per aver accettato.",
+      "placeHolder": "",
+      "required": "Devi accettare i termini."
+    },
+    "radio": {
+      "label": "Colore",
+      "help": "Scegli una sola opzione.",
+      "success": "Opzione valida.",
+      "placeHolder": "",
+      "required": "Devi scegliere un'opzione.",
+      "options": {
+        "white": "Bianco",
+        "red": "Rosso",
+        "black": "Nero",
+        "blue": "Blu"
+      }
+    },
+    "query": {
+      "label": "Cerca",
+      "help": "Digita almeno un carattere.",
+      "success": "Ricerca pronta.",
+      "placeHolder": "Cerca…",
+      "required": "Inserisci un termine di ricerca.",
+      "maxLength": "Il termine di ricerca è troppo lungo."
+    },
+    "datetime-local": {
+      "label": "Data e ora",
+      "help": "Scegli data e ora locali.",
+      "success": "Data e ora valide.",
+      "placeHolder": "gg/mm/aaaa hh:mm",
+      "required": "Data e ora sono obbligatorie."
+    }
+  },
+  "error": {
+    "403": {
+      "title": "Accesso negato",
+      "message": "Non hai i permessi per visualizzare questa risorsa."
+    },
+    "404": {
+      "title": "Non trovato",
+      "message": "La risorsa richiesta non esiste o è stata spostata."
+    },
+    "500": {
+      "title": "Errore del server",
+      "message": "Qualcosa è andato storto. Riprova più tardi."
     }
   }
 }

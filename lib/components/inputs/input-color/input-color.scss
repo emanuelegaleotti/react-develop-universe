@@ -16,7 +16,9 @@
 
   input[type="color"] {
     width: 100%;
-    padding: var(--rdu-input-padding, 0.5rem);
+    padding: var(--rdu-input-color-padding, var(--rdu-input-padding, 0.5rem));
+    height: var(--rdu-input-color-height, auto);
+    cursor: var(--rdu-input-color-cursor, auto);
     font-size: var(--rdu-input-font-size, 1rem);
     line-height: var(--rdu-input-line-height, 1.5);
     font-weight: var(--rdu-input-font-weight, normal);

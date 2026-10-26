@@ -1,0 +1,109 @@
+// Contenuto base dei pannelli di dettaglio (offcanvas): hero, fatti, liste e chip.
+// Meter, sprite, citazioni e relazioni di danno sono nello scss della singola pagina.
+@mixin detail-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: var(--ks-space-lg);
+
+  .ks-detail-hero {
+    display: flex;
+    align-items: center;
+    gap: var(--ks-space-md);
+    padding: var(--ks-space-md);
+    border: 1px solid var(--ks-gray-300);
+    border-radius: .75rem;
+    background: var(--ks-gray-200);
+
+    h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -.01em;
+      text-transform: capitalize;
+      color: var(--ks-gray-900);
+    }
+
+    p {
+      margin: 0;
+      font-family: var(--rdu-font-family-mono);
+      font-size: .8125rem;
+      color: var(--ks-gray-600);
+    }
+  }
+
+  h4 {
+    margin: 0 0 var(--ks-space-xs);
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ks-gray-600);
+  }
+
+  .ks-detail-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    gap: var(--ks-space-xs);
+    margin: 0;
+
+    > div {
+      padding: var(--ks-space-xs) var(--ks-space-md);
+      border: 1px solid var(--ks-gray-300);
+      border-radius: .5rem;
+    }
+
+    dt {
+      font-size: .75rem;
+      color: var(--ks-gray-600);
+    }
+
+    dd {
+      margin: .125rem 0 0;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--ks-gray-900);
+      overflow-wrap: anywhere;
+      text-transform: capitalize;
+    }
+  }
+
+  .ks-detail-list {
+    display: grid;
+    gap: var(--ks-space-3xs);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--ks-space-md);
+      padding: var(--ks-space-3xs) var(--ks-space-md);
+      border: 1px solid var(--ks-gray-300);
+      border-radius: .5rem;
+      font-size: .9375rem;
+      text-transform: capitalize;
+    }
+  }
+
+  .ks-detail-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ks-space-4xs);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      padding: .125rem var(--ks-space-xs);
+      border: 1px solid color-mix(in srgb, var(--ks-color-primary) 25%, white);
+      border-radius: 999px;
+      background: var(--ks-gray-200);
+      font-size: .8125rem;
+      font-weight: 500;
+      text-transform: capitalize;
+      color: var(--ks-color-primary);
+    }
+  }
+}

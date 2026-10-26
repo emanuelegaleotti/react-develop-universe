@@ -1,0 +1,161 @@
+#ks-intersection {
+  // The default article clips its overflow, which would break the sticky counter
+  .ks-intersection-observed {
+    overflow: visible;
+  }
+  .ks-intersection-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--ks-space-md);
+
+    @media (min-width: 960px) {
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    }
+  }
+
+  .ks-intersection-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid var(--ks-gray-300);
+    border-radius: .75rem;
+    background: var(--ks-gray-100);
+    overflow: hidden;
+
+    li {
+      list-style: none;
+      border-bottom: 1px solid var(--ks-gray-300);
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+
+  .ks-intersection-scroll {
+    height: 22rem;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    border: 1px solid var(--ks-gray-300);
+    border-radius: .75rem;
+    background: var(--ks-gray-100);
+
+    &:focus-visible {
+      outline: 2px solid var(--ks-color-primary);
+      outline-offset: 2px;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      list-style: none;
+      border-bottom: 1px solid var(--ks-gray-300);
+    }
+  }
+
+  .ks-intersection-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--ks-space-md);
+    padding: var(--ks-space-md);
+    color: var(--ks-gray-600);
+    transition: background-color .2s ease, color .2s ease;
+
+    span {
+      font-size: .8125rem;
+      color: var(--ks-gray-500);
+    }
+
+    &.ks-visible {
+      background: color-mix(in srgb, var(--ks-color-primary) 10%, white);
+      color: var(--ks-gray-800);
+
+      span {
+        color: var(--ks-color-primary);
+        font-weight: 600;
+      }
+    }
+  }
+
+  .ks-intersection-log {
+    position: sticky;
+    top: calc(4rem + var(--ks-space-md));
+    align-self: start;
+    display: grid;
+    align-content: start;
+    gap: var(--ks-space-3xs);
+    padding: var(--ks-space-md);
+    border: 1px solid var(--ks-gray-300);
+    border-radius: .75rem;
+    background: var(--ks-gray-100);
+
+    p,
+    h4 {
+      margin: 0;
+    }
+
+    h4 {
+      margin-top: var(--ks-space-3xs);
+      font-size: .8125rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--ks-gray-600);
+    }
+
+    ol {
+      display: grid;
+      gap: var(--ks-space-4xs);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-family: var(--rdu-font-family-mono);
+      font-size: .875rem;
+    }
+
+    li[data-event='in'] {
+      color: var(--ks-color-success);
+    }
+
+    li[data-event='out'] {
+      color: var(--ks-gray-500);
+    }
+  }
+
+  .ks-intersection-sentinel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ks-space-3xs);
+    padding: var(--ks-space-md);
+    color: var(--ks-gray-600);
+    font-size: .875rem;
+    --rdu-spinner-size: 1.25rem;
+    --rdu-spinner-thickness: .1875rem;
+    --rdu-spinner-color: var(--ks-color-primary);
+  }
+
+  .ks-intersection-error,
+  .ks-intersection-end {
+    display: grid;
+    justify-items: center;
+    gap: var(--ks-space-xs);
+    margin: 0;
+    padding: var(--ks-space-md);
+    text-align: center;
+    color: var(--ks-gray-600);
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .ks-intersection-error {
+    color: var(--ks-color-error);
+  }
+}

@@ -1,0 +1,45 @@
+#ks-home {
+  .ks-lead {
+    max-width: 60ch;
+  }
+
+  .ks-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: var(--ks-space-md);
+
+    a {
+      display: grid;
+      gap: var(--ks-space-3xs);
+      align-content: start;
+      padding: var(--ks-space-lg);
+      border: 1px solid var(--ks-gray-300);
+      border-radius: 1rem;
+      color: var(--ks-gray-800);
+      text-decoration: none;
+      transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+
+      &:hover {
+        border-color: var(--ks-color-primary);
+        box-shadow: 0 4px 16px rgb(8 126 164 / 15%);
+        transform: translateY(-2px);
+      }
+
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+
+      p {
+        color: var(--ks-gray-600);
+        font-size: .875rem;
+        line-height: 1.5;
+      }
+    }
+  }
+}

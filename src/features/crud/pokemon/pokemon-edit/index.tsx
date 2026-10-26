@@ -32,19 +32,21 @@ export function PokemonEdit() {
   })
 
   useEffect(() => {
-    if (!isCreateMode && name) {
-      pokemonService.getByName(name).then(pokemon => {
-        reset({
-          name: pokemon.name,
-          height: pokemon.height,
-          weight: pokemon.weight,
-          base_experience: pokemon.base_experience,
-        })
+    if (isCreateMode || !name) return
+    let active = true
+    pokemonService.getByName(name).then(pokemon => {
+      if (!active) return
+      reset({
+        name: pokemon.name,
+        height: pokemon.height,
+        weight: pokemon.weight,
+        base_experience: pokemon.base_experience,
       })
-    }
+    })
+    return () => { active = false }
   }, [isCreateMode, name, reset])
 
-  const onSubmit = handleSubmit(async (data) => {
+  const onSubmit = handleSubmit(async data => {
     if (isCreateMode) {
       await pokemonService.create(data)
     } else {
@@ -54,80 +56,75 @@ export function PokemonEdit() {
   })
 
   return (
-    <section className="rdu-grid-main" id="pokemon-edit">
-      <hgroup>
-        <h2>{isCreateMode ? 'Crea Pokémon' : 'Modifica Pokémon'}</h2>
-        <p>
-          {isCreateMode
-            ? <>Esempio di creazione di un&apos;entità tramite <strong>form</strong>. La chiamata al servizio è uno stub.</>
-            : <>Esempio di modifica di un&apos;entità tramite <strong>form</strong>. La chiamata al servizio è uno stub.</>}
-        </p>
-      </hgroup>
+    <section id="ks-pokemon-edit">
+      <h2>{isCreateMode ? 'Crea Pokémon' : 'Modifica Pokémon'}</h2>
+      <p>
+        {isCreateMode ? 'Creazione' : 'Modifica'} di un&apos;entità tramite <strong>react-hook-form</strong> e <strong>zod</strong>.
+        La chiamata al servizio è uno stub: i dati non vengono salvati.
+      </p>
 
-      <form onSubmit={onSubmit}>
-        <RDU_InputText
-          name="name"
-          feature={FEATURE}
-          id="pokemon-name"
-          maxLength={100}
-          autoComplete="none"
-          disabled={formState.isSubmitting}
-          register={register}
-          formState={formState}
-          errorMsg={true}
-          successMsg={true}
-          helpMsg={false}
-          schema={PokemonSchema}
-        />
-
-        <RDU_InputNumber
-          name="height"
-          feature={FEATURE}
-          id="pokemon-height"
-          min={1}
-          autoComplete="none"
-          disabled={formState.isSubmitting}
-          register={register}
-          formState={formState}
-          errorMsg={true}
-          successMsg={true}
-          helpMsg={false}
-        />
-
-        <RDU_InputNumber
-          name="weight"
-          feature={FEATURE}
-          id="pokemon-weight"
-          min={1}
-          autoComplete="none"
-          disabled={formState.isSubmitting}
-          register={register}
-          formState={formState}
-          errorMsg={true}
-          successMsg={true}
-          helpMsg={false}
-        />
-
-        <RDU_InputNumber
-          name="base_experience"
-          feature={FEATURE}
-          id="pokemon-base-experience"
-          min={0}
-          autoComplete="none"
-          disabled={formState.isSubmitting}
-          register={register}
-          formState={formState}
-          errorMsg={true}
-          successMsg={true}
-          helpMsg={false}
-        />
-
-        <fieldset>
-          <RDU_Button type="button" variant="light" text="cancel" disabled={formState.isSubmitting} onClick={() => navigate('/crud/pokemon')} />
-          <RDU_Button type="submit" variant="primary" text={isCreateMode ? 'create' : 'save'} disabled={formState.isSubmitting} />
-        </fieldset>
+      <form className="ks-crud-form" onSubmit={onSubmit}>
+        <h3>Dati del Pokémon</h3>
+        <div className="ks-crud-fields">
+          <RDU_InputText
+            name="name"
+            feature={FEATURE}
+            id="name"
+            maxLength={100}
+            autoComplete="none"
+            disabled={formState.isSubmitting}
+            register={register}
+            formState={formState}
+            errorMsg={true}
+            successMsg={false}
+            helpMsg={false}
+            schema={PokemonSchema}
+          />
+          <RDU_InputNumber
+            name="height"
+            feature={FEATURE}
+            id="height"
+            min={1}
+            autoComplete="none"
+            disabled={formState.isSubmitting}
+            register={register}
+            formState={formState}
+            errorMsg={true}
+            successMsg={false}
+            helpMsg={false}
+          />
+          <RDU_InputNumber
+            name="weight"
+            feature={FEATURE}
+            id="weight"
+            min={1}
+            autoComplete="none"
+            disabled={formState.isSubmitting}
+            register={register}
+            formState={formState}
+            errorMsg={true}
+            successMsg={false}
+            helpMsg={false}
+          />
+          <RDU_InputNumber
+            name="base_experience"
+            feature={FEATURE}
+            id="base_experience"
+            min={0}
+            autoComplete="none"
+            disabled={formState.isSubmitting}
+            register={register}
+            formState={formState}
+            errorMsg={true}
+            successMsg={false}
+            helpMsg={false}
+          />
+        </div>
+        <div className="ks-crud-form-actions">
+          <RDU_Button type="button" variant="secondary" text="cancel" onClick={() => navigate('/crud/pokemon')} />
+          <RDU_Button type="submit" variant="primary" text={isCreateMode ? 'create' : 'save'} disabled={!formState.isValid || formState.isSubmitting} />
+        </div>
       </form>
     </section>
   )
 }
-

@@ -1,3 +1,42 @@
+@use 'sass:map';
+@use '../base/palette' as palette;
+@use '../base/spaces' as spaces;
+@use '../abstract/functions' as functions;
+
 .rdu-dialog {
-  --rdu-loader-background: rgba(0, 0, 0, 0.1);
+  --rdu-dialog-background: #{palette.$white};
+  --rdu-dialog-color: #{palette.$gray-90};
+  --rdu-dialog-font-family: var(--rdu-font-family);
+  --rdu-dialog-width: min(#{functions.toRem(480)}, calc(100vw - 2rem));
+  --rdu-dialog-overflow: hidden;
+  --rdu-dialog-border: 1px solid;
+  --rdu-dialog-border-color: #{palette.$gray-10};
+  --rdu-dialog-border-radius: #{functions.toRem(16)};
+  --rdu-dialog-box-shadow: 0 24px 64px rgb(0 0 0 / 18%);
+  --rdu-dialog-backdrop-background: rgb(35 39 47 / 50%);
+  --rdu-dialog-backdrop-filter: blur(2px);
+  --rdu-dialog-header-padding: #{map.get(spaces.$spaces, lg)} #{map.get(spaces.$spaces, lg)} #{map.get(spaces.$spaces, xs)};
+  --rdu-dialog-header-font-size: #{functions.toRem(20)};
+  --rdu-dialog-header-font-weight: 600;
+  --rdu-dialog-header-line-height: 1.3;
+  --rdu-dialog-header-letter-spacing: -.01em;
+  --rdu-dialog-header-color: #{palette.$gray-90};
+  --rdu-dialog-header-font-family: var(--rdu-font-family);
+  --rdu-dialog-close-button-background: transparent;
+  --rdu-dialog-close-button-border: 1px solid;
+  --rdu-dialog-close-button-border-color: transparent;
+  --rdu-dialog-close-button-border-radius: #{functions.toRem(8)};
+  --rdu-dialog-close-button-padding: #{map.get(spaces.$spaces, '4xs')};
+  --rdu-dialog-close-button-color: #{palette.$gray-50};
+  --rdu-dialog-close-button-line-height: 0;
+  --rdu-dialog-close-button-svg-width: #{functions.toRem(22)};
+  --rdu-dialog-close-button-svg-height: #{functions.toRem(22)};
+  --rdu-dialog-close-button-hover-background: #{palette.$gray-5};
+  --rdu-dialog-close-button-hover-border-color: #{palette.$gray-10};
+  --rdu-dialog-close-button-hover-color: #{palette.$gray-90};
+  --rdu-dialog-body-padding: #{map.get(spaces.$spaces, xs)} #{map.get(spaces.$spaces, lg)} #{map.get(spaces.$spaces, lg)};
+  --rdu-dialog-footer-padding: #{map.get(spaces.$spaces, md)} #{map.get(spaces.$spaces, lg)};
+  --rdu-dialog-footer-gap: #{map.get(spaces.$spaces, xs)};
+  --rdu-dialog-footer-border-top: 1px solid #{palette.$gray-10};
+  --rdu-dialog-footer-background: #{palette.$gray-5};
 }

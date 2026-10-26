@@ -1,0 +1,137 @@
+.rdu-bottom-sheet {
+  position: fixed;
+  inset: auto 0 0;
+  margin: auto auto 0;
+  width: 100%;
+  max-width: var(--rdu-bottom-sheet-max-width, 37.5rem);
+  max-height: var(--rdu-bottom-sheet-max-height, 85dvh);
+  padding: var(--rdu-bottom-sheet-padding, 0);
+  overflow: hidden;
+  overscroll-behavior: contain;
+  box-sizing: border-box;
+  background: var(--rdu-bottom-sheet-background, Canvas);
+  color: var(--rdu-bottom-sheet-color, CanvasText);
+  font-family: var(--rdu-bottom-sheet-font-family);
+  border: var(--rdu-bottom-sheet-border, 0);
+  border-color: var(--rdu-bottom-sheet-border-color);
+  border-radius: var(--rdu-bottom-sheet-border-radius, 0);
+  box-shadow: var(--rdu-bottom-sheet-box-shadow);
+  translate: 0 100%;
+
+  &[open] {
+    display: flex;
+    flex-direction: column;
+    translate: 0 0;
+  }
+
+  &::backdrop {
+    background: var(--rdu-bottom-sheet-backdrop-background);
+    backdrop-filter: var(--rdu-bottom-sheet-backdrop-filter);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: translate var(--rdu-bottom-sheet-transition-duration, 0.3s) ease,
+      overlay var(--rdu-bottom-sheet-transition-duration, 0.3s) allow-discrete,
+      display var(--rdu-bottom-sheet-transition-duration, 0.3s) allow-discrete;
+
+    &[open] {
+      @starting-style {
+        translate: 0 100%;
+      }
+    }
+
+    &::backdrop {
+      opacity: 0;
+      transition: opacity var(--rdu-bottom-sheet-transition-duration, 0.3s) ease,
+        overlay var(--rdu-bottom-sheet-transition-duration, 0.3s) allow-discrete,
+        display var(--rdu-bottom-sheet-transition-duration, 0.3s) allow-discrete;
+    }
+
+    &[open]::backdrop {
+      opacity: 1;
+
+      @starting-style {
+        opacity: 0;
+      }
+    }
+  }
+
+  .rdu-bottom-sheet-header {
+    flex-shrink: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: var(--rdu-bottom-sheet-header-padding, 0);
+    background: var(--rdu-bottom-sheet-header-background);
+    border-bottom: var(--rdu-bottom-sheet-header-border-bottom, 0);
+
+    .rdu-bottom-sheet-handle {
+      grid-column: 1 / -1;
+      display: block;
+      justify-self: center;
+      width: var(--rdu-bottom-sheet-handle-width);
+      height: var(--rdu-bottom-sheet-handle-height);
+      margin-bottom: var(--rdu-bottom-sheet-handle-margin-bottom, 0);
+      background: var(--rdu-bottom-sheet-handle-color);
+      border-radius: var(--rdu-bottom-sheet-handle-border-radius);
+    }
+
+    h4 {
+      grid-column: 1;
+      margin: var(--rdu-bottom-sheet-title-margin, 0);
+      font-size: var(--rdu-bottom-sheet-title-font-size);
+      font-family: var(--rdu-bottom-sheet-title-font-family);
+      font-weight: var(--rdu-bottom-sheet-title-font-weight);
+      line-height: var(--rdu-bottom-sheet-title-line-height);
+      letter-spacing: var(--rdu-bottom-sheet-title-letter-spacing);
+      color: var(--rdu-bottom-sheet-title-color);
+    }
+
+    .rdu-bottom-sheet-close {
+      grid-column: 2;
+      background: var(--rdu-bottom-sheet-close-background);
+      border: var(--rdu-bottom-sheet-close-border);
+      border-color: var(--rdu-bottom-sheet-close-border-color);
+      border-radius: var(--rdu-bottom-sheet-close-border-radius);
+      padding: var(--rdu-bottom-sheet-close-padding);
+      line-height: var(--rdu-bottom-sheet-close-line-height, 0);
+      color: var(--rdu-bottom-sheet-close-color, currentColor);
+      cursor: pointer;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: all .3s;
+      }
+
+      svg {
+        width: var(--rdu-bottom-sheet-close-svg-width);
+        height: var(--rdu-bottom-sheet-close-svg-height);
+        fill: currentColor;
+      }
+
+      &:hover {
+        background: var(--rdu-bottom-sheet-close-hover-background);
+        border-color: var(--rdu-bottom-sheet-close-hover-border-color);
+        color: var(--rdu-bottom-sheet-close-hover-color, currentColor);
+      }
+    }
+  }
+
+  .rdu-bottom-sheet-body {
+    flex: 1;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: var(--rdu-bottom-sheet-body-padding, 0);
+    background: var(--rdu-bottom-sheet-body-background);
+  }
+
+  .rdu-bottom-sheet-footer {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: var(--rdu-bottom-sheet-footer-justify-content, flex-end);
+    gap: var(--rdu-bottom-sheet-footer-gap, 0);
+    padding: var(--rdu-bottom-sheet-footer-padding, 0);
+    background: var(--rdu-bottom-sheet-footer-background);
+    border-top: var(--rdu-bottom-sheet-footer-border-top, 0);
+  }
+}

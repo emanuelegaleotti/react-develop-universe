@@ -8,6 +8,7 @@
   font-size: var(--rdu-button-font-size, 1rem);
   border: var(--rdu-button-border);
   line-height: var(--rdu-button-line-height, 1);
+  font-family: var(--rdu-button-font-family, inherit);
   font-weight: var(--rdu-button-font-weight, normal);
   letter-spacing: var(--rdu-button-letter-spacing);
   font-style: var(--rdu-button-font-style, normal);
@@ -123,6 +124,63 @@
     }
   }
 
+  &.rdu-ghost {
+    background-color: var(--rdu-button-ghost-background);
+    color: var(--rdu-button-ghost-color);
+    border-color: var(--rdu-button-ghost-border-color);
+
+    &:hover {
+      background-color: var(--rdu-button-ghost-hover-background);
+      color: var(--rdu-button-ghost-hover-color);
+      border-color: var(--rdu-button-ghost-border-hover-color);
+    }
+
+    &.active {
+      background-color: var(--rdu-button-ghost-active-background);
+      color: var(--rdu-button-ghost-active-color);
+    }
+  }
+
+  &.rdu-link {
+    background-color: var(--rdu-button-link-background);
+    color: var(--rdu-button-link-color);
+    border-color: var(--rdu-button-link-border-color);
+
+    &:hover {
+      background-color: var(--rdu-button-link-hover-background);
+      color: var(--rdu-button-link-hover-color);
+      border-color: var(--rdu-button-link-border-hover-color);
+    }
+
+    &.active {
+      background-color: var(--rdu-button-link-active-background);
+      color: var(--rdu-button-link-active-color);
+    }
+  }
+
+  &.rdu-small {
+    padding: var(--rdu-button-small-padding, var(--rdu-button-padding));
+    font-size: var(--rdu-button-small-font-size, var(--rdu-button-font-size, 1rem));
+  }
+
+  &.rdu-large {
+    padding: var(--rdu-button-large-padding, var(--rdu-button-padding));
+    font-size: var(--rdu-button-large-font-size, var(--rdu-button-font-size, 1rem));
+  }
+
+  &.rdu-pill {
+    border-radius: var(--rdu-button-pill-border-radius, 9999px);
+  }
+
+  &:disabled {
+    cursor: var(--rdu-button-disabled-cursor, not-allowed);
+    opacity: var(--rdu-button-disabled-opacity, 1);
+  }
+
+  &:has(.rdu-button-icon.rdu-only) {
+    padding: var(--rdu-button-icon-only-padding, var(--rdu-button-padding));
+  }
+
   &:has(.rdu-button-icon) {
     gap: var(--rdu-button-icon-gap);
   }
@@ -141,6 +199,13 @@
 
   .rdu-button-icon {
     display: var(--rdu-button-icon-display, inline-block);
+    line-height: 0;
+
+    svg {
+      width: var(--rdu-button-icon-width, 1em);
+      height: var(--rdu-button-icon-height, 1em);
+      fill: var(--rdu-button-icon-fill, currentColor);
+    }
 
     &.rdu-left {
       order: 1;

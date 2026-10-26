@@ -1,0 +1,5 @@
+@use '../../../../sass/components/confirm' as confirm;
+
+#ks-pokemon-delete {
+  @include confirm.confirm;
+}

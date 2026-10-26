@@ -1,17 +1,16 @@
 import './pokemon-species-list.scss'
 
-import { type FormEvent, useCallback, useEffect, useMemo, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
-import * as z from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { RDU_Button } from '../../../../../lib/components/buttons/button/Button.tsx'
-import { RDU_Select } from '../../../../../lib/components/inputs/select/Select.tsx'
 import { useDialog } from '../../../../../lib/components/dialogs/dialog/DialogContext.tsx'
 import { useOffcanvas } from '../../../../../lib/components/dialogs/offcanvas/OffcanvasContext.tsx'
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks.ts'
-import { DeleteIcon, EditIcon, IconPlus, VisibilityIcon } from '../../../../shared/icons.tsx'
+import { CrudFooter } from '../../shared/crud-footer.tsx'
+import { CrudRowActions } from '../../shared/crud-row-actions.tsx'
+import { CrudToolbar } from '../../shared/crud-toolbar.tsx'
 import type { NamedApiResource, PokeApiPage } from '../../shared/pokeapi.utils'
+import { PokemonSpeciesDelete } from '../pokemon-species-delete'
+import { PokemonSpeciesDetail } from '../pokemon-species-detail'
 import {
   selectCurrentPage,
   selectPageSize,
@@ -20,20 +19,7 @@ import {
   setPageSize,
   setSearchTerm,
 } from '../pokemon-species-slice.ts'
-import { pokemonSpeciesService } from '../pokemon-species.service.ts'
-import { PokemonSpeciesDelete } from '../pokemon-species-delete'
-import { PokemonSpeciesDetail } from '../pokemon-species-detail'
-
-const PAGE_SIZE_OPTIONS = ['10', '15', '20', '25']
-
-const PageSizeSchema = z.object({ pageSize: z.string().optional() })
-type PageSizeForm = z.infer<typeof PageSizeSchema>
-
-function buildVisiblePages(currentPage: number, totalPages: number): number[] {
-  if (totalPages <= 5) return Array.from({ length: totalPages }, (_, i) => i + 1)
-  const start = Math.max(1, Math.min(currentPage - 2, totalPages - 4))
-  return Array.from({ length: 5 }, (_, i) => start + i)
-}
+import { pokemonSpeciesService } from '../pokemon-species.service'
 
 export function PokemonSpeciesList() {
   const navigate = useNavigate()
@@ -45,139 +31,90 @@ export function PokemonSpeciesList() {
   const pageSize = useAppSelector(selectPageSize)
   const searchTerm = useAppSelector(selectSearchTerm)
 
-  const [search, setSearch] = useState(searchTerm)
+  const [reload, setReload] = useState(0)
   const [pageData, setPageData] = useState<PokeApiPage<NamedApiResource> | null>(null)
 
-  const { register, formState, watch } = useForm<PageSizeForm>({
-    resolver: zodResolver(PageSizeSchema),
-    defaultValues: { pageSize: String(pageSize) },
-  })
-
-  const fetchSpecies = useCallback(async (p: number, ps: number, s: string) => {
-    const data = await pokemonSpeciesService.getPage(p, ps, s)
-    setPageData(data)
-  }, [])
-
   useEffect(() => {
-    void fetchSpecies(page, pageSize, searchTerm)
-  }, [fetchSpecies, page, pageSize, searchTerm])
-
-  useEffect(() => {
-    const sub = watch(value => {
-      if (value.pageSize) dispatch(setPageSize(Number(value.pageSize)))
+    let active = true
+    pokemonSpeciesService.getPage(page, pageSize, searchTerm).then(data => {
+      if (active) setPageData(data)
     })
-    return () => sub.unsubscribe()
-  }, [watch, dispatch])
+    return () => { active = false }
+  }, [page, pageSize, searchTerm, reload])
 
-  const totalCount = pageData?.count ?? 0
-  const totalPages = Math.ceil(totalCount / pageSize)
-  const visiblePages = useMemo(() => buildVisiblePages(page, totalPages), [page, totalPages])
+  const onSearch = useCallback((term: string) => { dispatch(setSearchTerm(term)) }, [dispatch])
+  const onPageChange = useCallback((value: number) => { dispatch(setPage(value)) }, [dispatch])
+  const onPageSizeChange = useCallback((value: number) => { dispatch(setPageSize(value)) }, [dispatch])
 
-  const handleSearchSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    dispatch(setSearchTerm(search.trim()))
+  const onView = (name: string) => {
+    openOffcanvas(<PokemonSpeciesDetail name={name} />, 'right', name, 'pokemon-species-detail-offcanvas')
   }
 
-  const openDetailOffcanvas = (item: NamedApiResource) => {
-    openOffcanvas(<PokemonSpeciesDetail name={item.name} />, 'right', item.name, 'pokemon-species-detail')
-  }
-
-  const openDeleteDialog = (name: string) => {
+  const onDelete = (name: string) => {
     openDialog(
       <PokemonSpeciesDelete
         name={name}
-        onDeleted={() => { closeDialog(); void fetchSpecies(page, pageSize, searchTerm) }}
+        onDeleted={() => { closeDialog(); setReload(value => value + 1) }}
         onCancel={closeDialog}
       />,
-      'Elimina Pokémon Species',
-      'pokemon-species-delete'
+      'Elimina specie',
+      'pokemon-species-delete-dialog'
     )
   }
 
+  const results = pageData?.results ?? []
+
   return (
-    <section className="rdu-grid-main" id="pokemon-species">
-      <header id="header-pokemon-species">
-        <hgroup>
-          <h2>Pokémon Species</h2>
-          <p>Esempio di CRUD ibrido con <strong>Redux Toolkit</strong>. Lo stato di paginazione (pagina, dimensione, ricerca) è in Redux; i dati API rimangono nello state locale del componente.</p>
-        </hgroup>
-        <RDU_Button type="button" variant="primary" text="create" icon={<IconPlus />} iconPosition="left" onClick={() => navigate('/crud/pokemon-species/create')} />
-      </header>
+    <section id="ks-species-list">
+      <h2>Specie Pokémon</h2>
+      <p>
+        CRUD con stato gestito tramite <strong>Redux Toolkit</strong>: pagina, dimensione e ricerca vivono nello
+        slice, mentre i dati dell&apos;API restano nel componente.
+      </p>
 
-      <search>
-        <form onSubmit={handleSearchSubmit} role="search">
-          <input
-            type="search"
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            placeholder="Cerca per nome"
-          />
-          <RDU_Button type="submit" variant="primary" text="search" />
-        </form>
-      </search>
+      <div className="ks-crud-card">
+        <CrudToolbar createPath="/crud/pokemon-species/create" defaultSearch={searchTerm} onSearch={onSearch} />
 
-      <figure>
-        <table className="rdu-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {pageData?.results.length === 0 && (
-              <tr><td colSpan={3}>Nessuna species trovata.</td></tr>
-            )}
-            {pageData?.results.map((item, index) => (
-              <tr key={item.name}>
-                <td>{(page - 1) * pageSize + index + 1}</td>
-                <td>{item.name}</td>
-                <td>
-                  <RDU_Button type="button" variant="primary" text="view" icon={<VisibilityIcon />} iconPosition="only"
-                    onClick={() => openDetailOffcanvas(item)} />
-                  <RDU_Button type="button" variant="primary" text="edit" icon={<EditIcon />} iconPosition="only"
-                    onClick={() => navigate(`/crud/pokemon-species/${item.name}`)} />
-                  <RDU_Button type="button" variant="error" text="delete" icon={<DeleteIcon />} iconPosition="only"
-                    onClick={() => openDeleteDialog(item.name)} />
-                </td>
+        <div className="ks-crud-table">
+          <table className="rdu-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th className="ks-crud-cell-actions">Azioni</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        <figcaption>{totalCount} totali</figcaption>
-      </figure>
+            </thead>
+            <tbody>
+              {pageData && results.length === 0 && (
+                <tr>
+                  <td colSpan={3} className="ks-crud-empty">Nessuna specie trovata.</td>
+                </tr>
+              )}
+              {results.map((item, index) => (
+                <tr key={item.name}>
+                  <td className="ks-crud-index">{index + 1 + (page - 1) * pageSize}</td>
+                  <td className="ks-crud-name">{item.name}</td>
+                  <td className="ks-crud-cell-actions">
+                    <CrudRowActions
+                      onView={() => onView(item.name)}
+                      onEdit={() => navigate(`/crud/pokemon-species/${item.name}`)}
+                      onDelete={() => onDelete(item.name)}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-      <nav aria-label="Paginazione">
-        <RDU_Button type="button" variant="primary" text="prev" icon={
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
-        } iconPosition="only" disabled={page <= 1} onClick={() => dispatch(setPage(page - 1))} />
-        {visiblePages.map(n => (
-          <button key={n} type="button" className={`rdu-button rdu-link${n === page ? ' active' : ''}`}
-            onClick={() => dispatch(setPage(n))} aria-current={n === page ? 'page' : undefined}>
-            {n}
-          </button>
-        ))}
-        <RDU_Button type="button" variant="primary" text="next" icon={
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
-        } iconPosition="only" disabled={page >= totalPages} onClick={() => dispatch(setPage(page + 1))} />
-      </nav>
-
-      <form id="pageSizeForm">
-        <RDU_Select
-          name="pageSize"
-          feature="crud"
-          id="species-page-size"
-          options={PAGE_SIZE_OPTIONS}
-          autoComplete="none"
-          register={register}
-          formState={formState}
-          schema={PageSizeSchema}
-          errorMsg={false}
-          successMsg={false}
-          helpMsg={false}
+        <CrudFooter
+          count={pageData?.count ?? 0}
+          page={page}
+          pageSize={pageSize}
+          onPageChange={onPageChange}
+          onPageSizeChange={onPageSizeChange}
         />
-      </form>
+      </div>
     </section>
   )
 }

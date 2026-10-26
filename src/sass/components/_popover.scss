@@ -1,0 +1,19 @@
+@use 'sass:map';
+@use '../abstract/functions' as functions;
+@use '../base/palette' as palette;
+@use '../base/spaces' as spaces;
+
+.rdu-popover {
+  --rdu-popover-offset: #{map.get(spaces.$spaces, '3xs')};
+  --rdu-popover-max-width: #{functions.toRem(320)};
+  --rdu-popover-padding: #{map.get(spaces.$spaces, xs)} #{map.get(spaces.$spaces, md)};
+  --rdu-popover-border: 1px solid;
+  --rdu-popover-border-color: #{palette.$gray-10};
+  --rdu-popover-border-radius: #{functions.toRem(12)};
+  --rdu-popover-background: #{palette.$white};
+  --rdu-popover-color: #{palette.$gray-80};
+  --rdu-popover-font-family: var(--rdu-font-family);
+  --rdu-popover-font-size: #{functions.toRem(15)};
+  --rdu-popover-line-height: 1.5;
+  --rdu-popover-box-shadow: 0 12px 32px rgb(0 0 0 / 14%);
+}

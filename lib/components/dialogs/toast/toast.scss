@@ -1,0 +1,146 @@
+.rdu-toast-stack {
+  position: fixed;
+  z-index: var(--rdu-toast-stack-z-index, 9999);
+  display: flex;
+  flex-direction: column;
+  gap: var(--rdu-toast-stack-gap, 0);
+  padding: var(--rdu-toast-stack-padding, 0);
+  max-width: var(--rdu-toast-stack-max-width, 100vw);
+  box-sizing: border-box;
+  pointer-events: none;
+
+  > .rdu-toast {
+    pointer-events: auto;
+  }
+
+  &.rdu-toast-stack-top-left {
+    top: 0;
+    left: 0;
+  }
+
+  &.rdu-toast-stack-top-right {
+    top: 0;
+    right: 0;
+  }
+
+  &.rdu-toast-stack-top-center {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.rdu-toast-stack-bottom-left {
+    bottom: 0;
+    left: 0;
+    flex-direction: column-reverse;
+  }
+
+  &.rdu-toast-stack-bottom-right {
+    bottom: 0;
+    right: 0;
+    flex-direction: column-reverse;
+  }
+
+  &.rdu-toast-stack-bottom-center {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: column-reverse;
+  }
+}
+
+.rdu-toast {
+  // Override UA default positioning: the dialog flows inside the position stack
+  position: relative;
+  inset: unset;
+  margin: 0;
+  max-width: var(--rdu-toast-max-width, 100%);
+  background: var(--rdu-toast-background, Canvas);
+  color: var(--rdu-toast-color, CanvasText);
+  font-family: var(--rdu-toast-font-family, inherit);
+  border: var(--rdu-toast-border, 1px solid);
+  border-color: var(--rdu-toast-border-color, currentColor);
+  border-radius: var(--rdu-toast-border-radius, 0);
+  padding: var(--rdu-toast-padding, 0);
+  box-shadow: var(--rdu-toast-box-shadow, none);
+  overflow: hidden;
+
+  .rdu-toast-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rdu-toast-header {
+    display: flex;
+    align-items: center;
+    gap: var(--rdu-toast-header-gap, 0);
+    padding: var(--rdu-toast-header-padding, 0);
+    background: var(--rdu-toast-header-background);
+  }
+
+  .rdu-toast-icon {
+    flex-shrink: 0;
+    line-height: 0;
+
+    svg {
+      width: var(--rdu-toast-icon-size, 1.5rem);
+      height: var(--rdu-toast-icon-size, 1.5rem);
+      fill: var(--rdu-toast-icon-color, currentColor);
+    }
+  }
+
+  .rdu-toast-title {
+    flex: 1;
+    margin: 0;
+    font-size: var(--rdu-toast-title-font-size);
+    font-family: var(--rdu-toast-title-font-family);
+    font-weight: var(--rdu-toast-title-font-weight);
+    line-height: var(--rdu-toast-title-line-height);
+    color: var(--rdu-toast-title-color);
+  }
+
+  .rdu-toast-close {
+    flex-shrink: 0;
+    margin-inline-start: auto;
+    background: var(--rdu-toast-close-background, transparent);
+    border: var(--rdu-toast-close-border, 1px solid transparent);
+    border-color: var(--rdu-toast-close-border-color);
+    border-radius: var(--rdu-toast-close-border-radius);
+    padding: var(--rdu-toast-close-padding);
+    color: var(--rdu-toast-close-color, currentColor);
+    line-height: 0;
+    cursor: pointer;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: all .3s;
+    }
+
+    svg {
+      width: var(--rdu-toast-close-svg-width, 1.25rem);
+      height: var(--rdu-toast-close-svg-height, 1.25rem);
+      fill: currentColor;
+    }
+
+    &:hover {
+      background: var(--rdu-toast-close-hover-background);
+      border-color: var(--rdu-toast-close-hover-border-color);
+      color: var(--rdu-toast-close-hover-color, currentColor);
+    }
+  }
+
+  .rdu-toast-message {
+    margin: 0;
+    padding: var(--rdu-toast-message-padding, 0);
+    font-size: var(--rdu-toast-message-font-size);
+    font-family: var(--rdu-toast-message-font-family);
+    line-height: var(--rdu-toast-message-line-height);
+    color: var(--rdu-toast-message-color);
+  }
+
+  .rdu-toast-datetime {
+    display: block;
+    padding: var(--rdu-toast-datetime-padding, 0);
+    font-size: var(--rdu-toast-datetime-font-size);
+    color: var(--rdu-toast-datetime-color);
+  }
+}

@@ -1,0 +1,14 @@
+#ks-toast {
+  .ks-toast-demo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: var(--ks-space-sm);
+    width: fit-content;
+    max-width: 100%;
+
+    @media (width < 40rem) {
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+  }
+}

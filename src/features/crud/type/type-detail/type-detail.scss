@@ -1,0 +1,13 @@
+@use '../../../../sass/components/detail-card' as detail-card;
+
+#ks-type-detail {
+  @include detail-card.detail-card;
+
+  // Le sei relazioni di danno stanno su due colonne
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  > header,
+  > dl {
+    grid-column: 1 / -1;
+  }
+}

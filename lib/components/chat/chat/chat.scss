@@ -1,0 +1,39 @@
+.rdu-chat {
+  .rdu-chat-header {
+    padding: var(--rdu-chat-header-padding, 1rem);
+
+    h4 {
+      margin: 0;
+      font-family: var(--rdu-chat-header-font-family, inherit);
+      font-size: var(--rdu-chat-header-font-size, 1rem);
+      font-weight: var(--rdu-chat-header-font-weight, 600);
+      color: var(--rdu-chat-header-color, inherit);
+    }
+  }
+
+  .rdu-chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rdu-chat-messages-gap, 0.5rem);
+    max-height: var(--rdu-chat-messages-max-height, 26rem);
+    overflow-y: auto;
+    padding: var(--rdu-chat-messages-padding, 1rem);
+    margin: var(--rdu-chat-messages-margin, 0);
+    border: var(--rdu-chat-messages-border, 0);
+    border-radius: var(--rdu-chat-messages-border-radius, 0);
+    background: var(--rdu-chat-messages-background, transparent);
+  }
+
+  .rdu-chat-footer {
+    font-family: var(--rdu-chat-footer-font-family, inherit);
+    font-size: var(--rdu-chat-footer-font-size, .875rem);
+    font-weight: var(--rdu-chat-footer-font-weight, normal);
+    line-height: var(--rdu-chat-footer-line-height, 1.5);
+    text-align: var(--rdu-chat-footer-text-align, center);
+    color: var(--rdu-chat-footer-color, inherit);
+
+    p {
+      margin: 0;
+    }
+  }
+}

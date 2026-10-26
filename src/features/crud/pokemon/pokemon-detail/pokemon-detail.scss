@@ -1,0 +1,64 @@
+@use '../../../../sass/components/detail-card' as detail-card;
+
+#ks-pokemon-detail {
+  @include detail-card.detail-card;
+
+  .ks-detail-hero img {
+    width: 5rem;
+    height: 5rem;
+    object-fit: contain;
+    image-rendering: pixelated;
+  }
+
+  .ks-detail-sprites {
+    display: flex;
+    gap: var(--ks-space-xs);
+    margin-inline-start: auto;
+  }
+
+  .ks-detail-facts dd small {
+    font-size: .8125rem;
+    font-weight: 500;
+    text-transform: none;
+  }
+
+  .ks-detail-stat {
+    display: grid;
+    grid-template-columns: 8rem 2.5rem 1fr;
+    align-items: center;
+    gap: var(--ks-space-xs);
+    font-size: .875rem;
+    text-transform: capitalize;
+
+    output {
+      font-family: var(--rdu-font-family-mono);
+      text-align: end;
+    }
+
+    meter {
+      width: 100%;
+      height: .5rem;
+      border-radius: 999px;
+      accent-color: var(--ks-color-primary);
+
+      &::-webkit-meter-bar {
+        height: .5rem;
+        border: 0;
+        border-radius: 999px;
+        background: var(--ks-gray-300);
+      }
+
+      &::-webkit-meter-optimum-value,
+      &::-webkit-meter-suboptimum-value,
+      &::-webkit-meter-even-less-good-value {
+        border-radius: 999px;
+        background: var(--ks-color-primary);
+      }
+
+      &::-moz-meter-bar {
+        border-radius: 999px;
+        background: var(--ks-color-primary);
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+// Full page loader: an animated hexagon pattern revealed by a sliding mask
+#ks-loader {
+  --ks-loader-size: 67px;
+  --ks-loader-line: 4px;
+  --ks-loader-color: var(--ks-color-primary);
+  --ks-loader-surface: var(--ks-gray-100);
+  --ks-loader-v1: var(--ks-loader-surface) 119.5deg, #0000 120.5deg;
+  --ks-loader-v2: var(--ks-loader-color) 119.5deg, #0000 120.5deg;
+
+  position: absolute;
+  inset: 0;
+  display: grid;
+  background: var(--ks-loader-surface);
+
+  &::before {
+    content: '';
+    grid-area: 1 / 1;
+    background:
+      conic-gradient(at var(--ks-loader-line) calc(var(--ks-loader-size) * .5777), transparent 270deg, var(--ks-loader-color) 0deg),
+      conic-gradient(at calc(100% - var(--ks-loader-line)) calc(var(--ks-loader-size) * .5777), var(--ks-loader-color) 90deg, transparent 0deg),
+      conic-gradient(from -60deg at 50% calc(var(--ks-loader-size) * .8662), var(--ks-loader-v1)),
+      conic-gradient(from -60deg at 50% calc(var(--ks-loader-size) * .8662 + 2 * var(--ks-loader-line)), var(--ks-loader-v2)),
+      conic-gradient(from 120deg at 50% calc(var(--ks-loader-size) * 1.4435 + 3 * var(--ks-loader-line)), var(--ks-loader-v1)),
+      conic-gradient(from 120deg at 50% calc(var(--ks-loader-size) * 1.4435 + var(--ks-loader-line)), var(--ks-loader-v2)),
+      linear-gradient(90deg, var(--ks-loader-surface) calc(50% - var(--ks-loader-line)), var(--ks-loader-color) 0 calc(50% + var(--ks-loader-line)), var(--ks-loader-surface) 0);
+    background-size: calc(var(--ks-loader-size) + 2 * var(--ks-loader-line)) calc(var(--ks-loader-size) * 1.732 + 3 * var(--ks-loader-line));
+    mask: linear-gradient(-60deg, #0000 calc(50% - 4 * var(--ks-loader-size)), #000, #0000 calc(50% + 4 * var(--ks-loader-size))) right / 300% 100% no-repeat;
+    animation: ks-loader-slide 3s infinite linear;
+  }
+
+  span {
+    grid-area: 1 / 1;
+    margin: auto;
+    font-family: 'DM Mono', monospace;
+    font-weight: 700;
+    font-size: 13vmin;
+    color: var(--ks-loader-surface);
+    mix-blend-mode: difference;
+  }
+}
+
+@keyframes ks-loader-slide {
+  100% {
+    mask-position: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ks-loader::before {
+    animation-duration: 12s;
+  }
+}

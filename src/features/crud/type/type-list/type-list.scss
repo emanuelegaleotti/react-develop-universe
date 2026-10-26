@@ -1,0 +1,22 @@
+@use '../../../../sass/components/list-card' as list-card;
+@use '../../../../sass/components/row-actions' as row-actions;
+
+#ks-type-list {
+  @include list-card.list-card;
+  @include row-actions.row-actions;
+
+  .ks-crud-table td.ks-crud-name {
+    width: 100%;
+  }
+
+  @media (max-width: 40rem) {
+    .ks-crud-table {
+      --rdu-table-cell-padding: var(--ks-space-2xs) var(--ks-space-xs);
+
+      th:first-child,
+      td.ks-crud-index {
+        display: none;
+      }
+    }
+  }
+}

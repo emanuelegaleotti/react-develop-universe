@@ -1,10 +1,30 @@
 .rdu-card {
-  width: 40rem;
+  width: var(--rdu-card-width, 40rem);
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: var(--rdu-card-overflow, visible);
   border: 1px solid var(--rdu-card-border-color);
   border-radius: var(--rdu-card-border-radius);
   padding: var(--rdu-card-padding);
   background: var(--rdu-card-background);
+  box-shadow: var(--rdu-card-box-shadow, none);
+  color: var(--rdu-card-color, inherit);
   font-family: var(--rdu-card-font-family);
   font-size: var(--rdu-card-font-size);
   font-weight: var(--rdu-card-font-weight);
+  transition: box-shadow var(--rdu-card-transition-duration, 0.2s) ease, border-color var(--rdu-card-transition-duration, 0.2s) ease;
+
+  &.rdu-card--outlined {
+    background: var(--rdu-card-outlined-background, transparent);
+  }
+
+  &.rdu-card--elevated {
+    border-color: var(--rdu-card-elevated-border-color, transparent);
+    box-shadow: var(--rdu-card-elevated-box-shadow, 0 4px 16px rgb(0 0 0 / 12%));
+  }
+
+  &.rdu-card--accent {
+    border-color: var(--rdu-card-accent-border-color, currentcolor);
+    background: var(--rdu-card-accent-background, var(--rdu-card-background));
+  }
 }

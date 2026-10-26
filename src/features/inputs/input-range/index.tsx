@@ -1,39 +1,48 @@
+import { useState } from 'react'
 import * as z from 'zod'
-import {SubmitHandler, useForm} from "react-hook-form";
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import './input-range.scss'
-import {zodResolver} from "@hookform/resolvers/zod";
-import {RDU_InputRange} from '../../../../lib/main.ts';
-import {RDU_Button} from "../../../../lib/components/buttons/button/Button.tsx";
 
-export function InputRange() {
-    const RangeForm = z.object({
-        range: z.string().nonempty({message: 'required'}),
-    })
+import { RDU_InputRange } from '../../../../lib/main.ts'
+import { ControlState } from '../../../shared/control-state/control-state.tsx'
 
-    type FormControl = z.infer<typeof RangeForm>;
+const RangeForm = z.object({
+  range: z.number({ message: 'required' })
+})
 
-    const {
-        register, handleSubmit, formState
-    } = useForm<FormControl>({
-        resolver: zodResolver(RangeForm),
-        mode: 'onChange'
-    });
+type FormControl = z.infer<typeof RangeForm>
 
-    const onSubmit: SubmitHandler<FormControl> = (data: FormControl) => {
-        console.log(data);
-    }
+export function InputRange () {
+  const [disabled, setDisabled] = useState(false)
 
-    return (
-        <section className={'ks-grid-main'} id={'ks-input-range'}>
-            <h2>Input Range</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <RDU_InputRange name={'range'} feature={'ks'} id={'test'} autoComplete={'none'}
-                               disabled={false} successMsg={true} helpMsg={true} errorMsg={true} register={register}
-                               formState={formState} schema={RangeForm}></RDU_InputRange>
-                <RDU_Button type={'submit'} text={'submit'}/>
-            </form>
-        </section>
-    );
+  const { register, formState, control } = useForm<FormControl>({
+    resolver: zodResolver(RangeForm),
+    mode: 'onChange',
+    defaultValues: { range: 0 }
+  })
 
-
+  return (
+    <section id="ks-input-range">
+      <h2>Input range</h2>
+      <p>Cursore per scegliere un valore numerico in un intervallo.</p>
+      <form onSubmit={event => event.preventDefault()}>
+        <h3>Esempio</h3>
+        <RDU_InputRange name={'range'}
+                        feature={'ks'}
+                        id={'range'}
+                        autoComplete={'none'}
+                        disabled={disabled}
+                        errorMsg={true}
+                        successMsg={true}
+                        helpMsg={true}
+                        register={register}
+                        formState={formState}
+                        schema={RangeForm}
+        />
+      </form>
+      <ControlState control={control} name="range" schema={RangeForm} disabled={disabled}
+                    onToggleDisabled={() => setDisabled(value => !value)} />
+    </section>
+  )
 }

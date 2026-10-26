@@ -20,7 +20,11 @@ interface RduButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     | 'success'
     | 'info'
     | 'light'
-    | 'dark';
+    | 'dark'
+    | 'ghost'
+    | 'link';
+  size?: 'small' | 'default' | 'large';
+  pill?: boolean;
   alt?: string;
   ariaLabel?: string;
 }
@@ -34,14 +38,20 @@ export function RDU_Button({
   disabled,
   onClick,
   variant = 'primary',
+  size = 'default',
+  pill,
+  alt: _alt,
+  ariaLabel: _ariaLabel,
+  ...rest
 }: RduButtonProps) {
   const { t } = useTranslation()
   const translatedText = t(`rdu.button.${text}`);
 
   return (
     <button
+      {...rest}
       type={type}
-      className={clsx('rdu-button', `rdu-${variant}`)}
+      className={clsx('rdu-button', `rdu-${variant}`, size !== 'default' && `rdu-${size}`, pill && 'rdu-pill')}
       title={translatedText}
       aria-label={translatedText}
       id={id}

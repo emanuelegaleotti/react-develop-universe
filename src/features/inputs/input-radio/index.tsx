@@ -1,71 +1,57 @@
-import './input-radio.scss'
+import { useState } from 'react'
 import * as z from 'zod'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { RDU_Button } from '../../../../lib/components/buttons/button/Button.tsx'
+import './input-radio.scss'
+
 import { RDU_InputRadio } from '../../../../lib/components/inputs/input-radio/input-radio.tsx'
+import { ControlState } from '../../../shared/control-state/control-state.tsx'
+
+const OPTIONS = ['white', 'red', 'black', 'blue']
+
+const RadioForm = z.object({
+  radio: z.string().nonempty({ message: 'required' })
+})
+
+type FormControl = z.infer<typeof RadioForm>
 
 export function InputRadio () {
-  const RadioForm = z.object({
-    radio: z.string(),
-  })
+  const [disabled, setDisabled] = useState(false)
 
-  type FormControl = z.infer<typeof RadioForm>;
-
-  const {
-    register,
-    handleSubmit,
-    formState
-  } = useForm<FormControl>({
+  const { register, formState, control } = useForm<FormControl>({
     resolver: zodResolver(RadioForm),
-    mode: 'onChange'
+    mode: 'onChange',
+    defaultValues: { radio: 'white' }
   })
-
-  const onSubmit: SubmitHandler<FormControl> = (data: FormControl) =>
-    console.log(data)
 
   return (
-    <section className="ks-grid-main" id={'ks-input-radio'}>
+    <section id="ks-input-radio">
       <h2>Input radio</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <RDU_InputRadio id={'test1'}
-                       name={'radio'}
-                       disabled={false}
-                       feature={'ks'}
-                       register={register}
-                       errorMsg={true}
-                       successMsg={true}
-                       helpMsg={true}
-                       value={'option1'}
-                       formState={formState}
-                       schema={RadioForm}
-        ></RDU_InputRadio>
-        <RDU_InputRadio id={'test2'}
-                       name={'radio'}
-                       disabled={false}
-                       feature={'ks'}
-                       register={register}
-                       errorMsg={true}
-                       successMsg={true}
-                       helpMsg={true}
-                       value={'option2'}
-                       formState={formState}
-                       schema={RadioForm}
-        ></RDU_InputRadio>
-        <RDU_InputRadio id={'test3'}
-                       name={'radio'}
-                       disabled={false}
-                       feature={'ks'}
-                       register={register}
-                       errorMsg={true}
-                       successMsg={true}
-                       helpMsg={true}
-                       value={'option3'}
-                       formState={formState}
-                       schema={RadioForm}
-        ></RDU_InputRadio>
-        <RDU_Button type={'submit'} text={'submit'}></RDU_Button>
+      <p>Gruppo di radio button collegati allo stesso campo di <code>react-hook-form</code>: il valore è quello dell'opzione selezionata.</p>
+      <form onSubmit={event => event.preventDefault()}>
+        <h3>Esempio</h3>
+        {OPTIONS.map((option, index) => {
+          const isLast = index === OPTIONS.length - 1
+          return (
+            <RDU_InputRadio key={option}
+                            id={`radio-${option}`}
+                            name={'radio'}
+                            feature={'ks'}
+                            value={option}
+                            radioLabel={`ks.radio.options.${option}`}
+                            disabled={disabled}
+                            errorMsg={isLast}
+                            successMsg={isLast}
+                            helpMsg={isLast}
+                            register={register}
+                            formState={formState}
+                            schema={RadioForm}
+            />
+          )
+        })}
       </form>
+      <ControlState control={control} name="radio" schema={RadioForm} disabled={disabled}
+                    onToggleDisabled={() => setDisabled(value => !value)} />
     </section>
   )
 }

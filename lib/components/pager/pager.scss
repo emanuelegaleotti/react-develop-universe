@@ -1,7 +1,7 @@
 .rdu-pager {
   display: grid;
   grid-template-rows: auto auto;
-  grid-template-columns: auto auto 2fr auto auto;
+  grid-template-columns: var(--rdu-pager-columns, auto auto 2fr auto auto);
   align-items: center;
   justify-content: center;
   gap: var(--rdu-pager-gap, 1rem);
@@ -14,23 +14,46 @@
     list-style: none;
     display: flex;
     align-items: center;
-    padding-inline: 40px;
+    margin: 0;
+    padding-inline: var(--rdu-pager-pagination-padding, 40px);
     justify-content: space-between;
     gap: var(--rdu-page-pagination-gap, 1rem);
 
     li {
       display: inline-block;
-      font-size: var(--rdu-pager-li-font-size, 1rem);
-      font-family: var(--rdu-pager-font-family);
-      padding: var(--rdu-pager-li-padding, 0.5rem);
       border: 1px solid var(--rdu-pager-li-border-color);
+      border-radius: var(--rdu-pager-li-radius, 0);
+      background: var(--rdu-pager-li-background, transparent);
+      color: var(--rdu-pager-li-color, inherit);
+      transition: background .2s;
+
+      button {
+        min-width: var(--rdu-pager-li-min-size, auto);
+        min-height: var(--rdu-pager-li-min-size, auto);
+        padding: var(--rdu-pager-li-padding, 0.5rem);
+        border: 0;
+        border-radius: inherit;
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        font-size: var(--rdu-pager-li-font-size, 1rem);
+        font-family: var(--rdu-pager-font-family);
+        font-weight: var(--rdu-pager-li-font-weight, inherit);
+        cursor: pointer;
+      }
+
+      &:hover {
+        background: var(--rdu-pager-li-hover-background, var(--rdu-pager-li-background, transparent));
+      }
+
       &.active {
         background-color: var(--rdu-pager-li-active-background);
+        border-color: var(--rdu-pager-li-active-border-color, var(--rdu-pager-li-border-color));
+        color: var(--rdu-pager-li-active-color, inherit);
+        font-weight: var(--rdu-pager-li-active-font-weight, inherit);
       }
     }
   }
-
-
 
   button {
     &:disabled {

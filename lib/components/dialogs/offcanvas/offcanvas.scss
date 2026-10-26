@@ -6,11 +6,15 @@
   border-radius: var(--rdu-offcanvas-border-radius);
   box-shadow: var(--rdu-offcanvas-box-shadow);
   width: var(--rdu-offcanvas-width);
+  max-width: var(--rdu-offcanvas-max-width, 100vw);
+  background: var(--rdu-offcanvas-background, Canvas);
+  color: var(--rdu-offcanvas-color, CanvasText);
   min-height: 100vh;
   height: 100vh;
 
   &::backdrop {
     background: var(--rdu-offcanvas-backdrop-background);
+    backdrop-filter: var(--rdu-offcanvas-backdrop-filter);
   }
 
   &.rdu-left {
@@ -29,11 +33,13 @@ height: 100%;
     .rdu-offcanvas-header {
       padding: var(--rdu-offcanvas-header-padding);
       background: var(--rdu-offcanvas-header-background);
+      border-bottom: var(--rdu-offcanvas-header-border-bottom, 0);
       display: flex;
       align-items: center;
       justify-content: space-between;
 
       h4 {
+        margin: var(--rdu-offcanvas-header-title-margin, 0);
         font-size: var(--rdu-offcanvas-header-title-font-size);
         font-family: var(--rdu-offcanvas-header-title-font-family);
         line-height: var(--rdu-offcanvas-header-title-line-height);
@@ -61,17 +67,13 @@ height: 100%;
         svg {
           width: var(--rdu-offcanvas-button-close-svg-width);
           height: var(--rdu-offcanvas-button-close-svg-height);
-          fill: var(--rdu-offcanvas-button-close-svg-color);
+          fill: var(--rdu-offcanvas-button-close-svg-color, currentColor);
         }
-      }
 
-      &:hover {
-        background: var(--rdu-offcanvas-button-close-hover-background);
-        border-color: var(--rdu-offcanvas-button-close-hover-border-color);
-        color: var(--rdu-offcanvas-button-close-hover-color);
-
-        svg {
-          fill: var(--rdu-offcanvas-button-close-hover-svg-color);
+        &:hover {
+          background: var(--rdu-offcanvas-button-close-hover-background);
+          border-color: var(--rdu-offcanvas-button-close-hover-border-color);
+          color: var(--rdu-offcanvas-button-close-hover-color);
         }
       }
     }
@@ -79,13 +81,18 @@ height: 100%;
     .rdu-offcanvas-body {
       padding: var(--rdu-offcanvas-body-padding, 1rem);
       background: var(--rdu-offcanvas-body-background);
-      height: 100%;
+      flex: 1;
+      overflow-y: auto;
     }
 
     .rdu-offcanvas-footer {
       padding: var(--rdu-offcanvas-footer-padding, 1rem);
       background: var(--rdu-offcanvas-footer-background);
       height: var(--rdu-offcanvas-footer-height);
+      border-top: var(--rdu-offcanvas-footer-border-top, 0);
+      display: flex;
+      align-items: center;
+      gap: var(--rdu-offcanvas-footer-gap, 0);
     }
   }
 

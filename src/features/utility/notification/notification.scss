@@ -1,0 +1,30 @@
+#ks-notification {
+  .ks-notification-status {
+    display: inline-block;
+    padding: var(--ks-space-4xs) var(--ks-space-xs);
+    border-radius: 9999px;
+    background: var(--ks-gray-300);
+    color: var(--ks-gray-800);
+    font-weight: 600;
+    font-size: .875rem;
+
+    &[data-state='granted'] {
+      background: var(--ks-color-success);
+      color: var(--ks-gray-100);
+    }
+
+    &[data-state='denied'] {
+      background: var(--ks-color-error);
+      color: var(--ks-gray-100);
+    }
+
+    &[data-state='default'] {
+      background: var(--ks-color-warning);
+      color: var(--ks-gray-100);
+    }
+  }
+
+  .ks-notification-feedback:empty {
+    display: none;
+  }
+}

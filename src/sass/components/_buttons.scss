@@ -38,34 +38,31 @@
   @include button-variant(light, palette.$gray-5, palette.$gray-90, palette.$gray-10, palette.$gray-10);
   @include button-variant(dark, palette.$gray-90, palette.$white, palette.$gray-90, palette.$gray-95);
 
-  &:disabled {
-    opacity: .5;
-    cursor: not-allowed;
-  }
+  --rdu-button-disabled-opacity: .5;
+  --rdu-button-icon-gap: #{map.get(spaces.$spaces, '3xs')};
+  --rdu-button-icon-width: #{functions.toRem(20)};
+  --rdu-button-icon-height: #{functions.toRem(20)};
+  --rdu-button-icon-only-padding: #{map.get(spaces.$spaces, '2xs')};
+  --rdu-button-small-padding: #{map.get(spaces.$spaces, '4xs')} #{map.get(spaces.$spaces, sm)};
+  --rdu-button-small-font-size: #{functions.toRem(14)};
+  --rdu-button-large-padding: #{map.get(spaces.$spaces, sm)} #{map.get(spaces.$spaces, xl)};
+  --rdu-button-large-font-size: #{functions.toRem(20)};
 
-  svg {
-    width: 1.25rem;
-    height: 1.25rem;
-    fill: currentColor;
-  }
+  --rdu-button-ghost-background: transparent;
+  --rdu-button-ghost-color: #{palette.$gray-90};
+  --rdu-button-ghost-border-color: transparent;
+  --rdu-button-ghost-hover-background: #{palette.$gray-10};
+  --rdu-button-ghost-hover-color: #{palette.$gray-90};
+  --rdu-button-ghost-border-hover-color: transparent;
+  --rdu-button-ghost-active-background: #{palette.$blue-10};
+  --rdu-button-ghost-active-color: #{palette.$blue-60};
 
-  &:has(.rdu-button-icon.rdu-only) {
-    --rdu-button-padding: #{map.get(spaces.$spaces, '2xs')};
-  }
-
-  &.rdu-link {
-    background: transparent;
-    border-color: transparent;
-    color: palette.$blue-50;
-    padding: #{map.get(spaces.$spaces, '3xs')} #{map.get(spaces.$spaces, xs)};
-
-    &:hover {
-      background: palette.$gray-10;
-    }
-
-    &.active {
-      background: palette.$blue-10;
-      color: palette.$blue-60;
-    }
-  }
+  --rdu-button-link-background: transparent;
+  --rdu-button-link-color: #{palette.$blue-50};
+  --rdu-button-link-border-color: transparent;
+  --rdu-button-link-hover-background: #{palette.$gray-10};
+  --rdu-button-link-hover-color: #{palette.$blue-50};
+  --rdu-button-link-border-hover-color: transparent;
+  --rdu-button-link-active-background: #{palette.$blue-10};
+  --rdu-button-link-active-color: #{palette.$blue-60};
 }
